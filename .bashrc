@@ -161,6 +161,7 @@ source ~/.bashvpn
 
 source ~/.bashprompt
 alias clear="clear && touch ~/.shell_just_started"
+touch ~/.shell_just_started
 PROMPT_COMMAND='set_prompt $?' # single quotes for $? to be evaluated after last command
 
 alias shut="shutdown now"

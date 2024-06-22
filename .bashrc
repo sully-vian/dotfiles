@@ -131,7 +131,7 @@ export JAVA_HOME="/usr/lib/jvm/java-21-openjdk-amd64"
 CHECKSTYLE_PATH="/usr/lib/jvm/lib/checkstyle.jar"
 JUNIT_PATH="/usr/lib/jvm/lib/junit4.jar"
 PLANTUML_PATH="/usr/lib/jvm/lib/plantuml-1.2024.3.jar"
-alias plantuml="java -jar" $PLANTUML_PATH
+# alias plantuml="java -jar" $PLANTUML_PATH
 export CLASSPATH=$JUNIT_PATH:$CHECKSTYLE_PATH:$PLANTUML_PATH:.
 alias javaclean="find . -name *.class | xargs rm -f"
 alias javacall="javac *.java"
@@ -159,15 +159,10 @@ function word() {
 
 source ~/.bashvpn
 
-alias arduino="~/Arduino/arduino-ide_2.3.2_Linux_64bit.AppImage"
-
 source ~/.bashprompt
 alias clear="clear && touch ~/.shell_just_started"
-clear
 PROMPT_COMMAND='set_prompt $?' # single quotes for $? to be evaluated after last command
 
 alias shut="shutdown now"
 alias chut="shut"
-
-[ -f ~/.fzf.bash ] && source ~/.fzf.bash
 

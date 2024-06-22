@@ -1,0 +1,27 @@
+[com/raggesilver/BlackBox]
+style-preference=2
+theme-dark='Monokai Dark'
+theme-light='Adwaita'
+use-custom-command=false
+show-headerbar=false
+window-width=779
+window-height=515
+terminal-padding=(20, 20, 20, 20)
+opacity=90
+was-maximized=false
+font='FiraCode Nerd Font 12'
+theme-bold-is-bright=false
+easy-copy-paste=false
+terminal-cell-width=1.0
+terminal-cell-height=1.0
+use-sixel=true
+show-scrollbars=true
+terminal-bell=false
+notify-process-completion=false
+context-aware-header-bar=true
+show-menu-button=true
+headerbar-drag-area=false
+floating-controls=false
+fill-tabs=false
+scrollback-lines=10000
+command-as-login-shell=true

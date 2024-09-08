@@ -166,4 +166,6 @@ PROMPT_COMMAND='set_prompt $?' # single quotes for $? to be evaluated after last
 
 alias shut="shutdown now"
 alias chut="shut"
+alias sshelp="echo \"to connect to shervy vian servian run 'ssh servian@<shervy-IP>' while on the same network\""
 
+export PATH="${PATH}:${HOME}/.npm/bin"

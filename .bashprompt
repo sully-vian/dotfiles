@@ -68,9 +68,7 @@ set_prompt() {
 
     PS1="$PS1\n$coloredarrow"
 
-    if [ -f ~/.shell_just_started ]; then
-        rm -f ~/.shell_just_started
-    else
-        PS1="\n$PS1"
+    if [ $SSH_CONNECTED ]; then
+      PS1="[📡] $PS1"
     fi
 }

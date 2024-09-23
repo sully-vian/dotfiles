@@ -92,7 +92,9 @@ export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quo
 alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
-alias ls='lsd --group-directories-first'
+if command -v lsd > /dev/null 2>&1; then
+  alias ls='lsd --group-directories-first'
+fi
 
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert
@@ -157,7 +159,9 @@ function word() {
     fi
 }
 
-alias nv="nvim"
+if command -v nvim > /dev/null 2>&1; then
+  alias nv="nvim"
+fi
 
 source ~/.bashvpn
 

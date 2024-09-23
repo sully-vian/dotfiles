@@ -68,7 +68,7 @@ set_prompt() {
 
     PS1="$PS1\n$coloredarrow"
 
-    if [ $SSH_CONNECTED ]; then
+    if [ -n "$SSH_CONNECTION" ]; then
       PS1="[📡] $PS1"
     fi
 }

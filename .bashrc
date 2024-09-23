@@ -157,6 +157,8 @@ function word() {
     fi
 }
 
+alias nv="nvim"
+
 source ~/.bashvpn
 
 source ~/.bashprompt

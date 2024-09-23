@@ -160,12 +160,19 @@ function word() {
 source ~/.bashvpn
 
 source ~/.bashprompt
-alias clear="clear && touch ~/.shell_just_started"
-touch ~/.shell_just_started
 PROMPT_COMMAND='set_prompt $?' # single quotes for $? to be evaluated after last command
 
 alias shut="shutdown now"
 alias chut="shut"
 alias sshelp="echo \"to connect to shervy vian servian run 'ssh servian@<shervy-IP>' while on the same network\""
 
+# NPM config
 export PATH="${PATH}:${HOME}/.npm/bin"
+
+# BEGIN opam configuration
+# This is useful if you're using opam as it adds:
+#   - the correct directories to the PATH
+#   - auto-completion for the opam binary
+# This section can be safely removed at any time if needed.
+test -r '/home/sully_vian/.opam/opam-init/init.sh' && . '/home/sully_vian/.opam/opam-init/init.sh' > /dev/null 2> /dev/null || true
+# END opam configuration

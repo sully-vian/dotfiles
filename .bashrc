@@ -72,42 +72,12 @@ xterm* | rxvt*)
 *) ;;
 esac
 
-# enable color support of ls and also add handy aliases
-if [ -x /usr/bin/dircolors ]; then
-    test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
-    alias ls='ls --color=auto'
-    alias diff='diff --color=auto'
-    #alias dir='dir --color=auto'
-    #alias vdir='vdir --color=auto'
-
-    alias grep='grep --color=auto'
-    alias fgrep='fgrep --color=auto'
-    alias egrep='egrep --color=auto'
-fi
-
 # colored GCC warnings and errors
 export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
-
-# some more ls aliases
-alias ll='ls -alF'
-alias la='ls -A'
-alias l='ls -CF'
-if command -v lsd > /dev/null 2>&1; then
-  alias ls='lsd --group-directories-first'
-fi
 
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
-
-# Alias definitions.
-# You may want to put all your additions into a separate file like
-# ~/.bash_aliases, instead of adding them here directly.
-# See /usr/share/doc/bash-doc/examples in the bash-doc package.
-
-if [ -f ~/.bash_aliases ]; then
-    . ~/.bash_aliases
-fi
 
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
@@ -120,11 +90,13 @@ if ! shopt -oq posix; then
     fi
 fi
 
-# compilation/execution ada
-alias adc="gnatmake -f -gnatwa -gnata -g"
-function adc-e() {
-    adc "$1" && ./"${1%.*}"
-}
+# Alias definitions.
+# You may want to put all your additions into a separate file like
+# ~/.bash_aliases, instead of adding them here directly.
+# See /usr/share/doc/bash-doc/examples in the bash-doc package.
+if [ -f ~/.bash_aliases ]; then
+    . ~/.bash_aliases
+fi
 
 # JAVA
 export J2SDKDIR="/usr/lib/jvm/jdk1.7.0_80"    # where JDK installed
@@ -135,42 +107,11 @@ JUNIT_PATH="/usr/lib/jvm/lib/junit4.jar"
 PLANTUML_PATH="/usr/lib/jvm/lib/plantuml-1.2024.3.jar"
 # alias plantuml="java -jar" $PLANTUML_PATH
 export CLASSPATH=$JUNIT_PATH:$CHECKSTYLE_PATH:$PLANTUML_PATH:.
-alias javaclean="find . -name *.class | xargs rm -f"
-alias javacall="javac *.java"
-function java-c() {
-    javac "$1" && java "${1%.*}"
-}
-function javatest-c() {
-    javac "$1" && java org.junit.runner.JUnitCore "${1%.*}"
-}
-
-# temps du panneau
-function panel-time() {
-    date +"[%d/%m/%y | %T]"
-}
-
-# pioche mots aléatoirement à partir du dictionnaire
-function word() {
-    if [ "$#" -ne 1 ]; then
-        shuf -n 1 /usr/share/dict/gutenberg.txt
-    else
-        shuf -n "$1" /usr/share/dict/gutenberg.txt
-
-    fi
-}
-
-if command -v nvim > /dev/null 2>&1; then
-  alias nv="nvim"
-fi
 
 source ~/.bashvpn
 
 source ~/.bashprompt
 PROMPT_COMMAND='set_prompt $?' # single quotes for $? to be evaluated after last command
-
-alias shut="shutdown now"
-alias chut="shut"
-alias sshelp="echo \"to connect to shervy vian servian run 'ssh servian@<shervy-IP>' while on the same network\""
 
 # NPM config
 export PATH="${PATH}:${HOME}/.npm/bin"
@@ -180,5 +121,5 @@ export PATH="${PATH}:${HOME}/.npm/bin"
 #   - the correct directories to the PATH
 #   - auto-completion for the opam binary
 # This section can be safely removed at any time if needed.
-test -r '/home/sully_vian/.opam/opam-init/init.sh' && . '/home/sully_vian/.opam/opam-init/init.sh' > /dev/null 2> /dev/null || true
+test -r '/home/sully_vian/.opam/opam-init/init.sh' && . '/home/sully_vian/.opam/opam-init/init.sh' >/dev/null 2>/dev/null || true
 # END opam configuration

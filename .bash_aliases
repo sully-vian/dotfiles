@@ -61,6 +61,6 @@ if command -v nvim > /dev/null 2>&1; then
 fi
 
 # utility aliases
-alias c="clear" # clear terminal screen
+alias c="clear"
 alias shut="shutdown now"
 alias chut="shut"

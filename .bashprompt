@@ -71,4 +71,8 @@ set_prompt() {
     if [ -n "$SSH_CONNECTION" ]; then
       PS1="[📡] $PS1"
     fi
+
+    if [ -n "$VPNC_CONNECTED" ]; then
+      PS1="[🌐] $PS1"
+    fi
 }

@@ -123,3 +123,7 @@ export PATH="${PATH}:${HOME}/.npm/bin"
 # This section can be safely removed at any time if needed.
 test -r '/home/sully_vian/.opam/opam-init/init.sh' && . '/home/sully_vian/.opam/opam-init/init.sh' >/dev/null 2>/dev/null || true
 # END opam configuration
+
+if [ -z "$TMUX" ] && [ -n "$PS1" ] && [ -t 1 ]; then
+    tmux attach -t default || tmux new -s default
+fi

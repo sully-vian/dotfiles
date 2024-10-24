@@ -4,11 +4,9 @@ vpn7() {
     if pgrep vpnc >/dev/null; then
         echo "disconnecting..."
         sudo vpnc-disconnect
-        unset VPNC_CONNECTED
     else
         echo "Connecting..."
         echo -e "Check \033[32mDuo mobile\033[0m"
         sudo vpnc ~/.n7-vpn.conf
-        export VPNC_CONNECTED=1
     fi
 }

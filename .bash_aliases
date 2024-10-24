@@ -55,6 +55,11 @@ function javatest-c() {
   javac "$1" && java org.junit.runner.JUnitCore "${1%.*}"
 }
 
+# eclipse alias
+if [ -f ~/.eclipse/modeling-2023-09/eclipse/eclipse ]; then
+  alias eclipse-idm="~/.eclipse/modeling-2023-09/eclipse/eclipse"
+fi
+
 # neo-vim alias
 if command -v nvim > /dev/null 2>&1; then
   alias nv="nvim"
@@ -64,3 +69,7 @@ fi
 alias c="clear"
 alias shut="shutdown now"
 alias chut="shut"
+
+function cheat() {
+  curl cheat.sh/$1
+}

@@ -72,7 +72,7 @@ set_prompt() {
       PS1="[📡] $PS1"
     fi
 
-    if [ -n "$VPNC_CONNECTED" ]; then
+    if pgrep vpnc >/dev/null; then
       PS1="[🌐] $PS1"
     fi
 }

@@ -73,3 +73,7 @@ alias chut="shut"
 function cheat() {
   curl cheat.sh/$1
 }
+
+function print_bash_list() {
+  echo "$1" | tr ':' '\n'
+}

@@ -105,16 +105,21 @@ export JAVA_HOME="/usr/lib/jvm/java-21-openjdk-amd64"
 CHECKSTYLE_PATH="/usr/lib/jvm/lib/checkstyle.jar"
 JUNIT_PATH="/usr/lib/jvm/lib/junit4.jar"
 PLANTUML_PATH="/usr/lib/jvm/lib/plantuml-1.2024.3.jar"
-# alias plantuml="java -jar" $PLANTUML_PATH
 export CLASSPATH=$JUNIT_PATH:$CHECKSTYLE_PATH:$PLANTUML_PATH:.
+export PATH=$JAVA_HOME/bin:$PATH
 
 source ~/.bashvpn
 
 source ~/.bashprompt
 PROMPT_COMMAND='set_prompt $?' # single quotes for $? to be evaluated after last command
 
-# NPM config
-export PATH="${PATH}:${HOME}/.npm/bin"
+# NPM
+export PATH="${HOME}/.npm/bin:$PATH"
+
+# texlive path
+export PATH="/usr/local/texlive/2024/bin/x86_64-linux:$PATH"
+export MANPATH="/usr/local/texlive/2024/texmf-dist/doc/man:$MANPATH"
+export INFOPATH="/usr/local/texlive/2024/texmf-dist/doc/info:$INFOPATH"
 
 # BEGIN opam configuration
 # This is useful if you're using opam as it adds:
@@ -123,6 +128,13 @@ export PATH="${PATH}:${HOME}/.npm/bin"
 # This section can be safely removed at any time if needed.
 test -r '/home/sully_vian/.opam/opam-init/init.sh' && . '/home/sully_vian/.opam/opam-init/init.sh' >/dev/null 2>/dev/null || true
 # END opam configuration
+
+# remove duplicates in PATH variable
+export PATH="$(perl -e 'print join(":", grep { not $seen{$_}++ } split(/:/, $ENV{PATH}))')"
+# remove duplicates in MANPATH variable
+export MANPATH="$(perl -e 'print join(":", grep { not $seen{$_}++ } split(/:/, $ENV{MANPATH}))')"
+# remove duplicates in MANPATH variable                                                 
+export INFOPATH="$(perl -e 'print join(":",grep { not $seen{$_}++ } split(/:/, $ENV{INFOPATH}))')"
 
 if [ -z "$TMUX" ] && [ -n "$PS1" ] && [ -t 1 ]; then
     tmux attach -t default || tmux new -s default

@@ -26,3 +26,4 @@ fill-tabs=false
 scrollback-lines=10000
 command-as-login-shell=true
 working-directory-mode=0
+was-fullscreened=false

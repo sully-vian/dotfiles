@@ -22,6 +22,10 @@ if [ -x /usr/bin/dircolors ]; then
   alias egrep='egrep --color=auto' # doesn't support regex
 fi
 
+# some cd aliases
+alias ..="cd .."
+alias ...="cd ../.."
+
 # some more ls aliases
 alias ll='ls -alF'
 alias la='ls -A'

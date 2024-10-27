@@ -106,7 +106,7 @@ CHECKSTYLE_PATH="/usr/lib/jvm/lib/checkstyle.jar"
 JUNIT_PATH="/usr/lib/jvm/lib/junit4.jar"
 PLANTUML_PATH="/usr/lib/jvm/lib/plantuml-1.2024.3.jar"
 export CLASSPATH=$JUNIT_PATH:$CHECKSTYLE_PATH:$PLANTUML_PATH:.
-export PATH=$JAVA_HOME/bin:$PATH
+export PATH="$JAVA_HOME:$PATH"
 
 source ~/.bashvpn
 
@@ -133,8 +133,10 @@ test -r '/home/sully_vian/.opam/opam-init/init.sh' && . '/home/sully_vian/.opam/
 export PATH="$(perl -e 'print join(":", grep { not $seen{$_}++ } split(/:/, $ENV{PATH}))')"
 # remove duplicates in MANPATH variable
 export MANPATH="$(perl -e 'print join(":", grep { not $seen{$_}++ } split(/:/, $ENV{MANPATH}))')"
-# remove duplicates in MANPATH variable                                                 
-export INFOPATH="$(perl -e 'print join(":",grep { not $seen{$_}++ } split(/:/, $ENV{INFOPATH}))')"
+
+# remove duplicates in INFOPATH variable
+export INFOPATH="$(perl -e 'print join(":", grep { not $seen{$_}++ } split(/:/, $ENV{INFOPATH}))')"
+
 
 if [ -z "$TMUX" ] && [ -n "$PS1" ] && [ -t 1 ]; then
     tmux attach -t default || tmux new -s default

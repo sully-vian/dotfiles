@@ -20,6 +20,8 @@ if [ -x /usr/bin/dircolors ]; then
   alias grep='grep --color=auto'   # doesn't support regex
   alias fgrep='fgrep --color=auto' # supports extended regex
   alias egrep='egrep --color=auto' # doesn't support regex
+
+  alias less='less -R'
 fi
 
 # some cd aliases
@@ -38,6 +40,11 @@ fi
 if command -v batcat >/dev/null 2>&1; then
   # only use bat alias if batcat is installed
   alias bat='batcat'
+fi
+
+if command -v onefetch >/dev/null 2>&1; then
+  # only use onefetch alias if onefatch is installed
+  alias onefetch='onefetch --nerd-fonts'
 fi
 
 # ada compilation alias
@@ -75,7 +82,7 @@ alias shut="shutdown now"
 alias chut="shut"
 
 function cheat() {
-  curl cheat.sh/$1
+  curl -s cheat.sh/$1 | less
 }
 
 function print_bash_list() {

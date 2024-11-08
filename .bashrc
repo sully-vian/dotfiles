@@ -94,8 +94,8 @@ fi
 # You may want to put all your additions into a separate file like
 # ~/.bash_aliases, instead of adding them here directly.
 # See /usr/share/doc/bash-doc/examples in the bash-doc package.
-if [ -f ~/.bash_aliases ]; then
-    . ~/.bash_aliases
+if [ -f ~/.scripts/aliases.sh ]; then
+    . ~/.scripts/aliases.sh
 fi
 
 # JAVA
@@ -108,9 +108,9 @@ PLANTUML_PATH="/usr/lib/jvm/lib/plantuml-1.2024.3.jar"
 export CLASSPATH=$JUNIT_PATH:$CHECKSTYLE_PATH:$PLANTUML_PATH:.
 export PATH="$JAVA_HOME:$PATH"
 
-source ~/.bashvpn
+source ~/.scripts/vpn7.sh
 
-source ~/.bashprompt
+source ~/.scripts/prompt.sh
 PROMPT_COMMAND='set_prompt $?' # single quotes for $? to be evaluated after last command
 
 # NPM

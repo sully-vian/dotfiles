@@ -7,6 +7,6 @@ vpn7() {
     else
         echo "Connecting..."
         echo -e "Check \033[32mDuo mobile\033[0m"
-        sudo vpnc ~/.n7-vpn.conf
+        sudo vpnc ~/.scripts/.n7-vpn.conf
     fi
 }

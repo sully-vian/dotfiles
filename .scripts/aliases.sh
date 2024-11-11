@@ -31,7 +31,7 @@ alias ...="cd ../.."
 # some more ls aliases
 alias ll='ls -alF'
 alias la='ls -A'
-alias l='ls -CF'
+# alias l='ls -CF' # does not work with lsd
 if command -v lsd >/dev/null 2>&1; then
   # only use lsd alias if it is installed
   alias ls='lsd --group-directories-first'
@@ -47,12 +47,14 @@ if command -v onefetch >/dev/null 2>&1; then
   alias onefetch='onefetch --nerd-fonts'
 fi
 
-# ada compilation alias
-alias adc="gnatmake -f -gnatwa -gnata -g"
-function adc-e() {
-  # compile and execute ada program
-  adc "$1" && ./"${1%.*}"
-}
+if command -v gnatmake > /dev/null 2>&1; then
+  # ada compilation alias only if installed
+  alias adc="gnatmake -f -gnatwa -gnata -g"
+  function adc-e() {
+    # compile and execute ada program
+    adc "$1" && ./"${1%.*}"
+  }
+fi
 
 # java compilation aliases
 alias javaclean="find . -name *.class | xargs rm -f" # remove all .class files
@@ -74,6 +76,7 @@ fi
 # neo-vim alias
 if command -v nvim > /dev/null 2>&1; then
   alias nv="nvim"
+  alias vim="nv"
 fi
 
 # utility aliases
@@ -88,3 +91,6 @@ function cheat() {
 function print_bash_list() {
   echo "$1" | tr ':' '\n'
 }
+
+alias editrc="vim $BASHRC"
+alias edittmux="vim $TMUX_CONF"

@@ -5,8 +5,8 @@
 
 # If not running interactively, don't do anything
 case $- in
-*i*) ;;
-*) return ;;
+  *i*) ;;
+  *) return ;;
 esac
 
 # don't put duplicate lines or lines starting with space in the history.
@@ -38,7 +38,7 @@ fi
 
 # set a fancy prompt (non-color, unless we know we "want" color)
 case "$TERM" in
-xterm-color | *-256color) color_prompt=yes ;;
+  xterm-color | *-256color) color_prompt=yes ;;
 esac
 
 # uncomment for a colored prompt, if the terminal has the capability; turned
@@ -90,13 +90,14 @@ if ! shopt -oq posix; then
     fi
 fi
 
+# load locations variables
+[ -f "$HOME/.scripts/locations.sh" ] && source "$HOME/.scripts/locations.sh"
+
 # Alias definitions.
 # You may want to put all your additions into a separate file like
 # ~/.bash_aliases, instead of adding them here directly.
 # See /usr/share/doc/bash-doc/examples in the bash-doc package.
-if [ -f ~/.scripts/aliases.sh ]; then
-    . ~/.scripts/aliases.sh
-fi
+[ -f "$ALIASES" ] && source "$ALIASES"
 
 # JAVA
 export J2SDKDIR="/usr/lib/jvm/jdk1.7.0_80"    # where JDK installed
@@ -137,7 +138,7 @@ export MANPATH="$(perl -e 'print join(":", grep { not $seen{$_}++ } split(/:/, $
 # remove duplicates in INFOPATH variable
 export INFOPATH="$(perl -e 'print join(":", grep { not $seen{$_}++ } split(/:/, $ENV{INFOPATH}))')"
 
-
+# create tmux session on attach if existing
 if [ -z "$TMUX" ] && [ -n "$PS1" ] && [ -t 1 ]; then
     tmux attach -t default || tmux new -s default
 fi

@@ -90,6 +90,9 @@ if ! shopt -oq posix; then
     fi
 fi
 
+# load inputrc
+[ -f "$HOME/.inputrc" ] && bind -f "$HOME/.inputrc"
+
 # load locations variables
 [ -f "$HOME/.scripts/locations.sh" ] && source "$HOME/.scripts/locations.sh"
 
@@ -137,6 +140,8 @@ export MANPATH="$(perl -e 'print join(":", grep { not $seen{$_}++ } split(/:/, $
 
 # remove duplicates in INFOPATH variable
 export INFOPATH="$(perl -e 'print join(":", grep { not $seen{$_}++ } split(/:/, $ENV{INFOPATH}))')"
+
+export FAKE_HOME="$HOME/Downloads/home"
 
 # create tmux session on attach if existing
 if [ -z "$TMUX" ] && [ -n "$PS1" ] && [ -t 1 ]; then

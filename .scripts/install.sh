@@ -17,10 +17,22 @@ DOTFILES=(
 # Create symlinks
 for file in "${DOTFILES[@]}"; do
     target="$FAKE_HOME/$file"
+    target_dir=$(dirname "$target")
+
+    # Create the target directory if it does not exist
+    if [ ! -d "$target_dir" ]; then
+        echo "Missing directory $target_dir"
+        echo "Creating directory $target_dir"
+        mkdir -p "$target_dir"
+    fi
+
+    # Backup existing files
     if [ -e "$target" ]; then
         echo "Backing up existing $target to $target.bak"
         mv "$target" "$target.bak"
     fi
+
+    # Create the symlink
     echo "Creating symlink for $file"
     ln -s "$DOTFILES_DIR/$file" "$target"
 done

@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Define the dotfiles directory
-DOTFILES_DIR="$FAKE_HOME/dotfiles"
+DOTFILES_DIR="$HOME/dotfiles"
 
 # List of dotfiles to be symlinked
 DOTFILES=(
@@ -27,7 +27,7 @@ echo
 # Create symlinks
 for file in "${DOTFILES[@]}"; do
     echo -e "${BLUE}[Processing $file]${NC}"
-    target="$FAKE_HOME/$file"
+    target="$HOME/$file"
     target_dir=$(dirname "$target")
 
     # Create the target directory if it does not exist
@@ -50,15 +50,15 @@ for file in "${DOTFILES[@]}"; do
 done
 
 # Source the new .bashrc and rebind the inputrc
-if [ -f "$FAKE_HOME/.bashrc" ]; then
+if [ -f "$HOME/.bashrc" ]; then
     echo -e "${BLUE}Sourcing .bashrc${NC}"
-    source "$FAKE_HOME/.bashrc"
+    source "$HOME/.bashrc"
 fi
 
 # Rebind the inputrc
-if [ -f "$FAKE_HOME/.inputrc" ]; then
+if [ -f "$HOME/.inputrc" ]; then
     echo -e "${BLUE}Rebinding .inputrc${NC}"
-    bind -f "$FAKE_HOME/.inputrc"
+    bind -f "$HOME/.inputrc"
 fi
 
 echo -e "${GREEN}Dotfiles installation complete!${NC}"

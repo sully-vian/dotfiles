@@ -58,7 +58,7 @@ fi
 # Rebind the inputrc
 if [ -f "$FAKE_HOME/.inputrc" ]; then
     echo -e "${BLUE}Rebinding .inputrc${NC}"
-    source "$FAKE_HOME/.inputrc"
+    bind -f "$FAKE_HOME/.inputrc"
 fi
 
 echo -e "${GREEN}Dotfiles installation complete!${NC}"

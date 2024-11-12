@@ -17,12 +17,23 @@ This repository contains configuration files (dotfiles) for various tools and ap
 
 ## Installation
 
-To install these dotfiles, install all dependencies and run the following commands:
+To install these dotfiles, install the dependencies, then run
 
 ```sh
 git clone https://github.com/sully-vian/dotfiles.git ~/dotfiles
 cd ~/dotfiles
-stow --target=$HOME .
+```
+
+For creating the symlinks, you can choose between two methods:
+
+```sh
+./.scripts/install.sh # unsafe but does not require stow
+```
+
+or
+
+```sh
+stow --target=$HOME . # safe but requires stow
 ```
 
 ## Dependencies

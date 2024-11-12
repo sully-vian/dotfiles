@@ -2,4 +2,10 @@
 "\e[B": history-search-forward
 "\e": kill-whole-line
 
-set completion-ignore-case On
+set completion-ignore-case on
+# set show-all-if-ambiguous on
+
+# intelligent complete (look after the cursor)
+set skip-completed-text on
+
+set colored-completion-prefix on

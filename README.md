@@ -22,7 +22,7 @@ To install these dotfiles, install all dependencies and run the following comman
 ```sh
 git clone https://github.com/sully-vian/dotfiles.git ~/dotfiles
 cd ~/dotfiles
-stow .
+stow --target=$HOME .
 ```
 
 ## Dependencies
@@ -41,7 +41,8 @@ The following tools and applications are required for the configurations to work
 **perl**: A highly capable, feature-rich programming language.
 **notify-send**: A program to send desktop notifications.
 **cheat.sh**: A command-line cheat sheet tool.
-**stow**: A symlink farm manager.
+**stow**: A symlink farm manager. (Optional, you can create the symlinks manually)
+**BlackBox**: A terminal emulator.(Optional, you can remove the configuration file)
 
 ## Configuration Files
 

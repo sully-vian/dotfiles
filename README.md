@@ -27,13 +27,13 @@ cd ~/dotfiles
 For creating the symlinks, you can choose between two methods:
 
 ```sh
-./.scripts/install.sh # unsafe but does not require stow
+bash .scripts/install.sh # unreliable but does not require stow
 ```
 
 or
 
 ```sh
-stow --target=$HOME . # safe but requires stow
+stow --target=$HOME . # reliable but requires stow
 ```
 
 ## Dependencies

@@ -32,8 +32,7 @@ bash ~/dotfiles/.scripts/install.sh # unreliable but does not require stow
 or
 
 ```sh
-cd ~/dotfiles
-stow . # reliable but requires stow
+cd ~/dotfiles && stow . # reliable but requires stow
 ```
 
 ## Dependencies

@@ -5,8 +5,8 @@
 
 # If not running interactively, don't do anything
 case $- in
-  *i*) ;;
-  *) return ;;
+*i*) ;;
+*) return ;;
 esac
 
 # don't put duplicate lines or lines starting with space in the history.
@@ -38,7 +38,7 @@ fi
 
 # set a fancy prompt (non-color, unless we know we "want" color)
 case "$TERM" in
-  xterm-color | *-256color) color_prompt=yes ;;
+xterm-color | *-256color) color_prompt=yes ;;
 esac
 
 # uncomment for a colored prompt, if the terminal has the capability; turned
@@ -145,6 +145,13 @@ export INFOPATH="$(perl -e 'print join(":", grep { not $seen{$_}++ } split(/:/, 
 source ~/.scripts/tmux-ssh.sh
 
 # create tmux session on attach if existing
+# if not in tmux, a session exists and the terminal is interactive
 if [ -z "$TMUX" ] && [ -n "$PS1" ] && [ -t 1 ]; then
-    tmux attach -t default || tmux new -s default
+    # if a session exists, attach to it
+    if tmux list-sessions 2>/dev/null | grep -q .; then
+        tmux attach-session -t "$(tmux list-sessions -F '#S' | head -n 1)"
+    else
+        # if no session exists, create one, called 'default'
+        tmux new -s default
+    fi
 fi

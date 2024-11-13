@@ -21,19 +21,10 @@ To install these dotfiles, install the dependencies, then run
 
 ```sh
 git clone https://github.com/sully-vian/dotfiles.git ~/dotfiles
+cd ~/dotfiles && bash .scripts/install.sh
 ```
 
-For creating the symlinks, you can choose between two methods:
-
-```sh
-bash ~/dotfiles/.scripts/install.sh # unreliable but does not require stow
-```
-
-or
-
-```sh
-cd ~/dotfiles && stow . # reliable but requires stow
-```
+The installation can either use `stow` if installed or manually create the symlinks.
 
 ## Dependencies
 

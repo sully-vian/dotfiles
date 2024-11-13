@@ -141,7 +141,8 @@ export MANPATH="$(perl -e 'print join(":", grep { not $seen{$_}++ } split(/:/, $
 # remove duplicates in INFOPATH variable
 export INFOPATH="$(perl -e 'print join(":", grep { not $seen{$_}++ } split(/:/, $ENV{INFOPATH}))')"
 
-export FAKE_HOME="$HOME/Downloads/home"
+# new ssh function to avoid nested tmux sessions
+source ~/.scripts/tmux-ssh.sh
 
 # create tmux session on attach if existing
 if [ -z "$TMUX" ] && [ -n "$PS1" ] && [ -t 1 ]; then

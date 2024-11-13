@@ -1,5 +1,17 @@
 #!/bin/bash
 
+echo -e "${BLUE}Dotfiles directory: $DOTFILES_DIR${NC}"
+echo -e "${BLUE}Installing dotfiles...${NC}"
+
+if command -v stow >/dev/null 2>&1; then
+  echo "You have gnu-stow installed, stowing dotfile folder..."
+  stow ~/dotfiles
+  return 0;;
+fi
+
+echo "You don't have gnu-stow installed, defaulting to manually setting symlinks..."
+echo
+
 # Define the dotfiles directory
 DOTFILES_DIR="$HOME/dotfiles"
 
@@ -19,10 +31,6 @@ GREEN='\033[0;32m'
 YELLOW='\033[1;33m'
 BLUE='\033[0;34m'
 NC='\033[0m' # No Color
-
-echo -e "${BLUE}Dotfiles directory: $DOTFILES_DIR${NC}"
-echo -e "${BLUE}Installing dotfiles...${NC}"
-echo
 
 # Create symlinks
 for file in "${DOTFILES[@]}"; do

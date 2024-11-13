@@ -87,6 +87,7 @@ alias chut="shut"
 function cheat() {
   curl -s cheat.sh/$1 | less
 }
+alias cht=cheat
 
 function print_bash_list() {
   echo "$1" | tr ':' '\n'

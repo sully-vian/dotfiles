@@ -1,24 +1,26 @@
 #!/bin/bash
 
-BLUE="\[\e[34m\]"
-WHITE="\[\e[0m\]"
-
-RED1="\[\e[1;31m\]"
-RED0="\[\e[0;31m\]"
-RED2="\[\e[2;31m\]"
-
-GREEN1="\[\e[1;32m\]"
-GREEN0="\[\e[0;32m\]"
-GREEN2="\[\e[2;32m\]"
-
-BOLD="\[\e[1m\]"
-RESET="\[\e[0m\]"
-
-arrow="➜"
-
 # custom prompt
 set_prompt() {
-    lastcommand=$1
+  
+  # variables
+  BLUE="\[\e[34m\]"
+  WHITE="\[\e[0m\]"
+
+  RED1="\[\e[1;31m\]"
+  RED0="\[\e[0;31m\]"
+  RED2="\[\e[2;31m\]"
+
+  GREEN1="\[\e[1;32m\]"
+  GREEN0="\[\e[0;32m\]"
+  GREEN2="\[\e[2;32m\]"
+
+  BOLD="\[\e[1m\]"
+  RESET="\[\e[0m\]"
+
+  arrow="➜"
+
+  lastcommand=$1
 
     # get absolute path of git root
     git_root_path=$(git rev-parse --show-toplevel 2>/dev/null)

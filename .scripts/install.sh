@@ -24,6 +24,7 @@ DOTFILES=(
     ".inputrc"
     ".tmux.conf"
     ".vimrc"
+    ".bash_completion"
 )
 
 # Colors for output

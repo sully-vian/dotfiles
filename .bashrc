@@ -133,6 +133,9 @@ export INFOPATH="/usr/local/texlive/2024/texmf-dist/doc/info:$INFOPATH"
 test -r '/home/sully_vian/.opam/opam-init/init.sh' && . '/home/sully_vian/.opam/opam-init/init.sh' >/dev/null 2>/dev/null || true
 # END opam configuration
 
+# adding deno path
+export PATH="$HOME/.deno/bin:$PATH"
+
 # remove duplicates in PATH variable
 export PATH="$(perl -e 'print join(":", grep { not $seen{$_}++ } split(/:/, $ENV{PATH}))')"
 # remove duplicates in MANPATH variable
@@ -155,3 +158,4 @@ if [ -z "$TMUX" ] && [ -n "$PS1" ] && [ -t 1 ]; then
         tmux new -s default
     fi
 fi
+

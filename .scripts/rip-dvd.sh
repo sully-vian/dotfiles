@@ -33,6 +33,7 @@ TEMP_DIR=$(mktemp -d) # temporary directory for dvdbackup
 
 # Step 1: Backup DVD contents
 echo -e "${BLUE}Backing up DVD from $INPUT_DEVICE to $TEMP_DIR...\n${NC}"
+echo -e "running dvdbackup --mirror --progress --input=$INPUT_DEVICE --output=$TEMP_DIR --name=$MOVIE_NAME\n"
 if ! dvdbackup --mirror --progress --input="$INPUT_DEVICE" --output="$TEMP_DIR" --name="$MOVIE_NAME"; then
     echo -e "${RED}dvdbackup failed.\nExiting...\n${NC}"
     exit 1
@@ -40,7 +41,8 @@ fi
 
 # Step 2: Create ISO from the backup files
 echo -e "${BLUE}Creating ISO for $MOVIE_NAME at $OUTPUT_ISO_PATH...\n${NC}"
-if ! genisoimage -dvd-video -V "$MOVIE_NAME" -o "$OUTPUT_ISO_PATH" "$TEMP_DIR"; then
+echo -e "running genisoimage -dvd-video -V $MOVIE_NAME -o $OUTPUT_ISO_PATH $TEMP_DIR/$MOVIE_NAME\n"
+if ! genisoimage -dvd-video -V "$MOVIE_NAME" -o "$OUTPUT_ISO_PATH" "$TEMP_DIR/$MOVIE_NAME"; then
     echo -e "${RED}genisoimage failed.\nExiting...\n${NC}"
     exit 1
 fi

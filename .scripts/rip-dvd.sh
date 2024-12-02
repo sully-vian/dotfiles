@@ -21,6 +21,7 @@ fi
 if [ $# -ne 3 ]; then
     echo -e "${YELLOW}Usage: $0 <input_device> <movie_name> <output_iso_path>${NC}"
     echo -e "${YELLOW}Example: $0 /dev/sr0 'The Matrix' ~/the-matrix.iso${NC}"
+    echo -e "${YELLOW}To find the input device, run 'lsblk' or 'blkid'${NC}"
     exit 1
 fi
 
@@ -30,15 +31,6 @@ MOVIE_NAME="$2"
 OUTPUT_ISO_PATH="$3"
 TEMP_DIR=$(mktemp -d) # temporary directory for dvdbackup
 
-# Function to clean up the temporary directory
-function cleanup {
-    echo -e "${YELLOW}Cleaning up temporary files...\n${NC}"
-    rm -rf "$TEMP_DIR"
-}
-
-# Trap the exit signal to clean up the temporary directory
-trap cleanup EXIT
-
 # Step 1: Backup DVD contents
 echo -e "${BLUE}Backing up DVD from $INPUT_DEVICE to $TEMP_DIR...\n${NC}"
 if ! dvdbackup --mirror --progress --input="$INPUT_DEVICE" --output="$TEMP_DIR" --name="$MOVIE_NAME"; then
@@ -47,10 +39,14 @@ if ! dvdbackup --mirror --progress --input="$INPUT_DEVICE" --output="$TEMP_DIR" 
 fi
 
 # Step 2: Create ISO from the backup files
-echo "${BLUE}Creating ISO for $MOVIE_NAME at $OUTPUT_ISO_PATH...\n${NC}"
+echo -e "${BLUE}Creating ISO for $MOVIE_NAME at $OUTPUT_ISO_PATH...\n${NC}"
 if ! genisoimage -dvd-video -V "$MOVIE_NAME" -o "$OUTPUT_ISO_PATH" "$TEMP_DIR"; then
     echo -e "${RED}genisoimage failed.\nExiting...\n${NC}"
     exit 1
 fi
+
+# Clean up the temporary directory
+echo -e "${YELLOW}Cleaning up temporary files...\n${NC}"
+rm -rf "$TEMP_DIR"
 
 echo -e "${GREEN}ISO created successfully at $OUTPUT_ISO_PATH!${NC}"

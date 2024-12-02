@@ -7,7 +7,7 @@ YELLOW='\033[0;33m'
 BLUE='\033[0;34m'
 NC='\033[0m' # No Color
 
-check if dvdbackup and genisoimage are installed
+# Check if dvdbackup and genisoimage are installed
 if ! command -v dvdbackup &>/dev/null; then
     echo "dvdbackup is not installed."
     exit 1

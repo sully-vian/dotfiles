@@ -57,7 +57,7 @@ if command -v gnatmake > /dev/null 2>&1; then
 fi
 
 # java compilation aliases
-alias javaclean="find . -name *.class | xargs rm -f" # remove all .class files
+alias javaclean="find . -name \"*.class\" | xargs rm -f" # remove all .class files
 alias javacall="javac *.java"                        # compile all .java files
 function javac-e() {
   # compile and execute java program

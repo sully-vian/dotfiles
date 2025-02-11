@@ -18,6 +18,9 @@ font pango:monospace 10
 # Monitor config:
 exec --no-startup-id xrandr --output HDMI-1 --left-of eDP-1 --auto
 
+# picom
+exec_always --no-startup-id picom --config /home/sully_vian/.config/picom.conf
+
 # wallpaper
 exec_always --no-startup-id feh --bg-fill /home/sully_vian/Pictures/IMG-20240101-WA0014.jpg
 
@@ -200,5 +203,6 @@ bindsym $mod+r mode "resize"
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
+    position top
     status_command i3blocks
 }

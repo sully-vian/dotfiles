@@ -29,7 +29,7 @@ alias ..="cd .."
 alias ...="cd ../.."
 
 # some more ls aliases
-alias ll='ls -alF'
+alias ll='ls -AlF'
 alias la='ls -A'
 # alias l='ls -CF' # does not work with lsd
 if command -v lsd >/dev/null 2>&1; then

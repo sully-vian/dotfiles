@@ -103,14 +103,9 @@ fi
 [ -f "$ALIASES" ] && source "$ALIASES"
 
 # JAVA
-export J2SDKDIR="/usr/lib/jvm/jdk1.7.0_80"    # where JDK installed
-export J2REDIR="/usr/lib/jvm/jdk1.7.0_80/jre" # where JRE installed (runs)
-export JAVA_HOME="/usr/lib/jvm/java-21-openjdk-amd64"
 CHECKSTYLE_PATH="/usr/lib/jvm/lib/checkstyle.jar"
 JUNIT_PATH="/usr/lib/jvm/lib/junit4.jar"
-PLANTUML_PATH="/usr/lib/jvm/lib/plantuml-1.2024.3.jar"
-export CLASSPATH=$JUNIT_PATH:$CHECKSTYLE_PATH:$PLANTUML_PATH:.
-export PATH="$JAVA_HOME:$PATH"
+PLANTUML_PATH="/usr/lib/jvm/lib/plantuml-1.2024.8.jar"
 
 source ~/.scripts/vpn7.sh
 
@@ -125,16 +120,15 @@ export PATH="/usr/local/texlive/2024/bin/x86_64-linux:$PATH"
 export MANPATH="/usr/local/texlive/2024/texmf-dist/doc/man:$MANPATH"
 export INFOPATH="/usr/local/texlive/2024/texmf-dist/doc/info:$INFOPATH"
 
-# BEGIN opam configuration
-# This is useful if you're using opam as it adds:
-#   - the correct directories to the PATH
-#   - auto-completion for the opam binary
-# This section can be safely removed at any time if needed.
-test -r '/home/sully_vian/.opam/opam-init/init.sh' && . '/home/sully_vian/.opam/opam-init/init.sh' >/dev/null 2>/dev/null || true
-# END opam configuration
-
 # adding deno path
 export PATH="$HOME/.deno/bin:$PATH"
+
+# opam init
+source ~/.scripts/opam-init.sh
+
+if command -v zoxide >/dev/null 2>&1; then
+  eval "$(zoxide init --cmd cd bash)"
+fi
 
 # remove duplicates in PATH variable
 export PATH="$(perl -e 'print join(":", grep { not $seen{$_}++ } split(/:/, $ENV{PATH}))')"
@@ -146,6 +140,9 @@ export INFOPATH="$(perl -e 'print join(":", grep { not $seen{$_}++ } split(/:/, 
 
 # new ssh function to avoid nested tmux sessions
 source ~/.scripts/tmux-ssh.sh
+
+# define variable that holds current IP
+export MY_IP=$(ip -4 addr show $(ip route show default | awk '/default/ {print $5}') | grep -oP '(?<=inet\s)\d+(\.\d+){3}')
 
 # create tmux session on attach if existing
 # if not in tmux, a session exists and the terminal is interactive

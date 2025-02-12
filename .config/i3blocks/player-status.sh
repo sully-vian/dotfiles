@@ -5,7 +5,7 @@
 # Depending on the status (Playing, Paused, or Stopped), it outputs the appropriate icon and metadata.
 
 status=$(playerctl status 2>/dev/null)
-metadata=$(playerctl metadata --format "{{artist}} - {{title}}" 2>/dev/null)
+metadata="<i><b>$(playerctl metadata --format "{{artist}} - {{title}}" 2>/dev/null)</b></i>"
 
 if [ "$status" = "Playing" ]; then
     echo "▶️ $metadata"

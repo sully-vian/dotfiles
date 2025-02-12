@@ -33,6 +33,7 @@ markup=none
 [mediaplayer]
 command=~/.config/i3blocks/player-status.sh
 interval=1
+markup=pango
 
 # Volume indicator
 #

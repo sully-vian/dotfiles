@@ -107,10 +107,15 @@ CHECKSTYLE_PATH="/usr/lib/jvm/lib/checkstyle.jar"
 JUNIT_PATH="/usr/lib/jvm/lib/junit4.jar"
 PLANTUML_PATH="/usr/lib/jvm/lib/plantuml-1.2024.8.jar"
 
+# start python virtual venv
+source ~/py3/bin/activate
+
 source ~/.scripts/vpn7.sh
 
 source ~/.scripts/prompt.sh
 PROMPT_COMMAND='set_prompt $?' # single quotes for $? to be evaluated after last command
+
+export PATH="$HOME/.local/bin/:$PATH"
 
 # NPM
 export PATH="${HOME}/.npm/bin:$PATH"

@@ -13,4 +13,3 @@ caps_text=$([ "$caps" = "on" ] && echo "<span color='$green'>CAPS</span>" || ech
 num_text=$([ "$num" = "on" ] && echo "<span color='$green'>NUM</span>" || echo "<span color='$gray'>NUM</span>")
 
 echo "$caps_text $num_text"
-echo "$caps_text $num_text"

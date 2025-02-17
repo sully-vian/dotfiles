@@ -20,7 +20,8 @@ set $bar i3blocks
 font pango:Fira Code 10
 
 # Monitor config:
-exec --no-startup-id xrandr --output HDMI-1 --primary --left-of eDP-1 --auto
+set $set_monitor xrandr --output HDMI-1 --primary --left-of eDP-1 --auto
+exec --no-startup-id $set_monitor
 
 # picom
 exec_always --no-startup-id picom --config /home/sully_vian/.config/picom.conf
@@ -31,7 +32,9 @@ for_window [class="^.*$"] border none
 gaps inner 10
 
 # wallpaper
-exec_always --no-startup-id feh --bg-fill /home/sully_vian/Pictures/IMG-20240101-WA0014.jpg
+set $wallpaper /home/sully_vian/Pictures/IMG-20240101-WA0014.jpg
+set $setwallpaper feh --bg-fill $wallpaper
+exec --no-startup-id $setwallpaper
 
 # Bluetooth
 exec --no-startup-id blueman-applet
@@ -181,9 +184,9 @@ bindsym $mod+Shift+ccedilla move container to workspace number $ws9
 bindsym $mod+Shift+agrave move container to workspace number $ws10
 
 # reload the configuration file
-bindsym $mod+Shift+c reload
+bindsym $mod+Shift+c reload; exec --no-startup-id $set_monitor; exec --no-startup-id $setwallpaper
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
-bindsym $mod+Shift+r restart
+bindsym $mod+Shift+r restart; exec --no-startup-id $set_monitor; exec --no-startup-id $setwallpaper
 # exit i3 (logs you out of your X session)
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
 # poweroff

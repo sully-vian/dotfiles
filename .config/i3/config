@@ -9,14 +9,18 @@
 #
 # Please see https://i3wm.org/docs/userguide.html for a complete reference!
 
+# mod key
 set $mod Mod4
+
+# i3-bar
+set $bar i3blocks
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
 font pango:Fira Code 10
 
 # Monitor config:
-exec --no-startup-id xrandr --output HDMI-1 --left-of eDP-1 --auto
+exec --no-startup-id xrandr --output HDMI-1 --primary --left-of eDP-1 --auto
 
 # picom
 exec_always --no-startup-id picom --config /home/sully_vian/.config/picom.conf
@@ -34,7 +38,7 @@ exec --no-startup-id blueman-applet
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
-#font pango:DejaVu Sans Mono 8
+# font pango:DejaVu Sans Mono 8
 
 # Start XDG autostart .desktop files using dex. See also
 # https://wiki.archlinux.org/index.php/XDG_Autostart
@@ -51,17 +55,22 @@ exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 # and nm-applet is a desktop environment-independent system tray GUI for it.
 exec --no-startup-id nm-applet
 
-# Use pactl to adjust volume in PulseAudio.
-set $refresh_i3status killall -SIGUSR1 i3status
-bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +1% && $refresh_i3status
-bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -1% && $refresh_i3status
-bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
-bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
+# volume
+# signal bar for vol change
+set $volume_bar pkill -SIGRTMIN+10 i3blocks
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +1% && $volume_bar
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -1% && $volume_bar
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $volume_bar
+bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $volume_bar
 
 # pause/play & next/prev
 bindsym XF86AudioPlay exec playerctl play-pause
 bindsym XF86AudioNext exec playerctl next
 bindsym XF86AudioPrev exec playerctl previous
+
+# signal i3blocks for capslock & numlock
+bindsym --release Caps_Lock exec --no-startup-id pkill -SIGRTMIN+11 i3blocks
+bindsym --release Num_Lock exec --no-startup-id pkill -SIGRTMIN+11 i3blocks
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -177,6 +186,8 @@ bindsym $mod+Shift+c reload
 bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
+# poweroff
+bindsym $mod+Shift+p exec "i3-nagbar -t warning -m 'You pressed the poweroff shortcut. Do you really want to poweroff your computer?' -B 'Yes, poweroff' 'poweroff'"
 
 # resize window (you can also use the mouse for that)
 mode "resize" {

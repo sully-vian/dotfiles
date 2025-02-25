@@ -32,11 +32,7 @@ set_prompt() {
 
         if [ "$git_root_path" = "$PWD" ]; then
             # if at root of git repo
-            if [ "$git_root" = "n7-files" ]; then
-                local rel_path="${BOLD}N7"
-            else
-                local rel_path="📚 $git_root"
-            fi
+            local rel_path="󰊢 $git_root"
         elif [ "$git_root" = "n7-files" ]; then
             local rel_path="${BOLD}N7${RESET} ${RED0}${PWD#"$git_root_path/"}"
         else
@@ -47,14 +43,14 @@ set_prompt() {
         case $PWD in
         /) local rel_path="🪵" ;;
         "$HOME"/.local/share/Trash*) local rel_path="🗑️ ${PWD#"$HOME/.local/share/Trash"}" ;;
-        "$HOME"/.config*) local rel_path="⚙️ ${PWD#"$HOME/.config"}" ;;
-        "$HOME"/Desktop*) local rel_path="🖥️ ${PWD#"$HOME/Desktop"}" ;;
-        "$HOME"/Downloads*) local rel_path="📥${PWD#"$HOME/Downloads"}" ;;
+        "$HOME"/.config*) local rel_path=" ${PWD#"$HOME/.config"}" ;;
+        "$HOME"/Desktop*) local rel_path=" ${PWD#"$HOME/Desktop"}" ;;
+        "$HOME"/Downloads*) local rel_path="󰉍 ${PWD#"$HOME/Downloads"}" ;;
         "$HOME"/Documents*) local rel_path="📄${PWD#"$HOME/Documents"}" ;;
-        "$HOME"/Music*) local rel_path="🎵${PWD#"$HOME/Music"}" ;;
+        "$HOME"/Music*) local rel_path="󱍙 ${PWD#"$HOME/Music"}" ;;
         "$HOME"/Videos*) local rel_path="🎞️ ${PWD#"$HOME/Videos"}" ;;
-        "$HOME"/Pictures*) local rel_path="📷${PWD#"$HOME/Pictures"}" ;;
-        "$HOME"*) local rel_path="🏠${PWD#"$HOME"}" ;;
+        "$HOME"/Pictures*) local rel_path=" ${PWD#"$HOME/Pictures"}" ;;
+        "$HOME"*) local rel_path="󰋜 ${PWD#"$HOME"}" ;;
         *) local rel_path="📁 \w" ;;
         esac
     fi

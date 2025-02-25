@@ -1,6 +1,6 @@
 #!/bin/bash
 
-network_name=$(iwgetid -r)
+network_name=$(nmcli -t -f active,ssid dev wifi | grep '^yes'|cut -d':' -f2)
 ip=$(wget -qO- https://ipv4.icanhazip.com/)
 
 light_blue="#00FFFF"

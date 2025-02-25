@@ -8,9 +8,9 @@ used=$(free -m | awk '/^Swap:/ {print $3}')
 percent=$((used * 100 / total))
 
 # Determine color based on swap usage
-if [ $percent -lt 50 ]; then
+if [ "$percent" -lt 50 ]; then
     color="#00FF00" # Green
-elif [ $percent -lt 75 ]; then
+elif [ "$percent" -lt 75 ]; then
     color="#FFFF00" # Yellow
 else
     color="#FF0000" # Red

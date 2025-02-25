@@ -38,7 +38,7 @@ fi
 
 # set a fancy prompt (non-color, unless we know we "want" color)
 case "$TERM" in
-xterm-color | *-256color) color_prompt=yes ;;
+    (xterm-color | *-256color) color_prompt=yes ;;
 esac
 
 # uncomment for a colored prompt, if the terminal has the capability; turned
@@ -103,12 +103,13 @@ fi
 [ -f "$ALIASES" ] && source "$ALIASES"
 
 # JAVA
-CHECKSTYLE_PATH="/usr/lib/jvm/lib/checkstyle.jar"
-JUNIT_PATH="/usr/lib/jvm/lib/junit4.jar"
-PLANTUML_PATH="/usr/lib/jvm/lib/plantuml-1.2024.8.jar"
+[ -d "$HOME/.local/java/jdk-17.0.5" ] && export JAVA_HOME="$HOME/.local/java/jdk-17.0.5"
+export PATH="$JAVA_HOME/bin:$PATH"
+
+export TOMCAT_HOME="$HOME/.local/java/lib/apache-tomcat-11.0.1"
 
 # start python virtual venv
-source ~/py3/bin/activate
+[ -f "$HOME/py3/bin/activate" ] && source "$HOME/py3/bin/activate"
 
 source ~/.scripts/vpn7.sh
 
@@ -145,9 +146,6 @@ export INFOPATH="$(perl -e 'print join(":", grep { not $seen{$_}++ } split(/:/, 
 
 # new ssh function to avoid nested tmux sessions
 source ~/.scripts/tmux-ssh.sh
-
-# define variable that holds current IP
-export MY_IP=$(ip -4 addr show $(ip route show default | awk '/default/ {print $5}') | grep -oP '(?<=inet\s)\d+(\.\d+){3}')
 
 # create tmux session on attach if existing
 # if not in tmux, a session exists and the terminal is interactive

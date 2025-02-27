@@ -1,0 +1,30 @@
+// Rounded theme for rofi, using the pywal colorscheme
+
+* {
+    font: "FiraCode Nerd Font 12";
+}
+
+window {
+    height: 50%;
+    width: 50%;
+    border-radius: 30px;
+}
+
+
+entry {
+    placeholder: "Search";
+}
+
+
+element {
+    border-radius: 16px;
+}
+
+element-icon {
+    size: 1.5em;
+    vertical-align: 0.5;
+}
+
+element-text {
+    vertical-align: 0.5;
+}

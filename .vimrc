@@ -3,5 +3,5 @@ set autoindent
 set tabstop=4
 set shiftwidth=4
 set expandtab
-set shell:/usr/local/bin/blackbox
+set shell:/bin/alacritty
 

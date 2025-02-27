@@ -6,18 +6,22 @@
 # Depending on the status (Playing, Paused, or Stopped), it outputs the appropriate icon and metadata.
 
 status=$(playerctl status 2>/dev/null)
-metadata="<i><b>$(playerctl metadata --format "{{artist}} - {{title}}" 2>/dev/null)</b></i>"
+metadata="$(playerctl metadata --format "{{artist}} - {{title}}" 2>/dev/null)"
+
+# Replace "&" with "&amp;" to avoid issues with Pango markup
+metadata=$(echo "$metadata" | sed 's/&/\&amp;/g; s/</\&lt;/g; s/>/\&gt;/g')
 
 if [ "$status" = "Playing" ]; then
-    echo "$metadata 󰐊"
+    output="$metadata 󰐊"
 elif [ "$status" = "Paused" ]; then
-    echo "$metadata 󰏤"
+    output="$metadata 󰏤"
 else
-    echo "󰓛"
+    output="󰓛"
 fi
+
+echo "<i><b>$output</b></i>"
 
 if [[ -n "${BLOCK_BUTTON}" ]]; then
     playerctl play-pause
+    pkill -SIGRTMIN+10 i3blocks
 fi
-
-# TODO: fix the & symbol in the metadata

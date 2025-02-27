@@ -1,6 +1,7 @@
 "\e[A": history-search-backward
 "\e[B": history-search-forward
 "\e": kill-whole-line
+"\C-u": kill-whole-line
 
 set completion-ignore-case on
 

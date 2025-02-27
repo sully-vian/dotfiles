@@ -103,10 +103,10 @@ fi
 [ -f "$ALIASES" ] && source "$ALIASES"
 
 # JAVA
-[ -d "$HOME/.local/java/jdk-17.0.5" ] && export JAVA_HOME="$HOME/.local/java/jdk-17.0.5"
+ JAVA_HOME="/usr/lib/jvm/default"
 export PATH="$JAVA_HOME/bin:$PATH"
 
-export TOMCAT_HOME="$HOME/.local/java/lib/apache-tomcat-11.0.1"
+export TOMCAT_HOME="$HOME/apache-tomcat-11.0.1"
 
 # start python virtual venv
 [ -f "$HOME/py3/bin/activate" ] && source "$HOME/py3/bin/activate"

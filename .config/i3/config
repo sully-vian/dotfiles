@@ -26,14 +26,23 @@ exec_always --no-startup-id $set_monitor
 # picom
 exec_always --no-startup-id picom --config /home/sully_vian/.config/picom.conf
 
+# make windows float
+for_window [class="floating"] floating enable
+
 # remove window borders
 for_window [class="^.*$"] border none
 
 gaps inner 10
+# smart_gaps on
+smart_borders on
 
 # wallpaper
-set $wallpaper /usr/share/icons/hicolor/512x512/apps/void-logo.png
-exec_always --no-startup-id feh --bg-center $wallpaper
+# set $wallpaper $HOME/.wallpapers/linux_terminal_wallpaper.png
+# exec_always --no-startup-id feh --bg-fill $wallpaper
+
+set $default_wp $HOME/.wallpapers/dark-green.jpg
+exec_always --no-startup-id wal -i $default_wp
+bindsym $mod+w exec --no-startup-id ~/.config/i3/select-wp.sh
 
 # cursor
 exec_always --no-startup-id xsetroot -cursor_name left_ptr
@@ -62,18 +71,24 @@ exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 # and nm-applet is a desktop environment-independent system tray GUI for it.
 exec --no-startup-id nm-applet
 
+# brightness
+bindsym XF86MonBrightnessUp exec xbacklight -inc 10
+bindsym XF86MonBrightnessDown exec xbacklight -dec 10
+
+# signal i3blocks for changes
+set $signal_bar pkill -SIGRTMIN+10 i3blocks
+
 # volume
 # signal bar for vol change
-set $volume_bar pkill -SIGRTMIN+10 i3blocks
-bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +1% && $volume_bar
-bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -1% && $volume_bar
-bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $volume_bar
-bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $volume_bar
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +1% && $signal_bar
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -1% && $signal_bar
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $signal_bar
+bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $signal_bar
 
 # pause/play & next/prev
-bindsym XF86AudioPlay exec playerctl play-pause
-bindsym XF86AudioNext exec playerctl next
-bindsym XF86AudioPrev exec playerctl previous
+bindsym XF86AudioPlay exec playerctl play-pause && $signal_bar
+bindsym XF86AudioNext exec playerctl next && $signal_bar
+bindsym XF86AudioPrev exec playerctl previous && $signal_bar
 
 # signal i3blocks for capslock & numlock
 bindsym --release Caps_Lock exec --no-startup-id pkill -SIGRTMIN+11 i3blocks
@@ -88,6 +103,9 @@ tiling_drag modifier titlebar
 
 # start a terminal
 bindsym $mod+Return exec alacritty
+
+# start a floating terminal
+bindsym $mod+Shift+Return exec alacritty --class floating
 
 # kill focused window
 bindsym $mod+Shift+Q kill
@@ -226,12 +244,60 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
-# Start i3bar to display a workspace bar (plus the system information i3status
-# finds out, if available)
+# Source pywal colors
+set_from_resource $background background
+set_from_resource $foreground foreground
+set_from_resource $color0     color0
+set_from_resource $color1     color1
+set_from_resource $color2     color2
+set_from_resource $color3     color3
+set_from_resource $color4     color4
+set_from_resource $color5     color5
+set_from_resource $color6     color6
+set_from_resource $color7     color7
+set_from_resource $color8     color8
+set_from_resource $color9     color9
+set_from_resource $color10    color10
+set_from_resource $color11    color11
+set_from_resource $color12    color12
+set_from_resource $color13    color13
+set_from_resource $color14    color14
+set_from_resource $color15    color15
+
+set_from_resource $fg i3wm.color7 #f4dc98
+set_from_resource $bg i3wm.color3 #0A1837
+
+# client.focused           $bg   $bg   $fg   $bg   $bg
+# client.focused_inactive  $bg   $bg   $fg   $bg   $bg
+# client.unfocused         $bg   $bg   $fg   $bg   $bg
+# client.urgent            $bg   $bg   $fg   $bg   $bg
+# client.placeholder       $bg   $bg   $fg   $bg   $bg
+# client.background        $bg
+
+# class                 border   backgr.     text        indicator    child_border
+client.focused          $color0  $color1 $color0 # $color6 $color5
+client.focused_inactive $color0  $color0 $color1 # $color2 $color1
+client.unfocused        $color0  $color0 $color1 # $color9 $color8
+client.urgent           $color0  $color0 $color1 # $color1 $color1
+client.placeholder      $color0  $color0 $color1 # $color0 $color8
+
+client.background       $background
+
 bar {
-    position top
     status_command i3blocks
+    position top
     colors {
-        focused_workspace #1a1c1d #276041 #1a1c1d
+        set_from_resource $fg i3wm.color7 #f4dc98
+	    set_from_resource $bg i3wm.color6 #0A1837
+        background $background
+        statusline #F9FAF9
+        separator  #454947
+
+        # class            border  backgr. text
+        focused_workspace  $color0 $color1 $color0
+        active_workspace   $color0 $color0 $color1
+        inactive_workspace $color0 $color0 $color1
+        binding_mode       $color0 $color0 $color1
+        urgent_workspace   $color0 $color0 $color1
     }
 }

@@ -149,4 +149,5 @@ configuration {
       sorting-method:    "name";
   }
 }
-@theme "/home/sully_vian/.config/rofi/themes/rounded-nord-dark.rasi"
+@import "~/.config/rofi/rounded.rasi"
+@import "~/.cache/wal/colors-rofi-dark.rasi"

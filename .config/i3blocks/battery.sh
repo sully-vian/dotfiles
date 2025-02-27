@@ -2,6 +2,7 @@
 
 # Get the battery percentage
 battery_percentage=$(acpi -b | grep -P -o '[0-9]+(?=%)')
+charging=$(acpi -b | grep -o "Charging")
 
 # Determine color based on battery percentage
 if [ "$battery_percentage" -ge 75 ]; then
@@ -14,5 +15,11 @@ else
     color="#FF0000"  # Red
 fi
 
+if [ "$charging" == "Charging" ]; then
+    icon="󰂄"
+else
+    icon="󰁹"
+fi
+
 # Output the battery percentage with pango
-echo "<span color='$color'>󰁹 $battery_percentage%</span>"
+echo "<span color='$color'>$icon $battery_percentage%</span>"

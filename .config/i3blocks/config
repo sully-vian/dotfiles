@@ -33,6 +33,7 @@ markup=pango
 [mediaplayer]
 interval=1
 markup=pango
+signal=10
 
 # Volume indicator
 #
@@ -130,5 +131,5 @@ interval=1
 [keyindicator]
 instance=NUM
 interval=once
-signal=11
+signal=10
 

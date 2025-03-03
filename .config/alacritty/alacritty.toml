@@ -13,3 +13,6 @@ style = "Regular"
 x = 10
 y = 5
 
+[general]
+import = [ "~/.cache/wal/colors-alacritty.toml" ]
+

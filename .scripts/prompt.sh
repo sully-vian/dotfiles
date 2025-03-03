@@ -59,14 +59,14 @@ set_prompt() {
   local prompt_icon
   if [ "$lastcommand" -eq 0 ]; then
     # local coloredarrow="${GREEN1}$arrow ${RESET}"
-    prompt_icon="✔"
+    prompt_icon="${GREEN1}✔ "
   else
     # local coloredarrow="${RED1}$arrow ${RESET}"
-    prompt_icon="✘"
+    prompt_icon="${RED1}✘ "
   fi
 
   # PS1="$PS1\n$coloredarrow"
-  PS1="$PS1\n$prompt_icon "
+  PS1="$PS1\n$prompt_icon${RESET}"
 
   if [ -n "$SSH_CONNECTION" ]; then
     PS1="󰣀 $PS1"

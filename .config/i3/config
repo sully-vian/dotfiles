@@ -40,9 +40,8 @@ smart_borders on
 # set $wallpaper $HOME/.wallpapers/linux_terminal_wallpaper.png
 # exec_always --no-startup-id feh --bg-fill $wallpaper
 
-set $default_wp $HOME/.wallpapers/dark-green.jpg
-exec_always --no-startup-id wal -i $default_wp
-bindsym $mod+w exec --no-startup-id ~/.config/i3/select-wp.sh
+exec_always --no-startup-id ~/.config/i3/load-wp.sh
+bindsym $mod+w exec --no-startup-id ~/.scripts/rofi/select-wp.sh
 
 # cursor
 exec_always --no-startup-id xsetroot -cursor_name left_ptr
@@ -79,11 +78,11 @@ bindsym XF86MonBrightnessDown exec xbacklight -dec 10
 set $signal_bar pkill -SIGRTMIN+10 i3blocks
 
 # volume
-# signal bar for vol change
-bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +1% && $signal_bar
-bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -1% && $signal_bar
-bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $signal_bar
-bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $signal_bar
+exec_always --no-startup-id ~/.config/i3/volume-watcher.sh
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +1%
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -1%
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle
+bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle
 
 # pause/play & next/prev
 bindsym XF86AudioPlay exec playerctl play-pause && $signal_bar
@@ -91,8 +90,8 @@ bindsym XF86AudioNext exec playerctl next && $signal_bar
 bindsym XF86AudioPrev exec playerctl previous && $signal_bar
 
 # signal i3blocks for capslock & numlock
-bindsym --release Caps_Lock exec --no-startup-id pkill -SIGRTMIN+11 i3blocks
-bindsym --release Num_Lock exec --no-startup-id pkill -SIGRTMIN+11 i3blocks
+bindsym --release Caps_Lock exec --no-startup-id $signal_bar
+bindsym --release Num_Lock exec --no-startup-id $signal_bar
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -209,13 +208,11 @@ bindsym $mod+Shift+ccedilla move container to workspace number $ws9
 bindsym $mod+Shift+agrave move container to workspace number $ws10
 
 # reload the configuration file
-bindsym $mod+Shift+c reload; exec --no-startup-id $set_monitor; exec --no-startup-id $setwallpaper
+bindsym $mod+Shift+c reload; exec --no-startup-id $set_monitor
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
-bindsym $mod+Shift+r restart; exec --no-startup-id $set_monitor; exec --no-startup-id $setwallpaper
-# exit i3 (logs you out of your X session)
-bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
-# poweroff
-bindsym $mod+Shift+p exec "i3-nagbar -t warning -m 'You pressed the poweroff shortcut. Do you really want to poweroff your computer?' -B 'Yes, poweroff' 'poweroff'"
+bindsym $mod+Shift+r restart; exec --no-startup-id $set_monitor
+
+bindsym $mod+p exec --no-startup-id ~/.scripts/rofi/powermenu.sh
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
@@ -274,14 +271,12 @@ set_from_resource $bg i3wm.color3 #0A1837
 # client.placeholder       $bg   $bg   $fg   $bg   $bg
 # client.background        $bg
 
-# class                 border   backgr.     text        indicator    child_border
-client.focused          $color0  $color1 $color0 # $color6 $color5
-client.focused_inactive $color0  $color0 $color1 # $color2 $color1
-client.unfocused        $color0  $color0 $color1 # $color9 $color8
-client.urgent           $color0  $color0 $color1 # $color1 $color1
-client.placeholder      $color0  $color0 $color1 # $color0 $color8
-
-client.background       $background
+# class                 border   backgr. text    indicator child_border
+client.focused          $color0  $color1 $color0 $color0 $color0
+client.focused_inactive $color0  $color0 $color1 $color0 $color0
+client.unfocused        $color0  $color0 $color1 $color0 $color0
+client.urgent           $color1  $color0 $color1 $color0 $color0
+client.placeholder      $color0  $color0 $color1 $color0 $color0
 
 bar {
     status_command i3blocks
@@ -289,7 +284,7 @@ bar {
     colors {
         set_from_resource $fg i3wm.color7 #f4dc98
 	    set_from_resource $bg i3wm.color6 #0A1837
-        background $background
+        background $color0
         statusline #F9FAF9
         separator  #454947
 
@@ -298,6 +293,6 @@ bar {
         active_workspace   $color0 $color0 $color1
         inactive_workspace $color0 $color0 $color1
         binding_mode       $color0 $color0 $color1
-        urgent_workspace   $color0 $color0 $color1
+        urgent_workspace   $color1 $color0 $color1
     }
 }

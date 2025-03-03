@@ -62,6 +62,9 @@ separator=false
 [disk]
 interval=1
 
+[bluetooth]
+interval=1
+
 # Network interface monitoring
 #
 [network]

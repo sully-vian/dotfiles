@@ -5,23 +5,28 @@
 }
 
 window {
-    height: 50%;
-    width: 50%;
-    border-radius: 30px;
+    fullscreen: true;
 }
 
+mainbox {
+    margin: 30%;
+    border: 2px;
+    border-color: @foreground;
+    border-radius: 16px;
+    padding: 16px;
+}
 
 entry {
     placeholder: "Search";
 }
-
 
 element {
     border-radius: 16px;
 }
 
 element-icon {
-    size: 1.5em;
+    margin: 0 0 0 0.5em;
+    size: 2em;
     vertical-align: 0.5;
 }
 

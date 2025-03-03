@@ -1,5 +1,5 @@
 configuration {
-    modes: "window,drun,run,ssh";
+    modes: "window,drun,run,ssh,windowcd,recursivebrowser";
 	font: "mono 12";
 	location: 0;
 	yoffset: 0;
@@ -33,7 +33,7 @@ configuration {
 	parse-hosts: false;
 	parse-known-hosts: true;
 	combi-modes: "window,run";
-	matching: "normal";
+	matching: "fuzzy";
 	tokenize: true;
 	m: "-5";
 	// filter: ;
@@ -149,5 +149,10 @@ configuration {
       sorting-method:    "name";
   }
 }
-@import "~/.config/rofi/rounded.rasi"
+
+// import pywal colors
 @import "~/.cache/wal/colors-rofi-dark.rasi"
+
+
+// import rounded theme
+@import "~/.config/rofi/rounded.rasi"

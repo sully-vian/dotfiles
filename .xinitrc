@@ -1,9 +1,11 @@
+#!/bin/bash
 # ~/.xinitrc
 #
 # executed by startx
 
-# set atural scrolling (touchpad)
-xinput set-prop 10 307 1
+# set natural scrolling (touchpad)
+TOUCHPAD_ID=$(xinput list | grep -i touchpad | grep -o 'id=[0-9]*' | grep -o '[0-9]*')
+xinput set-prop "$TOUCHPAD_ID" 'libinput Natural Scrolling Enabled' 1
 
 # set keymapping
 setxkbmap fr

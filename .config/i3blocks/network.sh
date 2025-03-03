@@ -1,8 +1,25 @@
 #!/bin/bash
 
-network_name=$(nmcli -t -f active,ssid dev wifi | grep '^yes'|cut -d':' -f2)
-ip=$(curl https://ipv4.icanhazip.com/)
+# This script generates the pango text needed to display the current wifi network
+# name and status using nmcli
 
-light_blue="#00FFFF"
+# Get the Wi-i connection status
+wifi_status=$(nmcli -t -f WIFI g)
 
-echo "<span color='$light_blue'><b>$network_name</b>-$ip</span>"
+# set icon
+if [ "$wifi_status" = "enabled" ]; then
+    icon="󰤨"
+else
+    icon="󰤭"
+fi
+
+# Get the wifi network name
+name=$(nmcli -t -f ACTIVE,SSID dev wifi | grep '^yes' | cut -d: -f2)
+
+if [ -z "$name" ]; then
+    name="Disconnected"
+fi
+
+light_blue="#8be9fd"
+
+echo "<span foreground='$light_blue'>$icon <b>$name</b></span>"

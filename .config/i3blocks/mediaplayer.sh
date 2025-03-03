@@ -12,14 +12,14 @@ metadata="$(playerctl metadata --format "{{artist}} - {{title}}" 2>/dev/null)"
 metadata=$(echo "$metadata" | sed 's/&/\&amp;/g; s/</\&lt;/g; s/>/\&gt;/g')
 
 if [ "$status" = "Playing" ]; then
-    output="$metadata 󰐊"
+    output="<i><b>$metadata</b></i> 󰐊"
 elif [ "$status" = "Paused" ]; then
-    output="$metadata 󰏤"
+    output="<i><b>$metadata</b></i> 󰏤"
 else
     output="󰓛"
 fi
 
-echo "<i><b>$output</b></i>"
+echo "$output"
 
 if [[ -n "${BLOCK_BUTTON}" ]]; then
     playerctl play-pause

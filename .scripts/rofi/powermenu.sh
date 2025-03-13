@@ -13,7 +13,7 @@ logout="󰗽 Logout"
 options="$shutdown\n$reboot\n$lock\n$suspend\n$logout"
 
 # selected option
-selected=$(echo -e $options | rofi -dmenu -p "Power Menu" -lines 5 -width 10 -padding 20)
+selected=$(echo -e "$options" | rofi -dmenu -p "Power Menu")
 
 # action
 case $selected in
@@ -24,7 +24,7 @@ case $selected in
     systemctl reboot
     ;;
 "$lock")
-    i3lock -c 000000
+    ~/.config/i3/i3lock-color.sh
     ;;
 "$suspend")
     systemctl suspend

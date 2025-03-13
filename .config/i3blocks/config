@@ -29,10 +29,12 @@ separator_block_width=15
 separator=true
 markup=pango
 
+[active-window-title]
+interval=1
+
 # music
 [mediaplayer]
 interval=1
-markup=pango
 signal=10
 
 # Volume indicator
@@ -132,7 +134,5 @@ interval=1
 #signal=11
 
 [keyindicator]
-instance=NUM
 interval=once
 signal=10
-

@@ -4,5 +4,5 @@
 # and signals i3blocks to update the volume block
 
 pactl subscribe | grep --line-buffered "sink #" | while read -r _; do
-    pkill -SIGRTMIN+10 i3blocks
+    pkill -SIGRTMIN+10 i3blocks # signal i3blocks to update the volume block
 done

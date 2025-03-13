@@ -22,6 +22,5 @@ fi
 echo "$output"
 
 if [[ -n "${BLOCK_BUTTON}" ]]; then
-    playerctl play-pause
-    pkill -SIGRTMIN+10 i3blocks
+    ~/.scripts/rofi/musicmenu.sh
 fi

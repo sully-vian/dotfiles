@@ -20,8 +20,10 @@ set $bar i3blocks
 font pango:FiraCode 10
 
 # Monitor config:
-set $set_monitor xrandr --output HDMI1 --primary --left-of eDP1 --auto
-exec_always --no-startup-id $set_monitor
+exec_always --no-startup-id ~/.config/i3/monitor-setup.sh
+
+# start redshift
+exec --no-startup-id redshift
 
 # picom
 exec_always --no-startup-id picom
@@ -57,12 +59,12 @@ bindsym $mod+w exec --no-startup-id ~/.scripts/rofi/select-wp.sh
 # media menu
 bindsym $mod+m exec --no-startup-id ~/.scripts/rofi/musicmenu.sh
 
-# brightness
-bindsym XF86MonBrightnessUp exec xbacklight -inc 10
-bindsym XF86MonBrightnessDown exec xbacklight -dec 10
-
 # signal i3blocks for changes
 set $signal_bar pkill -SIGRTMIN+10 i3blocks
+
+# brightness
+bindsym XF86MonBrightnessUp exec xbacklight -inc 5 && $signal_bar
+bindsym XF86MonBrightnessDown exec xbacklight -dec 5 && $signal_bar
 
 ##########
 # Volume #
@@ -169,8 +171,8 @@ set $ws9 "9"
 set $ws10 "10"
 
 # assign each workspace to a specific output
-workspace $ws1 output HDMI1
-workspace $ws2 output eDP1
+# workspace $ws1 output HDMI1
+# workspace $ws2 output eDP1
 
 
 # cycle workspace

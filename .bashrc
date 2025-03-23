@@ -42,8 +42,9 @@ if [ -z "${debian_chroot:-}" ] && [ -r /etc/debian_chroot ]; then
 fi
 
 # set a fancy prompt (non-color, unless we know we "want" color)
-case "$TERM" in
-    (xterm-color | *-256color) color_prompt=yes ;;
+case "$TERM" in xterm-color | *-256color)
+    color_prompt=yes
+    ;;
 esac
 
 # uncomment for a colored prompt, if the terminal has the capability; turned
@@ -108,7 +109,7 @@ fi
 [ -f "$ALIASES" ] && source "$ALIASES"
 
 # JAVA
- JAVA_HOME="/usr/lib/jvm/default"
+JAVA_HOME="/usr/lib/jvm/default"
 export PATH="$JAVA_HOME/bin:$PATH"
 
 export TOMCAT_HOME="$HOME/apache-tomcat-11.0.1"
@@ -138,7 +139,7 @@ export PATH="$HOME/.deno/bin:$PATH"
 source ~/.scripts/opam-init.sh
 
 if command -v zoxide >/dev/null 2>&1; then
-  eval "$(zoxide init --cmd cd bash)"
+    eval "$(zoxide init --cmd cd bash)"
 fi
 
 # remove duplicates in PATH variable
@@ -149,12 +150,9 @@ export MANPATH="$(perl -e 'print join(":", grep { not $seen{$_}++ } split(/:/, $
 # remove duplicates in INFOPATH variable
 export INFOPATH="$(perl -e 'print join(":", grep { not $seen{$_}++ } split(/:/, $ENV{INFOPATH}))')"
 
-# new ssh function to avoid nested tmux sessions
-source ~/.scripts/tmux-ssh.sh
-
 # create tmux session on attach if existing
-# if not in tmux, a session exists and the terminal is interactive
-if [ -z "$TMUX" ] && [ -n "$PS1" ] && [ -t 1 ]; then
+# if not in tmux, a session exists, the terminal is interactive and not a ssh session
+if [ -z "$TMUX" ] && [ -n "$PS1" ] && [ -t 1 ] && [ -z "$SSH_CONNECTION" ]; then
     # if a session exists, attach to it
     if tmux list-sessions 2>/dev/null | grep -q .; then
         tmux attach-session -t "$(tmux list-sessions -F '#S' | head -n 1)"
@@ -163,4 +161,3 @@ if [ -z "$TMUX" ] && [ -n "$PS1" ] && [ -t 1 ]; then
         tmux new -s default
     fi
 fi
-

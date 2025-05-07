@@ -46,8 +46,10 @@ set_prompt() {
     "$HOME"/Desktop*) local rel_path=" ${PWD#"$HOME/Desktop"}" ;;
     "$HOME"/Downloads*) local rel_path="󰉍 ${PWD#"$HOME/Downloads"}" ;;
     "$HOME"/Music*) local rel_path="󱍙 ${PWD#"$HOME/Music"}" ;;
-    "$HOME"/Pictures*) local rel_path=" ${PWD#"$HOME/Pictures"}" ;;
+    "$HOME"/Pictures*) local rel_path="󰉏 ${PWD#"$HOME/Pictures"}" ;;
+    "$HOME"/Videos*) local rel_path=" ${PWD#"$HOME/Videos"}" ;;
     "$HOME"*) local rel_path="󰋜 ${PWD#"$HOME"}" ;;
+
     *) local rel_path="\w" ;;
     esac
   fi

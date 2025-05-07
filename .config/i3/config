@@ -232,27 +232,46 @@ mode "resize" {
     bindsym $mod+r mode "default"
 }
 
-bindsym $mod+r mode "resize"
+# Default colors (fallback if pywal fails)
+set $default_background #0A1837
+set $default_foreground #f4dc98
+set $default_color0     #1c1c1c
+set $default_color1     #af5f5f
+set $default_color2     #5faf5f
+set $default_color3     #d7af5f
+set $default_color4     #5f87af
+set $default_color5     #af5faf
+set $default_color6     #5fafaf
+set $default_color7     #d7d7d7
+set $default_color8     #3a3a3a
+set $default_color9     #ff5f5f
+set $default_color10    #87d787
+set $default_color11    #ffd787
+set $default_color12    #87afd7
+set $default_color13    #d787d7
+set $default_color14    #87d7d7
+set $default_color15    #ffffff
+
 
 # Source pywal colors
-set_from_resource $background background
-set_from_resource $foreground foreground
-set_from_resource $color0     color0
-set_from_resource $color1     color1
-set_from_resource $color2     color2
-set_from_resource $color3     color3
-set_from_resource $color4     color4
-set_from_resource $color5     color5
-set_from_resource $color6     color6
-set_from_resource $color7     color7
-set_from_resource $color8     color8
-set_from_resource $color9     color9
-set_from_resource $color10    color10
-set_from_resource $color11    color11
-set_from_resource $color12    color12
-set_from_resource $color13    color13
-set_from_resource $color14    color14
-set_from_resource $color15    color15
+set_from_resource $background background || $default_background
+set_from_resource $foreground foreground || $default_foreground
+set_from_resource $color0     color0 || $default_color0
+set_from_resource $color1     color1 || $default_color1
+set_from_resource $color2     color2 || $default_color2
+set_from_resource $color3     color3 || $default_color3
+set_from_resource $color4     color4 || $default_color4
+set_from_resource $color5     color5 || $default_color5
+set_from_resource $color6     color6 || $default_color6
+set_from_resource $color7     color7 || $default_color7
+set_from_resource $color8     color8 || $default_color8
+set_from_resource $color9     color9 || $default_color9
+set_from_resource $color10    color10 || $default_color10
+set_from_resource $color11    color11 || $default_color11
+set_from_resource $color12    color12 || $default_color12
+set_from_resource $color13    color13 || $default_color13
+set_from_resource $color14    color14 || $default_color14
+set_from_resource $color15    color15 || $default_color15
 
 set_from_resource $fg i3wm.color7 #f4dc98
 set_from_resource $bg i3wm.color3 #0A1837

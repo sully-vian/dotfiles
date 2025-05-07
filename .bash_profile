@@ -1,7 +1,8 @@
-if [ -z "$DISPLAY" ] && [ "$XDG_VTNR" -eq 1 ]; then
-  fastfetch
-  exec startx
-  logout # Exit the shell so tmux doesn't keep running and $DISPLAY is set in the new one
+#!/bin/bash
+
+
+# Do not run bashrc if display is not set
+if [ -f "$HOME/.bashrc" ] && [ -n "$DISPLAY" ]; then
+    . "$HOME/.bashrc"
 fi
 
-source ~/.bashrc

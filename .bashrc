@@ -125,15 +125,14 @@ PROMPT_COMMAND='set_prompt $?' # single quotes for $? to be evaluated after last
 export PATH="$HOME/.local/bin/:$PATH"
 
 # NPM
-export PATH="${HOME}/.npm/bin:$PATH"
+export NVM_DIR="$HOME/.config/nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"                   # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion" # This loads nvm bash_completion
 
 # texlive path
 export PATH="/usr/local/texlive/2024/bin/x86_64-linux:$PATH"
 export MANPATH="/usr/local/texlive/2024/texmf-dist/doc/man:$MANPATH"
 export INFOPATH="/usr/local/texlive/2024/texmf-dist/doc/info:$INFOPATH"
-
-# adding deno path
-export PATH="$HOME/.deno/bin:$PATH"
 
 # opam init
 source ~/.scripts/opam-init.sh
@@ -153,11 +152,12 @@ export INFOPATH="$(perl -e 'print join(":", grep { not $seen{$_}++ } split(/:/, 
 # create tmux session on attach if existing
 # if not in tmux, a session exists, the terminal is interactive and not a ssh session
 if [ -z "$TMUX" ] && [ -n "$PS1" ] && [ -t 1 ] && [ -z "$SSH_CONNECTION" ]; then
+    TMUX_SESSION="default-${DISPLAY//:/}"
     # if a session exists, attach to it
-    if tmux list-sessions 2>/dev/null | grep -q .; then
-        tmux attach-session -t "$(tmux list-sessions -F '#S' | head -n 1)"
+    if tmux has-session -t "$TMUX_SESSION" 2>/dev/null; then
+        tmux attach-session -t "$TMUX_SESSION"
     else
         # if no session exists, create one, called 'default'
-        tmux new -s default
+        tmux new -s "$TMUX_SESSION"
     fi
 fi

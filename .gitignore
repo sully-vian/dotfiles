@@ -1,3 +1,4 @@
 *.swp
 *.zip
 .cache/wal/
+.config/nvim/plugin/packer_compiled.lua

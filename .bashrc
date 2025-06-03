@@ -110,9 +110,10 @@ fi
 
 # JAVA
 JAVA_HOME="/usr/lib/jvm/default"
+export CLASSPATH=~/z3-4.11.2-x64-glibc-2.31/bin/com.microsoft.z3.jar:$CLASSPATH
+export LD_LIBRARY_PATH=~/z3-4.11.2-x64-glibc-2.31/bin:$LD_LIBRARY_PATH
 export PATH="$JAVA_HOME/bin:$PATH"
-
-export TOMCAT_HOME="$HOME/apache-tomcat-11.0.1"
+export PATH_TO_FX=~/javafx-sdk-24.0.1/lib
 
 # start python virtual venv
 [ -f "$HOME/py3/bin/activate" ] && source "$HOME/py3/bin/activate"

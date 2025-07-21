@@ -22,10 +22,8 @@ font pango:FiraCode 10
 # Monitor config:
 exec_always --no-startup-id ~/.config/i3/monitor-setup.sh
 
-# start redshift, -P pour reset
-exec_always pkill redshift
-exec_always redshift -x
-exec_always --no-startup-id redshift -P -c ~/.config/redshift/redshift.conf
+# start redshift, -P to reset
+exec_always --no-startup-id "pkill redshift; sleep 1; redshift -x; redshift -P -c ~/.config/redshift/redshift.conf"
 
 # picom
 exec_always --no-startup-id picom

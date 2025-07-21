@@ -15,7 +15,10 @@ if xrandr | grep "$external_monitor connected"; then
 else
     # only laptop monitor
     xrandr --output $laptop_monitor --primary --auto
-    i3-msg "workspace 1; move workspace to output $laptop_monitor"
+    xrandr --output $external_monitor --off
+    for i in {1..10}; do
+        i3-msg "workspace $i; move workspace to output $laptop_monitor" 2>/dev/null
+    done
 fi
 
 # focus the first workspace

@@ -86,7 +86,7 @@ export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quo
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
 
 # enable programmable completion features
-source ~/.bash-completion.sh
+source ~/.bash-completion
 
 # load inputrc
 [ -f "$HOME/.inputrc" ] && bind -f "$HOME/.inputrc"

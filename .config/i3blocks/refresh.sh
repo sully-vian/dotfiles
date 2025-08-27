@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Check if the button was clicked
-if [[ -z "${BLOCK_BUTTON}" ]]; then
+if [[ "${BLOCK_BUTTON}" == "1" ]]; then
     # Display "click me!" when not clicked
     echo "click me!"
 else

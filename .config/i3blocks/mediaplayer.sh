@@ -21,6 +21,8 @@ fi
 
 echo "$output"
 
-if [[ -n "${BLOCK_BUTTON}" ]]; then
-    ~/.scripts/rofi/musicmenu.sh
-fi
+case "$BLOCK_BUTTON" in
+    1) playerctl play-pause ;; # left click
+    4) playerctl next ;; # scroll up
+    5) playerctl previous ;; # scroll down
+esac

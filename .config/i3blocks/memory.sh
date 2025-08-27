@@ -16,11 +16,4 @@ else
     color="#FF0000" # Red
 fi
 
-# Check if the button was clicked
-if [[ -z "${BLOCK_BUTTON}" ]]; then
-    # Display swap usage when not clicked
-    echo "<span color='$color'>MEM: $percent%</span>"
-else
-    # Display detailed swap usage when clicked
-    echo "<span color='$color'>$used/${total}MB</span>"
-fi
+echo "<span color='$color'>MEM: $percent%</span>"

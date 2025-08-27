@@ -33,7 +33,7 @@ light_blue="#8be9fd"
 
 echo "<span foreground='$light_blue'>$icon <b>$device</b>$battery</span>"
 
-# Check if button was clicked
-if [[ "${BLOCK_BUTTON}" ]]; then
+# Check if left mouse button was clicked
+if [[ "${BLOCK_BUTTON}" == "1" ]]; then
     alacritty --class floating -e bluetui
 fi

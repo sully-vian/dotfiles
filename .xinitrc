@@ -10,5 +10,8 @@ xinput set-prop "$TOUCHPAD_ID" 'libinput Natural Scrolling Enabled' 1
 # set keymapping
 setxkbmap fr
 
+# set terminal variable
+export TERMINAL=alacritty
+
 # start i3
 exec i3

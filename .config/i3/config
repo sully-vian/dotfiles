@@ -9,11 +9,19 @@
 #
 # Please see https://i3wm.org/docs/userguide.html for a complete reference!
 
+####################
+# Global variables #
+####################
+
 # mod key
 set $mod Mod4
 
 # i3-bar
 set $bar i3blocks
+
+set $mail thunderbird
+set $browser google-chrome-stable
+set $music youtube-music
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
@@ -87,6 +95,10 @@ bindsym XF86AudioPlay exec playerctl play-pause && $signal_bar
 bindsym XF86AudioNext exec playerctl next && $signal_bar
 bindsym XF86AudioPrev exec playerctl previous && $signal_bar
 
+###################
+# Caps & Num Lock #
+###################
+
 # signal i3blocks for capslock & numlock
 bindsym --release Caps_Lock exec --no-startup-id $signal_bar
 bindsym --release Num_Lock exec --no-startup-id $signal_bar
@@ -98,11 +110,21 @@ floating_modifier $mod
 # or left-clicking anywhere into the window while holding the floating modifier.
 tiling_drag modifier titlebar
 
+#################################
+# Shortcuts for common programs #
+#################################
+
 # start a terminal
-bindsym $mod+Return exec alacritty
+bindsym $mod+Return exec i3-sensible-terminal
 
 # start a floating terminal
-bindsym $mod+Shift+Return exec alacritty --class floating
+bindsym $mod+Shift+Return exec i3-sensible-terminal --class floating
+
+bindsym XF86HomePage exec ~/.config/i3/focus-app.sh "google-chrome" $browser
+bindsym XF86Mail exec ~/.config/i3/focus-app.sh "Mail" $mail
+# bindsym XF86Explorer
+# bindsym XF86Calculator
+bindsym XF86Tools exec ~/.config/i3/focus-app.sh "com.github.th_ch.youtube_music" $music
 
 # kill focused window
 bindsym $mod+Shift+Q kill
@@ -169,11 +191,6 @@ set $ws7 "7"
 set $ws8 "8"
 set $ws9 "9"
 set $ws10 "10"
-
-# assign each workspace to a specific output
-# workspace $ws1 output HDMI1
-# workspace $ws2 output eDP1
-
 
 # cycle workspace
 bindsym $mod+Tab workspace next

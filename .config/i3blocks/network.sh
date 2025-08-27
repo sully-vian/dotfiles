@@ -25,6 +25,6 @@ light_blue="#8be9fd"
 echo "<span foreground='$light_blue'>$icon <b>$name</b></span>"
 
 # Check if button was clicked
-if [[ "${BLOCK_BUTTON}" ]]; then
+if [[ "${BLOCK_BUTTON}" == "1" ]]; then
   alacritty --class floating -e nmtui
 fi

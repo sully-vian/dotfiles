@@ -107,8 +107,6 @@ export PATH="$JAVA_HOME/bin:$PATH"
 # start python virtual venv
 [ -f "$HOME/py3/bin/activate" ] && source "$HOME/py3/bin/activate"
 
-source ~/.scripts/vpn7.sh
-
 source ~/.scripts/prompt.sh
 PROMPT_COMMAND='set_prompt $?' # single quotes for $? to be evaluated after last command
 

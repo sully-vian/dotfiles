@@ -21,7 +21,7 @@ if xrandr | grep "$left_monitor connected"; then
     i3-msg "workspace 2; move workspace to output $right_monitor"
 else
     # only laptop monitor
-    xrandr --output $right_monitor --primary --auto
+    xrandr --output $right_monitor --primary --auto --rate 60
     xrandr --output $left_monitor --off
     for i in {1..10}; do
         i3-msg "workspace $i; move workspace to output $right_monitor" 2>/dev/null

@@ -9,18 +9,21 @@ fi
 # where to store the config
 TEMP_FILE=$(mktemp)
 
+LOG_FILE=$(mktemp)
+
 # where to get it
 URL="https://www.htwg-konstanz.de/fileadmin/pub/ou/rz/VPN/HTWG-MFA-WS2526-STUD.ovpn"
 
 echo "Connecting..."
 echo "curling config file into $TEMP_FILE..."
+echo "log file is $LOG_FILE"
 
 # curl the config
 curl -o "$TEMP_FILE" $URL
 
 echo -e "\e[4m\e[1mPassword is usual password + code from Duo mobile \033[0m"
 # start openvpn in background
-sudo openvpn --config "$TEMP_FILE" --daemon
+sudo openvpn --config "$TEMP_FILE" --daemon --log "$LOG_FILE"
 
 sleep 3
 

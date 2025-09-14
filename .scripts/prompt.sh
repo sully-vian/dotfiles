@@ -74,7 +74,7 @@ set_prompt() {
     PS1="󰣀 $PS1"
   fi
 
-  if pgrep vpnc >/dev/null; then
+  if pgrep vpnc >/dev/null || pgrep openvpn >/dev/null; then
     PS1="󰖂 $PS1"
   fi
 }

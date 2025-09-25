@@ -68,9 +68,12 @@ function javatest-c() {
   javac "$1" && java org.junit.runner.JUnitCore "${1%.*}"
 }
 
-# eclipse alias
-if [ -f ~/.eclipse/modeling-2023-09/eclipse/eclipse ]; then
-  alias eclipse-idm="~/.eclipse/modeling-2023-09/eclipse/eclipse"
+if command -v rg > /dev/null 2>&1; then
+  alias rg="rg --hidden" # include hidden files and directories
+fi
+
+if command -v fd > /dev/null 2>&1; then
+  alias fd="fd --hidden" # include hidden files and directories
 fi
 
 # neo-vim alias

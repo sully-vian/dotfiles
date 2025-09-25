@@ -55,7 +55,7 @@ exec_always --no-startup-id xautolock -time 5 -locker ~/.config/i3/i3lock-color.
 ################
 
 # App launcher
-bindsym $mod+d exec "rofi -modi drun,run -show drun"
+bindsym $mod+space exec "rofi -modi drun,run -show drun"
 
 # powermenu
 bindsym $mod+p exec --no-startup-id ~/.scripts/rofi/powermenu.sh
@@ -168,10 +168,10 @@ bindsym $mod+z layout tabbed
 bindsym $mod+e layout toggle split
 
 # toggle tiling / floating
-bindsym $mod+Shift+space floating toggle
+bindsym $mod+Shift+g floating toggle
 
 # change focus between tiling / floating windows
-bindsym $mod+space focus mode_toggle
+bindsym $mod+g focus mode_toggle
 
 # focus the parent container
 bindsym $mod+q focus parent

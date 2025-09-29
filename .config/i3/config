@@ -120,6 +120,9 @@ bindsym $mod+Return exec i3-sensible-terminal
 # start a floating terminal
 bindsym $mod+Shift+Return exec i3-sensible-terminal --class floating
 
+# screenshot
+bindsym Print exec --no-startup-id import ~/Pictures/screenshot-$(date +%Y-%m-%d-%H-%M-%S).png
+
 bindsym XF86HomePage exec ~/.config/i3/focus-app.sh "google-chrome" $browser
 bindsym XF86Mail exec ~/.config/i3/focus-app.sh "Mail" $mail
 # bindsym XF86Explorer

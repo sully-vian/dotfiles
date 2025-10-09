@@ -90,6 +90,9 @@ if command -v lazygit > /dev/null 2>&1; then
 	alias lg="lazygit"
 fi
 
+# opening urls, files
+alias open="xdg-open"
+
 # utility aliases
 alias c="clear"
 alias shut="shutdown now"

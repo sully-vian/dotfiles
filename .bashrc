@@ -112,6 +112,9 @@ PROMPT_COMMAND='set_prompt $?' # single quotes for $? to be evaluated after last
 
 export PATH="$HOME/.local/bin/:$PATH"
 
+# PKG-config
+export PKG_CONFIG_PATH=/usr/local/lib/pkgconfig:/usr/local/share/pkgconfig:$PKG_CONFIG_PATH
+
 # NPM
 export NVM_DIR="$HOME/.config/nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"                   # This loads nvm

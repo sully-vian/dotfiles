@@ -68,6 +68,10 @@ function javatest-c() {
   javac "$1" && java org.junit.runner.JUnitCore "${1%.*}"
 }
 
+# clang colors
+alias clang="clang -fcolor-diagnostics"
+alias clang++="clang++ -fcolor-diagnostics"
+
 if command -v rg > /dev/null 2>&1; then
   alias rg="rg --hidden" # include hidden files and directories
 fi
@@ -82,6 +86,10 @@ if command -v nvim > /dev/null 2>&1; then
   alias vim="nv"
 fi
 
+if command -v lazygit > /dev/null 2>&1; then
+	alias lg="lazygit"
+fi
+
 # utility aliases
 alias c="clear"
 alias shut="shutdown now"
@@ -91,6 +99,10 @@ function cheat() {
   curl -s cheat.sh/$1 | less
 }
 alias cht=cheat
+
+if command -v trans > /dev/null 2>&1; then
+	alias trans="trans -brief"
+fi
 
 function print_bash_list() {
   echo "$1" | tr ':' '\n'

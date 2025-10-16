@@ -18,12 +18,19 @@ vim.g.mapleader = " "
 local function my_format()
 	local prettier = { "javascript", "javascriptreact", "typescriptreact", "vue", "typescript" }
 	local filetype = vim.bo.filetype
+	local view = vim.fn.winsaveview() -- save current view
 
 	if (vim.tbl_contains(prettier, filetype)) then
 		vim.cmd("%!prettier --stdin-filepath %")
 	else
-		vim.lsp.buf.format({ async = false })
+		vim.lsp.buf.format({
+			async = false,
+			on_error = function(err)
+				vim.notify("failed to format")
+			end
+		})
 	end
+	vim.fn.winrestview(view) -- restore saved view
 end
 
 -- mappings

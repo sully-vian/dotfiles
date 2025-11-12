@@ -47,6 +47,14 @@ if command -v onefetch >/dev/null 2>&1; then
   alias onefetch='onefetch --nerd-fonts'
 fi
 
+# show specs
+alias specs="inxi -Faz"
+
+# show sorted disk usage
+function usage() {
+	du -sh "$@" | sort -hr
+}
+
 if command -v gnatmake > /dev/null 2>&1; then
   # ada compilation alias only if installed
   alias adc="gnatmake -f -gnatwa -gnata -g"

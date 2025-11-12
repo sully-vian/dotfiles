@@ -107,6 +107,12 @@ export PATH="$JAVA_HOME/bin:$PATH"
 # start python virtual venv
 [ -f "$HOME/py3/bin/activate" ] && source "$HOME/py3/bin/activate"
 
+# load env variables from .env
+if [ -f "$HOME/.env" ]; then
+	# skip comments
+	export $(grep -v '^#' "$HOME/.env" | xargs)
+fi
+
 source ~/.scripts/prompt.sh
 PROMPT_COMMAND='set_prompt $?' # single quotes for $? to be evaluated after last command
 
@@ -126,6 +132,9 @@ export INFOPATH="/usr/local/texlive/2024/texmf-dist/doc/info:$INFOPATH"
 
 # opam init
 source ~/.scripts/opam-init.sh
+
+# setup gcloud
+source ~/.scripts/gcloud-setup.sh
 
 if command -v zoxide >/dev/null 2>&1; then
     eval "$(zoxide init --cmd cd bash)"
@@ -151,3 +160,4 @@ if [ -z "$TMUX" ] && [ -n "$PS1" ] && [ -t 1 ] && [ -z "$SSH_CONNECTION" ]; then
         tmux new -s "$TMUX_SESSION"
     fi
 fi
+

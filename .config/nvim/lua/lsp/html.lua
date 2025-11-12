@@ -1,6 +1,6 @@
 vim.lsp.config("html", {
 	cmd = { "vscode-html-language-server", "--stdio" },
-	filetypes = { "html" },
+	filetypes = { "html", "svg" },
 	root_markers = { "package.json", ".git" },
 	init_options = {
 		provideFormatter = true,

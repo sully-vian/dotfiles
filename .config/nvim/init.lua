@@ -15,37 +15,51 @@ vim.opt.winborder = "rounded"
 vim.g.mapleader = " "
 
 
-local function my_format()
-	local prettier = { "javascript", "javascriptreact", "typescriptreact", "vue", "typescript" }
-	local filetype = vim.bo.filetype
+local function format()
 	local view = vim.fn.winsaveview() -- save current view
 
-	if (vim.tbl_contains(prettier, filetype)) then
-		vim.cmd("%!prettier --stdin-filepath %")
-	else
-		vim.lsp.buf.format({
-			async = false,
-			on_error = function(err)
-				vim.notify("failed to format")
-			end
-		})
+	local bufnr = vim.api.nvim_get_current_buf()
+	local clients = vim.lsp.get_clients({ bufnr = bufnr })
+	local names = {}
+
+	for _, client in ipairs(clients) do
+		if client:supports_method("textDocument/formatting") then
+			table.insert(names, client.name)
+		end
 	end
+	vim.notify(table.concat(names, ","))
+	vim.lsp.buf.format({
+		async = false,
+		callback = function(_, result, ctx)
+			local client = vim.lsp.get_client_by_id(ctx.client_id)
+			vim.notify("aaa")
+			if client then
+				vim.notify("Formatted with " .. client.name, vim.log.levels.INFO)
+			else
+				vim.notify("Formatted (no client info)", vim.log.levels.INFO)
+			end
+		end,
+		on_error = function(err)
+			vim.notify("failed to format")
+		end
+	})
 	vim.fn.winrestview(view) -- restore saved view
 end
 
 -- mappings
 local function format_and_save()
-	my_format()
+	format()
 	vim.cmd.write()
 end
 
 vim.keymap.set('n', "<leader>q", vim.cmd.quit, { desc = "Quit" })
 vim.keymap.set('n', "<leader>w", format_and_save, { desc = "Format+Save" })
-vim.keymap.set('n', "<leader>f", my_format, { desc = "Format buffer" })
+vim.keymap.set('n', "<leader>f", format, { desc = "Format buffer" })
 vim.keymap.set('n', "<leader>s", vim.cmd.source, { desc = "Source file" })
 vim.keymap.set('n', "<leader>r", vim.lsp.buf.rename, { desc = "Rename" })
 vim.keymap.set('n', "<leader>k", vim.lsp.buf.hover, { desc = "Hover" })
 vim.keymap.set('n', "<leader>d", vim.lsp.buf.definition, { desc = "Go to definition" })
+vim.keymap.set('n', "<leader>R", vim.lsp.buf.references, { desc = "List references" })
 
 vim.keymap.set('n', "<leader>p", "<Cmd>:Pick files<CR>", { desc = "Pick file" })
 vim.keymap.set('n', "<leader>P", "<Cmd>:Pick grep_live<CR>", { desc = "Pick string" })

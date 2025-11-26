@@ -17,6 +17,7 @@ set_prompt() {
 
   local BOLD="\[\e[1m\]"
   local RESET="\[\e[0m\]"
+  local SHOW_CURSOR="\[\e[?25h\]"
 
   local lastcommand=$1
 
@@ -77,4 +78,5 @@ set_prompt() {
   if pgrep vpnc >/dev/null || pgrep openvpn >/dev/null; then
     PS1="󰖂 $PS1"
   fi
+  PS1="${RESET}${SHOW_CURSOR}$PS1"
 }

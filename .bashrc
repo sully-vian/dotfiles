@@ -85,9 +85,6 @@ export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quo
 #   sleep 10; alert
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
 
-# enable programmable completion features
-source ~/.bash-completion
-
 # load inputrc
 [ -f "$HOME/.inputrc" ] && bind -f "$HOME/.inputrc"
 
@@ -106,6 +103,8 @@ export PATH="$JAVA_HOME/bin:$PATH"
 
 # start python virtual venv
 [ -f "$HOME/py3/bin/activate" ] && source "$HOME/py3/bin/activate"
+
+[ -d "$HOME/.alire/bin/" ] && export PATH="$PATH:$HOME/.alire/bin/"
 
 # load env variables from .env
 if [ -f "$HOME/.env" ]; then
@@ -139,6 +138,9 @@ source ~/.scripts/gcloud-setup.sh
 if command -v zoxide >/dev/null 2>&1; then
     eval "$(zoxide init --cmd cd bash)"
 fi
+
+# enable programmable completion features
+source ~/.bash-completion
 
 # remove duplicates in PATH variable
 export PATH="$(perl -e 'print join(":", grep { not $seen{$_}++ } split(/:/, $ENV{PATH}))')"

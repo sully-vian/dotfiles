@@ -1,3 +1,4 @@
+require("lsp.ada_ls")
 require("lsp.arduino")
 require("lsp.biome")
 require("lsp.clangd")

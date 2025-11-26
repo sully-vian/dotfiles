@@ -50,12 +50,12 @@ interval=1
 [bandwidth]
 interval=1
 
-[memory]
-interval=1
-separator=false
-
 [disk]
 interval=1
+
+[memory]
+interval=1
+separator=true
 
 [cpu_usage]
 interval=1

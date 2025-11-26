@@ -11,7 +11,7 @@ shape = "Block"
 blinking = "Always"
 
 [font]
-size = 10.0
+size = 7.0
 
 [font.bold]
 family = "FiraCode Nerd Font Mono"

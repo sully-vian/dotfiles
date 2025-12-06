@@ -8,7 +8,7 @@ This repository contains configuration files (dotfiles) for various tools and ap
     - [ ] Move from rofi to dmenu
     - [ ] commands/shortcuts to record screen + webcam
 - [ ] Use [dipc](https://github.com/doprz/dipc) for wallpaper conversion
-- [ ] Completion for cht
+- [x] Completion for cht
 - [ ] Fix neovim
     - [x] include hidden files in mini.pick
 - [ ] tmux

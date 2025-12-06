@@ -5,12 +5,19 @@ This repository contains configuration files (dotfiles) for various tools and ap
 ## TODO
 
 - [ ] i3
-    - [ ] Move from rofi to dmenu
+    - [ ] `notify-send` / `dunst`
+        - [ ] replace with dunstify
+        - [x] fix `notify-send`
+        - [x] add to screenshot
+        - [ ] add to video capture
+        - [ ] add battery warning 
+    - [ ] Move from `rofi` to `dmenu`
     - [ ] commands/shortcuts to record screen + webcam
 - [ ] Use [dipc](https://github.com/doprz/dipc) for wallpaper conversion
 - [x] Completion for cht
-- [ ] Fix neovim
+- [ ] neovim
     - [x] include hidden files in mini.pick
+    - [ ] display `&filetype` at bottom
 - [ ] tmux
     - [ ] hide/show panel (collapse)
 

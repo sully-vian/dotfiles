@@ -15,6 +15,11 @@ else
     color="#FF0000" # Red
 fi
 
+
+if [ "$battery_percentage" -lt 10 ]; then
+    notify-send "Low battery" --urgency=critical
+fi
+
 # icons array for batteray level
 icons=("󰂃" "󰁺" "󰁻" "󰁼" "󰁽" "󰁾" "󰁿" "󰂀" "󰂁" "󰂂" "󰁹")
 

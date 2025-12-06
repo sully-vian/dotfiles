@@ -41,6 +41,7 @@ exec_always --no-startup-id picom
 
 # make windows float
 for_window [class="floating"] floating enable
+for_window [title="mpv webcam"] floating enable
 
 # remove window borders
 for_window [class="^.*$"] border none
@@ -52,6 +53,9 @@ smart_borders on
 # restart xautolock with 5 min timer
 exec_always --no-startup-id killall xautolock
 exec_always --no-startup-id xautolock -time 5 -locker ~/.config/i3/i3lock-color.sh -detectsleep
+
+# start dunst daemon
+exec_always --no-startup-id ~/.scripts/dunst-restart.sh
 
 ################
 # Rofi scripts #
@@ -124,10 +128,9 @@ bindsym $mod+Return exec i3-sensible-terminal
 bindsym $mod+Shift+Return exec i3-sensible-terminal --class floating
 
 # screenshot selection
-bindsym Print exec --no-startup-id import ~/Pictures/screenshot-$(date +%Y-%m-%d-%H-%M-%S).png
+bindsym Print exec --no-startup-id ~/.scripts/screenshot.sh -s
 # screenshot full window
-bindsym Shift+Print exec --no-startup-id import -window root ~/Pictures/screenshot-$(date +%Y-%m-%d-%H-%M-%S).png
-
+bindsym Shift+Print exec --no-startup-id ~/.scripts/screenshot.sh -f
 
 bindsym XF86HomePage exec ~/.config/i3/focus-app.sh "google-chrome" $browser
 bindsym XF86Mail exec ~/.config/i3/focus-app.sh "Mail" $mail

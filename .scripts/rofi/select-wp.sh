@@ -39,4 +39,8 @@ if [ -n "$SELECTED_FILENAME" ]; then
 
     # copy the bat theme
     ~/.scripts/copy-bat-theme.sh
+
+    # restart dunst to apply colors
+    ~/.scripts/dunst-restart.sh
+
 fi

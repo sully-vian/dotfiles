@@ -2,6 +2,18 @@
 
 This repository contains configuration files (dotfiles) for various tools and applications. These dotfiles help to set up a consistent development environment across different machines.
 
+## TODO
+
+- [ ] i3
+    - [ ] Move from rofi to dmenu
+    - [ ] commands/shortcuts to record screen + webcam
+- [ ] Use [dipc](https://github.com/doprz/dipc) for wallpaper conversion
+- [ ] Completion for cht
+- [ ] Fix neovim
+    - [x] include hidden files in mini.pick
+- [ ] tmux
+    - [ ] hide/show panel (collapse)
+
 ## Table of Contents
 
 - [Dotfiles Repository](#dotfiles-repository)

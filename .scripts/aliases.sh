@@ -80,10 +80,6 @@ function javatest-c() {
 alias clang="clang -fcolor-diagnostics"
 alias clang++="clang++ -fcolor-diagnostics"
 
-if command -v rg > /dev/null 2>&1; then
-  alias rg="rg --hidden" # include hidden files and directories
-fi
-
 if command -v fd > /dev/null 2>&1; then
   alias fd="fd --hidden" # include hidden files and directories
 fi

@@ -94,6 +94,11 @@ if command -v lazygit > /dev/null 2>&1; then
 	alias lg="lazygit"
 fi
 
+if [ -f "$HOME/.cache/wal/colors.sh" ]; then
+    source "$HOME/.cache/wal/colors.sh"
+    alias dmenu="dmenu -nf \"$color15\" -nb \"$color0\" -sf \"$color15\" -sb \"$color1\""
+fi
+
 # opening urls, files
 alias open="xdg-open"
 
@@ -110,10 +115,6 @@ alias cht=cheat
 if command -v trans > /dev/null 2>&1; then
 	alias trans="trans -brief"
 fi
-
-function print_bash_list() {
-  echo "$1" | tr ':' '\n'
-}
 
 alias editrc="vim $BASHRC"
 alias edittmux="vim $TMUX_CONF"

@@ -1,0 +1,23 @@
+#!/bin/bash
+
+APP_DIR="/usr/share/applications/"
+
+PAIRS="$(
+    rg -H -o -m 2 "^Name=.*|^Exec=.*" $APP_DIR \
+    | awk -F= '
+        /Name=/ {name=$2}
+        /Exec=/ {exec=$2}
+        name && exec {
+            print name " | " exec
+        name=""; exec=""
+    }' \
+)"
+
+CHOSEN="$(echo "$PAIRS" | cut -d\| -f1 | sort | dmenu -i -p "Launch app")"
+
+CMD="$(echo "$PAIRS" | rg -m 1 "$CHOSEN" | cut -d\| -f2)"
+
+dunstify "$CHOSEN" -u low
+
+$CMD
+

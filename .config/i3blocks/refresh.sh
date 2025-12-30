@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # Check if the button was clicked
 if [[ "${BLOCK_BUTTON}" == "1" ]]; then

@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # This script is used in the i3blocks bar to display the current status of the music player.
 # Clicking on the block will play/pause the music.

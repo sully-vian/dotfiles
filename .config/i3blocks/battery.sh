@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # Get the battery percentage
 battery_percentage=$(acpi -b | grep -P -o '[0-9]+(?=%)')

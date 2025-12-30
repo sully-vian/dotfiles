@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # This script generates the pango text needed to display the current wifi network
 # name and status using nmcli

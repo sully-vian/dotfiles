@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # This script generates the pango text needed to display the current volume level
 # left clicking the volume icon toggles mute

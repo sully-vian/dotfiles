@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # Get the directory to check from the instance variable, default to $HOME
 directory="${BLOCK_INSTANCE:-$HOME}"

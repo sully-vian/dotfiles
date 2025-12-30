@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # get active window title
 window_title=$(xdotool getactivewindow getwindowname)

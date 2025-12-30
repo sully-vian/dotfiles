@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # Get keyboard states
 caps=$(xset -q | grep "Caps Lock" | awk '{print $4}')

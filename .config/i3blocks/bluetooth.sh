@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # This script generates the pango text needed to display the current bluetooth
 # status and connected device using bluetoothctl device list

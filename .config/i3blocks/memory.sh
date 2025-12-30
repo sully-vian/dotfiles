@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # Get total and used memory
 total=$(free -m | awk '/^Mem:/ {print $2}')

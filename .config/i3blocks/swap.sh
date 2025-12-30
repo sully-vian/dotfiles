@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # Get total and used swap memory
 total=$(free -m | awk '/^Swap:/ {print $2}')

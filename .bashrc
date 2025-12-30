@@ -1,4 +1,3 @@
-#!/bin/bash
 # ~/.bashrc: executed by bash(1) for non-login shells.
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
 # for examples
@@ -97,9 +96,14 @@ alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo
 # See /usr/share/doc/bash-doc/examples in the bash-doc package.
 [ -f "$ALIASES" ] && source "$ALIASES"
 
+# QT
+# export QT_QPA_PLATFORMTHEME=qt5ct
+
 # JAVA
 JAVA_HOME="/usr/lib/jvm/default"
 export PATH="$JAVA_HOME/bin:$PATH"
+
+[ -d "$HOME/.config/composer/vendor/bin" ] && export PATH="$PATH:$HOME/.config/composer/vendor/bin"
 
 # start python virtual venv
 [ -f "$HOME/py3/bin/activate" ] && source "$HOME/py3/bin/activate"

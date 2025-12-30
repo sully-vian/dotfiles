@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # custom ssh function with prompt if inside a tmux session
 ssh() {

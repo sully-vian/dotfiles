@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # this script setups an i3lock-color lockscreen with a blurred background
 # and a clock. It uses the pywal colorscheme.

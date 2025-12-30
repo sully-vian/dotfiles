@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # This script is called by i3 config to setup the monitors
 # no monitor connected: laptop screen is primary and workspace 1.

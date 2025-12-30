@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 echo -e "${BLUE}Dotfiles directory: $DOTFILES_DIR${NC}"
 echo -e "${BLUE}Installing dotfiles...${NC}"

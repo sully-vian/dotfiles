@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # This script is uses rofi to select a wallpaper and apply the theme using pywal.
 # The script also copies the bat theme to the bat config directory.

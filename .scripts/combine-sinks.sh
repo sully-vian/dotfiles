@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # Select PulseAudio sinks with rofi and combine them into one.
 # Unloads any previous combined sink before creating a new one.

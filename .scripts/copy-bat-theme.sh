@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # This script copies the generated pywal theme for bat to the right destination and loads it
 

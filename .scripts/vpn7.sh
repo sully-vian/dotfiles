@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 if pgrep vpnc >/dev/null; then
     echo "disconnecting..."

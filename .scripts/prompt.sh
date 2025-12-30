@@ -1,4 +1,4 @@
-#!/bin/bash
+# no shebang, it is sourced
 
 # custom prompt
 set_prompt() {

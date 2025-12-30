@@ -1,4 +1,4 @@
-#! /bin/bash
+#!/usr/bin/env bash
 
 # Get sink name and description pairs
 sinks=$(pactl list sinks | awk '/Name: /{name=$2} /Description: /{print name "|" substr($0, index($0,$2))}')

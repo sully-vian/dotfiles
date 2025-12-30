@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # ==============================================================================
 #                              ~/.bash_aliases
@@ -87,7 +87,8 @@ fi
 # neo-vim alias
 if command -v nvim > /dev/null 2>&1; then
   alias nv="nvim"
-  alias vim="nv"
+  alias vim="nvim"
+  alias v="nvim"
 fi
 
 if command -v lazygit > /dev/null 2>&1; then

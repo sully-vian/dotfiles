@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # This script loads the wallpaper saved in the wal cache
 # if no wallpaper is saved, it loads a default wallpaper

@@ -15,9 +15,9 @@ else
     color="#FF0000" # Red
 fi
 
-
+ID=9999
 if [ "$battery_percentage" -lt 10 ]; then
-    notify-send "Low battery" --urgency=critical
+    dunstify -r $ID "Low battery" --urgency=critical
 fi
 
 # icons array for batteray level

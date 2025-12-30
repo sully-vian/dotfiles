@@ -2,3 +2,4 @@
 *.zip
 .cache/wal/
 .config/nvim/plugin/packer_compiled.lua
+.config/nvim/nvim-pack-lock.json

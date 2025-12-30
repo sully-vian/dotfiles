@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 # ~/.xinitrc
 #
 # executed by startx
@@ -13,5 +13,8 @@
 # set terminal variable
 export TERMINAL=alacritty
 
+# QT
+export QT_QPA_PLATFORMTHEME=qt5ct
+
 # start i3
-exec i3
+pgrep i3 || exec i3

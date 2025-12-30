@@ -88,7 +88,13 @@ fi
 if command -v nvim > /dev/null 2>&1; then
   alias nv="nvim"
   alias vim="nvim"
-  alias v="nvim"
+  function v() {
+      if [ $# -eq 0 ]; then
+          nvim .
+      else
+          nvim "$@"
+      fi
+  }
 fi
 
 if command -v lazygit > /dev/null 2>&1; then

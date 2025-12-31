@@ -23,6 +23,8 @@ This repository contains configuration files (dotfiles) for various tools and ap
     - [ ] display `&filetype` at bottom
 - [ ] tmux
     - [ ] hide/show panel (collapse)
+- [ ] fzf
+    - [ ] cht/man lookup
 
 ## Table of Contents
 
@@ -46,10 +48,10 @@ To install these dotfiles, install the dependencies, then run
 
 ```sh
 git clone https://github.com/sully-vian/dotfiles.git ~/dotfiles
-cd ~/dotfiles && bash .scripts/install.sh
+~/dotfiles/.scripts/install.sh
 ```
 
-The installation can either use `stow` if installed or manually create the symlinks.
+The installation uses `stow` to symlink the dotfiles to thre repo's files
 
 The lightdm config files shall by copied to the `/etc/lightdm` directory. A copying script is provided in the `.config/lightdm` directory.
 

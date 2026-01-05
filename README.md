@@ -18,9 +18,10 @@ This repository contains configuration files (dotfiles) for various tools and ap
         - [ ] webcam: not hide cursor when on window
 - [ ] Use [dipc](https://github.com/doprz/dipc) for wallpaper conversion
 - [x] Completion for cht
-- [ ] neovim
+- [ ] Neovim
     - [x] include hidden files in mini.pick
     - [ ] display `&filetype` at bottom
+    - [ ] use CFR decompiler (move to `~/bin`) to view Java `.class` files
 - [ ] tmux
     - [ ] hide/show panel (collapse)
 - [ ] fzf

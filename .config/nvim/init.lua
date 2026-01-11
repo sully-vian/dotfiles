@@ -1,4 +1,4 @@
---vim.opt.wrap = false       -- force """clean""" code
+-- vim.opt.wrap = false       -- force """clean""" code
 vim.opt.signcolumn = "yes" -- even when no sign to show
 vim.opt.cursorcolumn = false
 vim.opt.smartcase = true
@@ -11,6 +11,7 @@ vim.opt.shiftwidth = 4
 vim.opt.expandtab = true
 vim.opt.swapfile = false -- disable .swap file creation
 vim.opt.winborder = "rounded"
+vim.opt.timeoutlen = 300 -- ms (default 1000ms)
 
 -- leader
 vim.g.mapleader = " "
@@ -53,6 +54,11 @@ local function format()
     vim.fn.winrestview(view) -- restore saved view
 end
 
+local function lazygit()
+    vim.cmd.terminal("lazygit")
+    vim.cmd.startinsert()
+end
+
 vim.keymap.set('n', "<leader>q", vim.cmd.quit, { desc = "Quit" })
 vim.keymap.set('n', "<leader>w", vim.cmd.write, { desc = "Save" })
 vim.keymap.set('n', "<leader>f", format, { desc = "Format buffer" })
@@ -61,7 +67,10 @@ vim.keymap.set('n', "<leader>r", vim.lsp.buf.rename, { desc = "Rename" })
 vim.keymap.set('n', "<leader>k", vim.lsp.buf.hover, { desc = "Hover" })
 vim.keymap.set('n', "<leader>d", vim.lsp.buf.definition, { desc = "Go to definition" })
 vim.keymap.set('n', "<leader>R", vim.lsp.buf.references, { desc = "List references" })
-vim.keymap.set('n', "<leader>e", exec_file, { desc = "execute file" })
+vim.keymap.set('n', "<leader>e", exec_file, { desc = "Execute file" })
+vim.keymap.set('n', "<leader>t", vim.cmd.terminal, { desc = "Open terminal" })
+vim.keymap.set('t', "<Esc><Esc>", [[<C-\><C-n>]], { desc = "Exit terminal mode" })
+vim.keymap.set('n', "<leader>l", lazygit, { desc = "Open LazyGit" })
 
 vim.keymap.set('n', "<leader>p", "<Cmd>:Pick files<CR>", { desc = "Pick file" })
 vim.keymap.set('n', "<leader>P", "<Cmd>:Pick grep_live<CR>", { desc = "Pick string" })
@@ -93,23 +102,36 @@ vim.api.nvim_create_autocmd("LspAttach", {
 })
 vim.opt.completeopt:append("noselect")
 
--- pack
+-- colorschemes
+vim.pack.add({
+    { src = "https://github.com/vague2k/vague.nvim" },
+    { src = "https://github.com/ku1ik/vim-monokai" },
+    { src = "https://github.com/LuRsT/austere.vim" },
+    { src = "https://github.com/blazkowolf/gruber-darker.nvim" },
+    { src = "https://github.com/projekt0n/github-nvim-theme" }
+})
+vim.cmd("colorscheme vague")
+
+-- plugins
 vim.pack.add({
     { src = "https://github.com/nvim-treesitter/nvim-treesitter", version = "master" },
     { src = "https://github.com/nvim-mini/mini.pick" },
-    { src = "https://github.com/vague2k/vague.nvim" },
     { src = "https://github.com/folke/which-key.nvim" },
     { src = "https://github.com/wakatime/vim-wakatime" },
     { src = "https://github.com/chomosuke/typst-preview.nvim" },
     { src = "https://github.com/smjonas/live-command.nvim" },
     { src = "https://github.com/brianhuster/live-preview.nvim" }
 })
-vim.pack.update(nil, { force = true })
+-- vim.pack.update(nil, { force = true })
 
--- colors
-vim.cmd("colorscheme vague")
-
-require "mini.pick".setup({ a = true })
+require "mini.pick".setup({
+    a = true,
+    options = { use_cache = true },
+    window = {
+        prompt_caret = "|",
+        prompt_prefix = "> "
+    }
+})
 
 require("lsp")
 

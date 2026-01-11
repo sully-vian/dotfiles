@@ -42,6 +42,7 @@ exec_always --no-startup-id picom
 # make windows float
 for_window [class="floating"] floating enable
 for_window [title="mpv webcam"] floating enable
+for_window [title="mpv webcam"] sticky enable
 
 # remove window borders
 for_window [class="^.*$"] border none
@@ -181,6 +182,9 @@ bindsym $mod+e layout toggle split
 
 # toggle tiling / floating
 bindsym $mod+Shift+g floating toggle
+
+# toggle sticky
+bindsym $mod+Shift+s sticky toggle
 
 # change focus between tiling / floating windows
 bindsym $mod+g focus mode_toggle

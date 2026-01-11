@@ -15,7 +15,7 @@ This repository contains configuration files (dotfiles) for various tools and ap
         - [ ] dictionnary (api call for instance)
     - [ ] Stream
         - [ ] commands/shortcuts to record screen
-        - [ ] webcam: not hide cursor when on window
+        - [x] webcam: not hide cursor when on window
 - [ ] Use [dipc](https://github.com/doprz/dipc) for wallpaper conversion
 - [x] Completion for cht
 - [ ] Neovim

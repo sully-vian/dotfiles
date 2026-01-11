@@ -123,5 +123,11 @@ if command -v trans > /dev/null 2>&1; then
 	alias trans="trans -brief"
 fi
 
+if command -v mpv > /dev/null 2>&1; then
+    # remove annoting color borders
+    alias mpv="mpv --no-border"
+    alias mpv-webcam="~/.scripts/mpv-webcam.sh"
+fi
+
 # edit dotfiles
 alias edot="cd ~/dotfiles && v . && cd -"

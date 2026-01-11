@@ -123,5 +123,5 @@ if command -v trans > /dev/null 2>&1; then
 	alias trans="trans -brief"
 fi
 
-alias editrc="vim $BASHRC"
-alias edittmux="vim $TMUX_CONF"
+# edit dotfiles
+alias edot="cd ~/dotfiles && v . && cd -"

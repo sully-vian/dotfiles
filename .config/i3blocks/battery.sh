@@ -17,7 +17,7 @@ fi
 
 ID=9999
 if [ "$battery_percentage" -lt 10 ]; then
-    dunstify -r $ID "Low battery" --urgency=critical
+    dunstify -r $ID "Low battery: $battery_percentage%" --urgency=critical
 fi
 
 # icons array for batteray level

@@ -7,8 +7,10 @@ background = '{background}'
 foreground = '{foreground}'
 
 [colors.cursor]
-text = '{cursor}'
-cursor = '{cursor}'
+text ="CellBackground"
+cursor = "CellForeground"
+#text = '{cursor}'
+#cursor = '{cursor}'
 
 [colors.normal]
 black = '{color0}'

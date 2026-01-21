@@ -6,17 +6,12 @@ live_config_reload = true
 dimensions = { columns = 80, lines = 24 }
 padding = { x = 5, y = 5 }
 
-[cursor.style]
-shape = "Block"
-blinking = "Always"
+[cursor]
+style = { shape="Block",blinking="On" }
+blink_interval = 500
 
 [font]
 size = 7.0
+bold = { family = "FiraCode Nerd Font Mono", style = "Bold" }
+normal = { family = "FiraCode Nerd Font Mono", style = "Regular" }
 
-[font.bold]
-family = "FiraCode Nerd Font Mono"
-style = "Bold"
-
-[font.normal]
-family = "FiraCode Nerd Font Mono"
-style = "Regular"

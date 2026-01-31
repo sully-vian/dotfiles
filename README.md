@@ -4,6 +4,7 @@ This repository contains configuration files (dotfiles) for various tools and ap
 
 ## TODO
 
+- [ ] change script's shebangs to custom exec wrapper that sends notif if error
 - [ ] i3
     - [ ] `notify-send` / `dunst`
         - [ ] replace with dunstify
@@ -50,7 +51,7 @@ To install these dotfiles, install the dependencies, then run
 
 ```sh
 git clone https://github.com/sully-vian/dotfiles.git ~/dotfiles
-~/dotfiles/.scripts/install.sh
+~/dotfiles/.scripts/install/install.sh
 ```
 
 The installation uses `stow` to symlink the dotfiles to thre repo's files

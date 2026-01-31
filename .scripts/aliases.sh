@@ -9,125 +9,103 @@
 # Add your custom aliases and functions below
 # ==============================================================================
 
-# enable color support of ls/diff/dir/vdir and also add handy aliases
+RED='\033[0;31m'
+GREEN='\033[0;32m'
+YELLOW='\033[0;33m'
+BLUE='\033[0;34m'
+NC='\033[0m' # No Color
+
+if command -v notify-send >/dev/null 2>&1; then
+    _warn() { notify-send -u critical "Shell Error" "$1"; echo -e "${RED}Error: $1${NC}" >&2; }
+else
+    _warn() { echo -e "${RED}Error: $1${NC}" >&2; }
+fi
+
+require() {
+    for cmd in "$@"; do
+        if ! command -v "$cmd" > /dev/null 2>&1; then
+            _warn "Required command '$cmd' is missing."
+        fi
+    done
+}
+
+# Core utiliies
+require ls grep du find xdg-open curl
+
+# --- Color Support ---
 if [ -x /usr/bin/dircolors ]; then
   test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
   alias ls='ls --color=auto'
   alias diff='diff --color=always'
   alias dir='dir --color=auto'
   alias vdir='vdir --color=auto'
-
   alias grep='grep --color=auto'   # doesn't support regex
   alias fgrep='fgrep --color=auto' # supports extended regex
   alias egrep='egrep --color=auto' # doesn't support regex
-
   alias less='less -R'
 fi
 
-# some cd aliases
+# --- Navigation & Listing ---
 alias ..="cd .."
 alias ...="cd ../.."
-
-# some more ls aliases
 alias ll='ls -AlF'
 alias la='ls -A'
-# alias l='ls -CF' # does not work with lsd
-if command -v lsd >/dev/null 2>&1; then
-  # only use lsd alias if it is installed
-  alias ls='lsd --group-directories-first'
-fi
 
-if command -v batcat >/dev/null 2>&1; then
-  # only use bat alias if batcat is installed
-  alias bat='batcat'
-fi
-
-if command -v onefetch >/dev/null 2>&1; then
-  # only use onefetch alias if onefatch is installed
-  alias onefetch='onefetch --nerd-fonts'
-fi
-
-# show specs
+# -- Modern replacements ---
+require lsd bat onefetch inxi fd
+alias ls='lsd --group-directories-first'
+alias onefetch='onefetch --nerd-fonts'
 alias specs="inxi -Faz"
+alias fd="fd --hidden" # include hidden files and directories
+
+# --- Programming ---
+require gnatmake javac java clang clang++
+alias adc="gnatmake -f -gnatwa -gnata -g"
+function adc-e() { adc "$1" && ./"${1%.*}"; } # compile and execute ada program
+
+alias javaclean="find . -name \"*.class\" | xargs rm -f" # remove all .class files
+alias javacall="javac *.java"                        # compile all .java files
+function javac-e() { javac "$1" && java "${1%.*}"; } # compile and execute java program
+function javatest-c() { javac "$1" && java org.junit.runner.JUnitCore "${1%.*}"; } # compile and run JUnit test
+
+alias clang="clang -fcolor-diagnostics"
+alias clang++="clang++ -fcolor-diagnostics"
+
+# --- Editors & Git ---
+require nvim lazygit
+alias nv="nvim"
+alias vim="nvim"
+function v() {
+    if [ $# -eq 0 ]; then nvim .; else nvim "$@"; fi
+}
+alias lg="lazygit"
+alias edot="cd ~/dotfiles && v . && cd -"
+
+# --- Utilities ---
+require trans mpv
+alias c="clear"
+alias shut="shutdown now"
+alias chut="shut"
+alias open="xdg-open"
+alias trans="trans -brief"
+alias mpv="mpv --no-border"
+alias mpv-webcam="~/.scripts/mpv-webcam.sh"
+function cht() { curl -s cheat.sh/$1 | less; }
 
 # show sorted disk usage
 function usage() {
 	du -sh "$@" | sort -hr
 }
 
-if command -v gnatmake > /dev/null 2>&1; then
-  # ada compilation alias only if installed
-  alias adc="gnatmake -f -gnatwa -gnata -g"
-  function adc-e() {
-    # compile and execute ada program
-    adc "$1" && ./"${1%.*}"
-  }
-fi
-
-# java compilation aliases
-alias javaclean="find . -name \"*.class\" | xargs rm -f" # remove all .class files
-alias javacall="javac *.java"                        # compile all .java files
-function javac-e() {
-  # compile and execute java program
-  javac "$1" && java "${1%.*}"
-}
-function javatest-c() {
-  # compile and run JUnit test
-  javac "$1" && java org.junit.runner.JUnitCore "${1%.*}"
-}
-
-# clang colors
-alias clang="clang -fcolor-diagnostics"
-alias clang++="clang++ -fcolor-diagnostics"
-
-if command -v fd > /dev/null 2>&1; then
-  alias fd="fd --hidden" # include hidden files and directories
-fi
-
-# neo-vim alias
-if command -v nvim > /dev/null 2>&1; then
-  alias nv="nvim"
-  alias vim="nvim"
-  function v() {
-      if [ $# -eq 0 ]; then
-          nvim .
-      else
-          nvim "$@"
-      fi
-  }
-fi
-
-if command -v lazygit > /dev/null 2>&1; then
-	alias lg="lazygit"
-fi
-
+# --- Pywal Integration ---
 if [ -f "$HOME/.cache/wal/colors.sh" ]; then
     source "$HOME/.cache/wal/colors.sh"
     alias dmenu="dmenu -nf \"$color15\" -nb \"$color0\" -sf \"$color15\" -sb \"$color1\""
 fi
 
-# opening urls, files
-alias open="xdg-open"
+# --- Alert Alias (long commands) ---
+# sleep 10; alert
+alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
 
-# utility aliases
-alias c="clear"
-alias shut="shutdown now"
-alias chut="shut"
 
-function cheat() {
-  curl -s cheat.sh/$1 | less
-}
-alias cht=cheat
 
-if command -v trans > /dev/null 2>&1; then
-	alias trans="trans -brief"
-fi
-
-if command -v mpv > /dev/null 2>&1; then
-    # remove annoting color borders
-    alias mpv="mpv --no-border"
-    alias mpv-webcam="~/.scripts/mpv-webcam.sh"
-fi
-
-# edit dotfiles
-alias edot="cd ~/dotfiles && v . && cd -"

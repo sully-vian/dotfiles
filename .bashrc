@@ -141,10 +141,6 @@ source ~/.scripts/opam-init.sh
 # setup gcloud
 source ~/.scripts/gcloud-setup.sh
 
-if command -v zoxide >/dev/null 2>&1; then
-    eval "$(zoxide init --cmd cd bash)"
-fi
-
 # enable programmable completion features
 source ~/.bash-completion
 

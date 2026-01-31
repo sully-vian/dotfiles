@@ -6,13 +6,14 @@
 
 hostname=$(hostname)
 
-if [[ "$hostname" == "archaic" ]]; then
-    right_monitor="eDP1"
-    left_monitor="HDMI1"
-elif [[ "$hostname" == "remy" ]]; then
-    right_monitor="VGA1"
-    left_monitor="DP1"
-fi
+case "$hostname" in
+    archaic|monarch)
+        right_monitor="eDP1"
+        left_monitor="HDMI1";;
+    remy)
+        right_monitor="VGA1"
+        left_monitor="DP1";;
+esac
 
 if xrandr | grep "$left_monitor connected"; then
     # external monitor is connected

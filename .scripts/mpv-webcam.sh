@@ -14,4 +14,4 @@ args=(
     --title="$TITLE"
 )
 
-mpv  "${args[@]}"
+mpv  "${args[@]}" 2>&1 &

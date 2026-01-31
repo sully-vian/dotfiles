@@ -112,9 +112,6 @@ if [ -f "$HOME/.env" ]; then
 	export $(grep -v '^#' "$HOME/.env" | xargs)
 fi
 
-#set config file for rg
-export RIPGREP_CONFIG_PATH="$HOME/.config/ripgreprc"
-
 # get pywal shell vars
 [ -f "$HOME/.cache/wal/colors.sh" ] && source ~/.cache/wal/colors.sh
 

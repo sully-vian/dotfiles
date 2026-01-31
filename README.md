@@ -22,6 +22,7 @@ This repository contains configuration files (dotfiles) for various tools and ap
     - [x] include hidden files in mini.pick
     - [ ] display `&filetype` at bottom
     - [ ] use CFR decompiler (move to `~/bin`) to view Java `.class` files
+    - [x] EJS highlighting (see tree-sitter)
 - [ ] tmux
     - [ ] hide/show panel (collapse)
 - [ ] fzf

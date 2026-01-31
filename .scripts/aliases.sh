@@ -52,12 +52,14 @@ alias ll='ls -AlF'
 alias la='ls -A'
 
 # -- Modern replacements ---
-require lsd bat onefetch inxi fd zoxide
+require lsd bat onefetch inxi fd zoxide rg
 alias ls='lsd --group-directories-first'
 alias onefetch='onefetch --nerd-fonts'
 alias specs="inxi -Faz"
 alias fd="fd --hidden" # include hidden files and directories
 eval "$(zoxide init --cmd cd bash)"
+export RIPGREP_CONFIG_PATH="$HOME/.config/ripgreprc"
+
 
 
 # --- Programming ---

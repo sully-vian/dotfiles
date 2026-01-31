@@ -29,6 +29,9 @@ separator_block_width=15
 separator=true
 markup=pango
 
+[scrolling-message]
+interval=0.5
+
 [active-window-title]
 interval=1
 
@@ -45,9 +48,6 @@ signal=10
 interval=1
 
 [network]
-interval=1
-
-[bandwidth]
 interval=1
 
 [disk]

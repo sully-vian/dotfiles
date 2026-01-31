@@ -52,11 +52,13 @@ alias ll='ls -AlF'
 alias la='ls -A'
 
 # -- Modern replacements ---
-require lsd bat onefetch inxi fd
+require lsd bat onefetch inxi fd zoxide
 alias ls='lsd --group-directories-first'
 alias onefetch='onefetch --nerd-fonts'
 alias specs="inxi -Faz"
 alias fd="fd --hidden" # include hidden files and directories
+eval "$(zoxide init --cmd cd bash)"
+
 
 # --- Programming ---
 require gnatmake javac java clang clang++

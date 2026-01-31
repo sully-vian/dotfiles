@@ -75,7 +75,7 @@ bindsym $mod+w exec --no-startup-id ~/.scripts/rofi/select-wp.sh
 # media menu
 bindsym $mod+m exec --no-startup-id ~/.scripts/rofi/musicmenu.sh
 
-# signal i3blocks for changes
+# signal bar for changes
 set $signal_bar pkill -SIGRTMIN+10 i3blocks
 
 # brightness
@@ -89,7 +89,7 @@ bindsym XF86MonBrightnessDown exec xbacklight -dec 5 && $signal_bar
 # init to 0
 exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ 0%
 
-# start watcher for i3blocks update
+# start watcher for bar update
 exec_always --no-startup-id ~/.config/i3/volume-watcher.sh
 
 # keybinds
@@ -107,7 +107,7 @@ bindsym XF86AudioPrev exec playerctl previous && $signal_bar
 # Caps & Num Lock #
 ###################
 
-# signal i3blocks for capslock & numlock
+# signal bar for capslock & numlock
 bindsym --release Caps_Lock exec --no-startup-id $signal_bar
 bindsym --release Num_Lock exec --no-startup-id $signal_bar
 
@@ -127,6 +127,8 @@ bindsym $mod+Return exec i3-sensible-terminal
 
 # start a floating terminal
 bindsym $mod+Shift+Return exec i3-sensible-terminal --class floating
+
+bindsym $mod+b exec $browser
 
 # screenshot selection
 bindsym Print exec --no-startup-id ~/.scripts/screenshot.sh -s

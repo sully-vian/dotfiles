@@ -4,6 +4,7 @@
 # with xbacklight
 
 brightness=$(xbacklight -get | cut -d '.' -f 1)
+brightness=$(brightnessctl | grep "%" | cut -d'(' -f 2 | cut -d'%' -f 1)
 
 # determine icon based on brightness with 3 levels
 if [ "$brightness" -ge 75 ]; then

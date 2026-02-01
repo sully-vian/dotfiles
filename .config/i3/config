@@ -79,8 +79,8 @@ bindsym $mod+m exec --no-startup-id ~/.scripts/rofi/musicmenu.sh
 set $signal_bar pkill -SIGRTMIN+10 i3blocks
 
 # brightness
-bindsym XF86MonBrightnessUp exec xbacklight -inc 5 && $signal_bar
-bindsym XF86MonBrightnessDown exec xbacklight -dec 5 && $signal_bar
+bindsym XF86MonBrightnessUp exec brightnessctl set +5% && $signal_bar
+bindsym XF86MonBrightnessDown exec brightnessctl set 5%- && $signal_bar
 
 ##########
 # Volume #

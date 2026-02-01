@@ -1,3 +1,5 @@
+# requires the bash-completion package
+
 source ~/.bash-completion.d/tmux-completion.sh
 source ~/.bash-completion.d/mvn-completion.sh
 source ~/.bash-completion.d/alr-completion.sh

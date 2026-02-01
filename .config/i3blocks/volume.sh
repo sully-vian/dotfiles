@@ -6,12 +6,13 @@
 # scrolling up increases volume by 1%
 # scrolling down decreases volume by 1%
 
-vol=$(pactl get-sink-volume @DEFAULT_SINK@ | awk '{print $5}' | tr -d '%')
+base=$(wpctl get-volume @DEFAULT_SINK@)
+vol=$(echo "$(echo "$base" | awk '{print $2}') * 100" | bc | cut -d'.' -f1)
 
-mute=$(pactl get-sink-mute @DEFAULT_SINK@ | awk '{print $2}')
+mute=$(echo "$base" | awk '{print $3}')
 
 # set the icon to the corresponding level (high, medium, low)
-if [ "$mute" = "yes" ]; then
+if [ "$mute" = "[MUTED]" ]; then
     icon="󰝟"
 elif [ "$vol" -ge 50 ]; then
     icon="󰕾"
@@ -24,8 +25,16 @@ fi
 echo "$icon $vol%"
 
 case "$BLOCK_BUTTON" in
-    1) pactl set-sink-mute @DEFAULT_SINK@ toggle ;; # left click
+    1) wpctl set-mute @DEFAULT_SINK@ toggle ;; # left click
     3) ~/.scripts/rofi/audio-output.sh ;; # right click
-    4) pactl set-sink-volume @DEFAULT_SINK@ +1% ;; # scroll up
-    5) pactl set-sink-volume @DEFAULT_SINK@ -1% ;; # scroll down
+    4) wpctl set-volume @DEFAULT_SINK@ 1%+ ;; # scroll up
+    5) wpctl set-volume @DEFAULT_SINK@ 1%- ;; # scroll down
 esac
+
+current_volume=$(echo "$(wpctl get-volume @DEFAULT_SINK@ | awk '{print $2}') * 100" | bc | cut -d'.' -f 1)
+
+if [ "$current_volume" -gt 100 ]; then
+    wpctl set-volume @DEFAULT_SINK@ 100%;
+elif [ "$current_volume" -lt 0 ]; then
+    wpctl set-volume @DEFAULT_SINK@ 0%;
+fi

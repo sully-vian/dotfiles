@@ -87,16 +87,19 @@ bindsym XF86MonBrightnessDown exec brightnessctl set 5%- && $signal_bar
 ##########
 
 # init to 0
-exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ 0%
+exec --no-startup-id wpctl set-volume @DEFAULT_SINK@ 0%
 
 # start watcher for bar update
 exec_always --no-startup-id ~/.config/i3/volume-watcher.sh
 
 # keybinds
-bindsym XF86AudioRaiseVolume exec --no-startup-id ~/.config/i3/bound-volume.sh
-bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -1%
-bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle
-bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle
+bindsym XF86AudioRaiseVolume exec --no-startup-id wpctl set-volume @DEFAULT_SINK@ 1%+
+bindsym XF86AudioLowerVolume exec --no-startup-id wpctl set-volume @DEFAULT_SINK@ 1%-
+bindsym Shift+XF86AudioRaiseVolume exec --no-startup-id wpctl set-volume @DEFAULT_SINK@ 10%+
+bindsym Shift+XF86AudioLowerVolume exec --no-startup-id wpctl set-volume @DEFAULT_SINK@ 10%-
+
+bindsym XF86AudioMute exec --no-startup-id wpctl set-mute @DEFAULT_SINK@ toggle
+bindsym XF86AudioMicMute exec --no-startup-id wpctl set-mute @DEFAULT_SOURCE@ toggle
 
 # pause/play & next/prev
 bindsym XF86AudioPlay exec playerctl play-pause && $signal_bar

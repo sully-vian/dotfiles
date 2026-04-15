@@ -124,6 +124,16 @@ vim.keymap.set('n', "<leader>P", "<Cmd>:Pick grep_live<CR>", { desc = "Pick stri
 vim.keymap.set('n', "<leader>h", "<Cmd>:Pick help<CR>", { desc = "Help" })
 vim.keymap.set('n', "<leader>o", "<Cmd>:Oil<CR>", { desc = "Open parent dir" })
 
+-- VSCode
+if vim.g.vscode then
+    local vscode = function(cmd)
+        return function() require("vscode").call(cmd) end
+    end
+    vim.keymap.set('n', "<leader>p", vscode("workbench.action.quickOpen"), { desc = "Pick file" })
+    vim.keymap.set('n', "<leader>P", vscode("workbench.action.findInFiles"), { desc = "Pick string" })
+    vim.keymap.set('n', "<leader>h", vscode("workbench.action.showCommands"), { desc = "Help" })
+end
+
 -- autocomplete
 vim.api.nvim_create_autocmd("LspAttach", {
     callback = function(ev)
@@ -163,7 +173,9 @@ require("mini.pick").setup({
     }
 })
 
-require("lsp")
+if not vim.g.vscode then
+    require("lsp")
+end
 
 require("live-command").setup({ commands = { Norm = { cmd = "norm" } } })
 vim.cmd("cnoreabbrev norm Norm")

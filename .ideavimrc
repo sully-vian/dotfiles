@@ -1,0 +1,36 @@
+" --- Settings ---
+set ignorecase
+set smartcase
+set number
+set relativenumber
+set scrolloff=5
+set incsearch
+set showmode
+set clipboard+=unnamed
+
+" --- Leader Definition ---
+let mapleader = " "
+map <SPACE> <nop>
+
+" --- Mappings ---
+" Save & Close
+nnoremap <leader>w :action SaveAll<CR>
+nnoremap <leader>q :action CloseContent<CR>
+nnoremap <Esc> :noh<CR>
+
+" Code Actions
+nnoremap <leader>c :action ShowIntentionActions<CR>
+nnoremap <leader>d :action GotoDeclaration<CR>
+nnoremap <leader>r :action RenameElement<CR>
+nnoremap <leader>f :action ReformatCode<CR>
+nnoremap <C-w>d :action ShowErrorDescription<CR>
+
+" Nav & Tools
+nnoremap <leader>t :action ActivateTerminalToolWindow<CR>
+nnoremap <leader>o :action SelectInProjectView<CR>
+nnoremap <leader>p :action GotoFile<CR>
+nnoremap <leader>P :action FindInPath<CR>
+nnoremap <leader>l :action CheckinProject<CR>
+
+" Config Reload
+nnoremap <leader>s :source ~/.ideavimrc<CR>

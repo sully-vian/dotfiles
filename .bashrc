@@ -118,9 +118,9 @@ if [ -f "$HOME/.env" ]; then
 fi
 
 # get pywal shell vars
-[ -f "$HOME/.cache/wal/colors.sh" ] && source ~/.cache/wal/colors.sh
+[ -f "$HOME/.cache/wal/colors.sh" ] && source "$HOME/.cache/wal/colors.sh"
 
-source ~/.scripts/prompt.sh
+source "$HOME/.scripts/prompt.sh"
 PROMPT_COMMAND='set_prompt $?' # single quotes for $? to be evaluated after last command
 
 export PATH="$HOME/.local/bin/:$PATH"
@@ -142,13 +142,13 @@ export PATH="/usr/local/texlive/2024/bin/x86_64-linux:$PATH"
 export INFOPATH="/usr/local/texlive/2024/texmf-dist/doc/info:$INFOPATH"
 
 # opam init
-source ~/.scripts/opam-init.sh
+source "$HOME/.scripts/opam-init.sh"
 
 # setup gcloud
-source ~/.scripts/gcloud-setup.sh
+source "$HOME/.scripts/gcloud-setup.sh"
 
 # enable programmable completion features
-source ~/.bash-completion
+source "$HOME/.bash-completion.sh"
 
 # load local .bashrc
 [ -f "$HOME/.bashrc.local" ] && source "$HOME/.bashrc.local"

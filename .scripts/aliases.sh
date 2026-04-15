@@ -34,7 +34,7 @@ require ls grep du find xdg-open curl
 
 # --- Color Support ---
 if [ -x /usr/bin/dircolors ]; then
-  test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
+  test -r "$HOME/.dircolors" && eval "$(dircolors -b "$HOME/.dircolors")" || eval "$(dircolors -b)"
   alias ls='ls --color=auto'
   alias diff='diff --color=always'
   alias dir='dir --color=auto'
@@ -83,7 +83,7 @@ function v() {
     if [ $# -eq 0 ]; then nvim .; else nvim "$@"; fi
 }
 alias lg="lazygit"
-alias edot="cd ~/dotfiles && v . && cd -"
+alias edot="cd $HOME/dotfiles && v . && cd -"
 
 # --- Utilities ---
 require trans mpv
@@ -93,7 +93,7 @@ alias chut="shut"
 alias open="xdg-open"
 alias trans="trans -brief"
 alias mpv="mpv --no-border"
-alias mpv-webcam="~/.scripts/mpv-webcam.sh"
+alias mpv-webcam="$HOME/.scripts/mpv-webcam.sh"
 function cht() { curl -s cheat.sh/$1 | less; }
 
 # show sorted disk usage

@@ -31,7 +31,7 @@ echo "win_id: [$win_id]"
 
 if [ -n "$win_id" ]; then
     # Get workspace of the window
-    ws=$(i3-msg -t get_tree | ~/.config/i3/find-workspace.py "$win_id")
+    ws=$(i3-msg -t get_tree | "$HOME/.config/i3/find-workspace.py" "$win_id")
     if [ "$ws" != "-1" ]; then
         i3-msg workspace "$ws"
         xdotool windowactivate "$win_id"

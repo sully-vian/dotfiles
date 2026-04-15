@@ -4,7 +4,7 @@
 # and a clock. It uses the pywal colorscheme.
 
 # get the colorscheme
-source ~/.cache/wal/colors.sh
+source "$HOME/.cache/wal/colors.sh"
 
 # st color variables
 black=$color0

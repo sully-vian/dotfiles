@@ -1,3 +1,7 @@
+" To symlink Windows' ~/.ideavimrc to this one, run the following PowerShell
+" command:
+" New-Item -ItemType SymbolicLink -Path "$HOME\.ideavimrc" -Target "\\wsl$\archlinux\home\vianney-hervy\dotfiles\.ideavimrc"
+
 " --- Settings ---
 set ignorecase
 set smartcase

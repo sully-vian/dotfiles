@@ -156,7 +156,7 @@ vim.pack.add({
 
 require("mini.pick").setup({
     a = true,
-    options = { use_cache = true },
+    options = { use_cache = false },
     window = {
         prompt_caret = "|",
         prompt_prefix = "> "

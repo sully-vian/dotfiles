@@ -100,12 +100,16 @@ JAVA_HOME="/usr/lib/jvm/default"
 export PATH="$JAVA_HOME/bin:$PATH"
 
 # PHP with Composer
-[ -d "$HOME/.config/composer/vendor/bin" ] && export PATH="$PATH:$HOME/.config/composer/vendor/bin"
+[ -d "$HOME/.config/composer/vendor/bin" ] && export PATH="$HOME/.config/composer/vendor/bin:$PATH"
+
+# PHP Symfony
+[ -d "$HOME/.config/symfony-cli/bin" ] && export PATH="$HOME/.config/symfony-cli/bin:$PATH"
+
 
 # start python virtual venv
 [ -f "$HOME/py3/bin/activate" ] && source "$HOME/py3/bin/activate"
 
-[ -d "$HOME/.alire/bin/" ] && export PATH="$PATH:$HOME/.alire/bin/"
+[ -d "$HOME/.alire/bin/" ] && export PATH="$HOME/.alire/bin/:$PATH"
 
 # load env variables from .env
 if [ -f "$HOME/.env" ]; then

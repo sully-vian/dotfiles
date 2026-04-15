@@ -3,7 +3,7 @@
 TITLE="mpv webcam" # for floating and sticky window with i3
 
 args=(
-    av://v4l2:/dev/video2
+    av://v4l2:/dev/video0
     --profile=low-latency
     --untimed # disable clock
     --vf=hflip # mirror video

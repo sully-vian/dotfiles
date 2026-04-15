@@ -16,7 +16,7 @@ BLUE='\033[0;34m'
 NC='\033[0m' # No Color
 
 if command -v notify-send >/dev/null 2>&1; then
-    _warn() { notify-send -u critical "Shell Error" "$1"; echo -e "${RED}Error: $1${NC}" >&2; }
+    _warn() { notify-send -u critical -t 10000 "Shell Error" "$1"; echo -e "${RED}Error: $1${NC}" >&2; }
 else
     _warn() { echo -e "${RED}Error: $1${NC}" >&2; }
 fi

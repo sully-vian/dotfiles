@@ -150,6 +150,9 @@ source ~/.scripts/gcloud-setup.sh
 # enable programmable completion features
 source ~/.bash-completion
 
+# load local .bashrc
+[ -f "$HOME/.bashrc.local" ] && source "$HOME/.bashrc.local"
+
 # remove duplicates in PATH variable
 export PATH="$(perl -e 'print join(":", grep { not $seen{$_}++ } split(/:/, $ENV{PATH}))')"
 # remove duplicates in MANPATH variable

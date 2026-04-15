@@ -12,7 +12,5 @@ blink_interval = 500
 
 [font]
 size = 7.0
-#normal = {family = "monospace"}
-#bold = { family = "FiraCode Nerd Font", style = "Bold" }
 normal = { family = "FiraCode Nerd Font", style = "Regular" }
 

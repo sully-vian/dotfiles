@@ -1,4 +1,4 @@
-vim.lsp.config("lua", {
+vim.lsp.config("lua-language-server", {
     cmd = { "lua-language-server" },
     filetypes = { "lua" },
     root_markers = { ".git" },
@@ -10,4 +10,4 @@ vim.lsp.config("lua", {
     }
 })
 
-vim.lsp.enable("lua")
+vim.lsp.enable("lua-language-server")

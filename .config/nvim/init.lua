@@ -1,6 +1,7 @@
 -- vim.opt.wrap = false       -- force """clean""" code
 vim.opt.signcolumn = "yes" -- even when no sign to show
 vim.opt.cursorcolumn = false
+vim.opt.cursorline = true
 vim.opt.smartcase = true
 vim.opt.ignorecase = true
 vim.opt.number = true
@@ -102,11 +103,13 @@ vim.keymap.set('n', "<leader>s", vim.cmd.source, { desc = "Source file" })
 vim.keymap.set('n', "<Esc>", vim.cmd.noh, { desc = "Stop highlighting search results" })
 vim.keymap.set('n', "<leader>t", terminal, { desc = "Open terminal" })
 vim.keymap.set('t', "<Esc><Esc>", [[<C-\><C-n>]], { desc = "Exit terminal mode" })
+vim.keymap.set({ 'n', 'v' }, "<leader>n", ":Norm ", { desc = "Norm" })
 
 -- LSP
 vim.keymap.set('n', "<leader>r", vim.lsp.buf.rename, { desc = "Rename" })
 vim.keymap.set('n', "<leader>k", vim.lsp.buf.hover, { desc = "Hover" })
 vim.keymap.set('n', "<leader>d", vim.lsp.buf.definition, { desc = "Go to definition" })
+vim.keymap.set('n', "<leader>D", vim.lsp.buf.type_definition, { desc = "Go to type definition" })
 vim.keymap.set('n', "<leader>R", vim.lsp.buf.references, { desc = "References" })
 vim.keymap.set('n', "<leader>c", vim.lsp.buf.code_action, { desc = "Code actions" })
 
@@ -115,6 +118,7 @@ vim.keymap.set('n', "<leader>e", exec_file, { desc = "Execute file" })
 vim.keymap.set('n', "<leader>l", lazygit, { desc = "Open LazyGit" })
 
 -- Plugins
+vim.keymap.set('n', "<leader>i", "<Cmd>:Inspect<CR>", { desc = "Inspect with treesitter" })
 vim.keymap.set('n', "<leader>p", "<Cmd>:Pick files<CR>", { desc = "Pick file" })
 vim.keymap.set('n', "<leader>P", "<Cmd>:Pick grep_live<CR>", { desc = "Pick string" })
 vim.keymap.set('n', "<leader>h", "<Cmd>:Pick help<CR>", { desc = "Help" })
@@ -183,6 +187,14 @@ end
 ------------------
 -- Highlighting --
 ------------------
+
+require("nvim-treesitter").setup()
+vim.api.nvim_create_autocmd('FileType', {
+    -- trigger treesitter for all languages
+    callback = function()
+        pcall(vim.treesitter.start)
+    end,
+})
 
 -- colorschemes
 vim.pack.add({

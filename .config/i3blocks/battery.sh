@@ -16,8 +16,9 @@ else
 fi
 
 ID=9999
+TIMEOUT=10000 # ms
 if [ "$battery_percentage" -lt 10 ]; then
-    dunstify -r $ID "Low battery: $battery_percentage%" --urgency=critical
+    dunstify -r $ID "Low battery: $battery_percentage%" -t $TIMEOUT --urgency=critical
 fi
 
 # icons array for batteray level

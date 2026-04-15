@@ -16,5 +16,7 @@ export TERMINAL=alacritty
 # QT
 export QT_QPA_PLATFORMTHEME=qt5ct
 
+systemctl --user import-environment DISPLAY XAUTHORITY
+
 # start i3
 pgrep i3 || exec i3

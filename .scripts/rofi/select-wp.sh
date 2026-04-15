@@ -38,9 +38,9 @@ if [ -n "$SELECTED_FILENAME" ]; then
     wal -i "$SELECTED_WALLPAPER"
 
     # copy the bat theme
-    ~/.scripts/copy-bat-theme.sh
+    "$HOME/.scripts/copy-bat-theme.sh"
 
     # restart dunst to apply colors
-    ~/.scripts/dunst-restart.sh
+    "$HOME/.scripts/dunst-restart.sh"
 
 fi

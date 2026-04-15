@@ -25,7 +25,7 @@ case $selected in
     ;;
 "$lock")
     sleep 0.4;
-    ~/.config/i3/i3lock-color.sh
+    "$HOME/.config/i3/i3lock-color.sh"
     ;;
 "$suspend")
     systemctl suspend

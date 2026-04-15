@@ -154,10 +154,10 @@ bindsym $mod+k focus up
 bindsym $mod+l focus right
 
 # alternatively, you can use the cursor keys:
-bindsym $mod+Left focus left
-bindsym $mod+Down focus down
-bindsym $mod+Up focus up
-bindsym $mod+Right focus right
+# bindsym $mod+Left focus left
+# bindsym $mod+Down focus down
+# bindsym $mod+Up focus up
+# bindsym $mod+Right focus right
 
 # move focused window
 bindsym $mod+Shift+h move left
@@ -166,10 +166,10 @@ bindsym $mod+Shift+k move up
 bindsym $mod+Shift+l move right
 
 # alternatively, you can use the cursor keys:
-bindsym $mod+Shift+Left move left
-bindsym $mod+Shift+Down move down
-bindsym $mod+Shift+Up move up
-bindsym $mod+Shift+Right move right
+# bindsym $mod+Shift+Left move left
+# bindsym $mod+Shift+Down move down
+# bindsym $mod+Shift+Up move up
+# bindsym $mod+Shift+Right move right
 
 # split in vertical orientation
 bindsym $mod+v split v
@@ -246,6 +246,7 @@ bindsym $mod+Shift+c reload; exec --no-startup-id $set_monitor
 bindsym $mod+Shift+r restart; exec --no-startup-id $set_monitor
 
 # resize window (you can also use the mouse for that)
+bindsym $mod+r mode "resize"
 mode "resize" {
     # These bindings trigger as soon as you enter the resize mode
 
@@ -259,10 +260,10 @@ mode "resize" {
     bindsym m resize grow width 10 px or 10 ppt
 
     # same bindings, but for the arrow keys
-    bindsym Left resize shrink width 10 px or 10 ppt
-    bindsym Down resize grow height 10 px or 10 ppt
-    bindsym Up resize shrink height 10 px or 10 ppt
-    bindsym Right resize grow width 10 px or 10 ppt
+    # bindsym Left resize shrink width 10 px or 10 ppt
+    # bindsym Down resize grow height 10 px or 10 ppt
+    # bindsym Up resize shrink height 10 px or 10 ppt
+    # bindsym Right resize grow width 10 px or 10 ppt
 
     # back to normal: Enter or Escape or $mod+r
     bindsym Return mode "default"

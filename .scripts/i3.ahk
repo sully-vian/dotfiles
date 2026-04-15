@@ -1,4 +1,4 @@
-#Require AutoHotkey v2.0
+#Requires AutoHotkey v2.0
 
 ; toggle maximized: Win + f
 #f::{

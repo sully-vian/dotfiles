@@ -18,7 +18,7 @@ map <SPACE> <nop>
 
 " --- Mappings ---
 " Save & Close
-nnoremap <leader>w :action SaveAll<CR>
+nnoremap <leader>w :action SaveDocument<CR>
 nnoremap <leader>q :action CloseContent<CR>
 nnoremap <Esc> :noh<CR>
 

@@ -165,7 +165,7 @@ vim.pack.add({
     { src = "https://github.com/nvim-tree/nvim-web-devicons" }
 })
 
-require("hardtime.nvim").setup({})
+require("hardtime").setup({})
 
 require("mini.pick").setup({
     a = true,

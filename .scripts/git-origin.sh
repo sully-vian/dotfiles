@@ -31,5 +31,5 @@ path_sep="tree" # some providers use other
 
 final_url="$url/$path_sep/$branch/$rel_path"
 
-tmux display-message -d 3000 "Opening $url..."
+tmux display-message -d 3000 "Opening $final_url..."
 xdg-open $final_url > /dev/null 2>&1 &

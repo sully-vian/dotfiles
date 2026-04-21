@@ -161,8 +161,11 @@ vim.pack.add({
     { src = "https://github.com/brianhuster/live-preview.nvim" },
     { src = "https://github.com/towolf/vim-helm" },
     { src = "https://github.com/stevearc/oil.nvim" },
+    { src = "https://github.com/m4xshen/hardtime.nvim" },
     { src = "https://github.com/nvim-tree/nvim-web-devicons" }
 })
+
+require("hardtime.nvim").setup({})
 
 require("mini.pick").setup({
     a = true,

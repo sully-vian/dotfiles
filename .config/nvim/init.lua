@@ -106,8 +106,8 @@ vim.keymap.set('t', "<Esc><Esc>", [[<C-\><C-n>]], { desc = "Exit terminal mode" 
 vim.keymap.set({ 'n', 'v' }, "<leader>n", ":Norm ", { desc = "Norm" })
 
 -- motions
-vim.keymap.set('n', 'J', '10j', { noremap = true })
-vim.keymap.set('n', 'K', '10k', { noremap = true })
+vim.keymap.set({ 'n', 'v' }, 'J', '10j', { noremap = true })
+vim.keymap.set({ 'n', 'v' }, 'K', '10k', { noremap = true })
 
 -- LSP
 vim.keymap.set('n', "<leader>r", vim.lsp.buf.rename, { desc = "Rename" })

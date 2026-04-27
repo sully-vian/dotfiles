@@ -22,12 +22,19 @@ nnoremap <leader>w :action SaveDocument<CR>
 nnoremap <leader>q :action CloseContent<CR>
 nnoremap <Esc> :noh<CR>
 
+" Motions
+nnoremap J 10j
+vnoremap J 10j
+nnoremap K 10k
+vnoremap K 10k
+
 " Code Actions
 nnoremap <leader>c :action ShowIntentionActions<CR>
 nnoremap <leader>d :action GotoDeclaration<CR>
 nnoremap <leader>r :action RenameElement<CR>
 nnoremap <leader>f :action ReformatCode<CR>
 nnoremap <C-w>d :action ShowErrorDescription<CR>
+nnoremap <leader>k :action QuickJavaDoc<CR>
 
 " Nav & Tools
 nnoremap <leader>t :action ActivateTerminalToolWindow<CR>

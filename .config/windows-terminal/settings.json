@@ -1,7 +1,7 @@
 {
     "$help": "https://aka.ms/terminal-documentation",
     "$schema": "https://aka.ms/terminal-profiles-schema",
-    "$comment": "New-Item -ItemType SymbolicLink -Path '$env:LOCALAPPDATA\Packages\Microsoft.WindowsTerminal_8wekyb3d8bbwe\LocalState\settings.json' -Target '\\wsl`$\archlinux\home\vianney-hervy\dotfiles\.config\windows-terminal\settings.json' -Force",
+    "$comment": "New-Item -ItemType SymbolicLink -Path '$env:LOCALAPPDATA/Packages/Microsoft.WindowsTerminal_8wekyb3d8bbwe/LocalState/settings.json' -Target '\\wsl`$/archlinux/home/vianney-hervy/dotfiles/.config/windows-terminal/settings.json' -Force",
     "actions": [],
     "copyFormatting": "none",
     "copyOnSelect": false,

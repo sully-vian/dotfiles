@@ -24,7 +24,7 @@
 #b::Run "chrome.exe"
 
 ; open WSL: Win + Enter
-#Enter::Run "C:\Users\vianney.hervy\AppData\Roaming\Microsoft\Windows\Start Menu\archlinux.lnk"
+#Enter::Run "wt.exe -p Arch"
 
 TraySetIcon "C:\Users\vianney.hervy\AppData\Local\wsl\{aa309ff0-3ea5-448c-a1ba-69919b162e73}\shortcut.ico"
 TrayTip "i3 Shortcuts Loaded", "Arch-WSL script is now active", 4

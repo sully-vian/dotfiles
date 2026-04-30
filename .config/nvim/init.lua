@@ -130,6 +130,7 @@ vim.keymap.set('n', "<leader>o", "<Cmd>:Oil<CR>", { desc = "Open parent dir" })
 
 -- VSCode
 if vim.g.vscode then
+    vim.notify = require("vscode").notify
     local vscode = function(cmd)
         return function() require("vscode").call(cmd) end
     end

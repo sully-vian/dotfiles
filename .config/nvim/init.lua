@@ -135,6 +135,10 @@ if vim.g.vscode then
     local vscode = function(cmd)
         return function() require("vscode").call(cmd) end
     end
+    vim.keymap.set('n', "<leader>d", vscode("editor.action.revealDefinition"), { desc = "Go to definition" })
+    vim.keymap.set('n', "<leader>c", vscode("editor.action.quickFix"), { desc = "Code actions" })
+    vim.keymap.set('n', "<C-W>d", vscode("editor.action.showHover"), { desc = "Show diagnostics under the cursor" })
+
     vim.keymap.set('n', "<leader>p", vscode("workbench.action.quickOpen"), { desc = "Pick file" })
     vim.keymap.set('n', "<leader>P", vscode("workbench.action.findInFiles"), { desc = "Pick string" })
     vim.keymap.set('n', "<leader>h", vscode("workbench.action.showCommands"), { desc = "Help" })

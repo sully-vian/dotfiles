@@ -135,6 +135,7 @@ if vim.g.vscode then
     local vscode = function(cmd)
         return function() require("vscode").call(cmd) end
     end
+    vim.keymap.set('n', "<leader>q", vscode("workbench.action.closeActiveEditor"), { desc = "Quit" })
     vim.keymap.set('n', "<leader>d", vscode("editor.action.revealDefinition"), { desc = "Go to definition" })
     vim.keymap.set('n', "<leader>c", vscode("editor.action.quickFix"), { desc = "Code actions" })
     vim.keymap.set('n', "<C-W>d", vscode("editor.action.showHover"), { desc = "Show diagnostics under the cursor" })

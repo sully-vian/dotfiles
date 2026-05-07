@@ -176,7 +176,15 @@ vim.pack.add({
     { src = "https://github.com/nvim-tree/nvim-web-devicons" }
 })
 
-require("hardtime").setup({})
+require("hardtime").setup({
+    showmode = true,
+    callback = function(text)
+        text = string.gsub(text, "! ", "!\n")
+        local _, win = vim.lsp.util.open_floating_preview({ text }, "plaintext",
+            { close_events = { "CursorMoved", "InsertLeave" } })
+        vim.wo[win].winhighlight = "Normal:ErrorMsg"
+    end
+})
 
 require("mini.pick").setup({
     a = true,

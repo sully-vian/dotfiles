@@ -173,7 +173,8 @@ vim.pack.add({
     { src = "https://github.com/towolf/vim-helm" },
     { src = "https://github.com/stevearc/oil.nvim" },
     { src = "https://github.com/m4xshen/hardtime.nvim" },
-    { src = "https://github.com/nvim-tree/nvim-web-devicons" }
+    { src = "https://github.com/nvim-tree/nvim-web-devicons" },
+    { src = "https://github.com/hiphish/rainbow-delimiters.nvim" },
 })
 
 require("hardtime").setup({

@@ -127,7 +127,7 @@ vim.keymap.set('n', "<leader>i", "<Cmd>:Inspect<CR>", { desc = "Inspect with tre
 vim.keymap.set('n', "<leader>p", "<Cmd>:Pick files<CR>", { desc = "Pick file" })
 vim.keymap.set('n', "<leader>P", "<Cmd>:Pick grep_live<CR>", { desc = "Pick string" })
 vim.keymap.set('n', "<leader>h", "<Cmd>:Pick help<CR>", { desc = "Help" })
-vim.keymap.set('n', "<leader>o", "<Cmd>:Oil<CR>", { desc = "Open parent dir" })
+vim.keymap.set('n', "-", "<Cmd>:Oil<CR>", { desc = "Open parent dir" })
 
 -- VSCode
 if vim.g.vscode then

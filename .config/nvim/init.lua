@@ -178,6 +178,9 @@ vim.pack.add({
 })
 
 require("hardtime").setup({
+    hints = {
+        ["Vy"] = { message = function() return "Use yy or Y instead of Vy" end, length = 2 }
+    },
     showmode = true,
     callback = function(text)
         text = string.gsub(text, "! ", "!\n")

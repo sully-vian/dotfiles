@@ -97,6 +97,15 @@ local function terminal()
     vim.cmd.startinsert()
 end
 
+--- `vim.lsp.buf.code_action` wrapper that filters out disabled actions
+local function code_action()
+    vim.lsp.buf.code_action({
+        filter = function(action)
+            return not action.disabled
+        end
+    })
+end
+
 vim.keymap.set('n', "<leader>q", vim.cmd.quit, { desc = "Quit" })
 vim.keymap.set('n', "<leader>w", vim.cmd.write, { desc = "Save" })
 vim.keymap.set('n', "<leader>f", format, { desc = "Format buffer" })
@@ -116,7 +125,7 @@ vim.keymap.set('n', "<leader>k", vim.lsp.buf.hover, { desc = "Hover" })
 vim.keymap.set('n', "<leader>d", vim.lsp.buf.definition, { desc = "Go to definition" })
 vim.keymap.set('n', "<leader>D", vim.lsp.buf.type_definition, { desc = "Go to type definition" })
 vim.keymap.set('n', "<leader>R", vim.lsp.buf.references, { desc = "References" })
-vim.keymap.set('n', "<leader>c", vim.lsp.buf.code_action, { desc = "Code actions" })
+vim.keymap.set('n', "<leader>c", code_action, { desc = "Code actions" })
 
 -- Misc
 vim.keymap.set('n', "<leader>e", exec_file, { desc = "Execute file" })

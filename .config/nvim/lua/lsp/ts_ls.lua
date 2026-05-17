@@ -20,7 +20,7 @@ end
 -- The LSP often identifies multiple definitions (part of them in .d.ts files.
 -- This local remap only shows the relevant definition
 
-local function gotoRelevanDef()
+local function gotoRelevantDef()
     vim.lsp.buf.definition({
         on_list = function(options)
             -- Filter out definition files if multiple results
@@ -40,7 +40,7 @@ end
 
 vim.api.nvim_create_autocmd("LspAttach", {
     callback = function()
-        vim.keymap.set('n', "<leader>d", gotoRelevanDef, { desc = "Go to relevant definition" })
+        vim.keymap.set('n', "<leader>d", gotoRelevantDef, { desc = "Go to relevant definition" })
     end
 })
 

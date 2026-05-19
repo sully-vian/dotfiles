@@ -20,6 +20,7 @@ This repository contains configuration files (dotfiles) for various tools and ap
 - [ ] Use [dipc](https://github.com/doprz/dipc) for wallpaper conversion
 - [x] Completion for cht
 - [ ] Neovim
+    - [ ] Language injection with tree-sitter
     - [x] include hidden files in mini.pick
     - [ ] display `&filetype` at bottom
     - [ ] use CFR decompiler (move to `~/bin`) to view Java `.class` files

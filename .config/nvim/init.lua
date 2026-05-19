@@ -14,6 +14,8 @@ vim.opt.expandtab = true
 vim.opt.swapfile = false -- disable .swap file creation
 vim.opt.winborder = "rounded"
 vim.opt.timeoutlen = 300 -- ms (default 1000ms)
+vim.opt.splitright = true -- new buffer appears right
+
 local default_statusline =
 "%<%f %h%w%m%r %=%{% &showcmdloc == 'statusline' ? '%-10.S ' : '' %}%{% exists('b:keymap_name') ? '<'..b:keymap_name..'> ' : '' %}%{% &busy > 0 ? '◐ ' : '' %}%{% luaeval('(package.loaded[''vim.diagnostic''] and vim.diagnostic.status() .. '' '') or '''' ') %}%{% &ruler ? ( &rulerformat == '' ? '%-14.(%l,%c%V%) %P' : &rulerformat ) : '' %}"
 -- %<%f %h%w%m%r %=%{&showcmdloc=='statusline'? '%-10.S ' : ''}%{exists('b:keymap_name')? '<'..b:keymap_name..'> ' : ''}%{&busy>0?'◐ ':''}%{luaeval('(package.loaded[''vim.diagnostic''] and vim.diagnostic.status() .. '' '') or '''' ')}%{&ruler? (&rulerformat == '' ? '%-14.(%l,%c%V%) %P' : &rulerformat) : ''}

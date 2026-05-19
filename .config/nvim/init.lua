@@ -135,6 +135,7 @@ vim.keymap.set('n', "<leader>l", lazygit, { desc = "Open LazyGit" })
 
 -- Plugins
 vim.keymap.set('n', "<leader>i", "<Cmd>:Inspect<CR>", { desc = "Inspect with treesitter" })
+vim.keymap.set('n', "<leader>I", "<Cmd>:InspectTree<CR>", { desc = "Inspect with treesitter" })
 vim.keymap.set('n', "<leader>p", "<Cmd>:Pick files<CR>", { desc = "Pick file" })
 vim.keymap.set('n', "<leader>P", "<Cmd>:Pick grep_live<CR>", { desc = "Pick string" })
 vim.keymap.set('n', "<leader>h", "<Cmd>:Pick help<CR>", { desc = "Help" })

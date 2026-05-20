@@ -17,7 +17,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
     callback = function(args)
         local client = vim.lsp.get_client_by_id(args.data.client_id)
         if (client and client.name == "intelephense") then
-            local root_dir = client.config.root_dir
+            local root_dir = client.config.root_dir or vim.fn.getcwd()
             local config_file = root_dir .. "/.intelephense.json"
             if vim.fn.filereadable(config_file) == 0 then
                 return -- no config file

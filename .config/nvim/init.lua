@@ -11,10 +11,12 @@ vim.opt.smartindent = true -- indent as previous line but "smart" when ending a 
 vim.opt.tabstop = 4
 vim.opt.shiftwidth = 4
 vim.opt.expandtab = true
-vim.opt.swapfile = false -- disable .swap file creation
+vim.opt.swapfile = false  -- disable .swap file creation
 vim.opt.winborder = "rounded"
-vim.opt.timeoutlen = 300 -- ms (default 1000ms)
+vim.opt.timeoutlen = 300  -- ms (default 1000ms)
 vim.opt.splitright = true -- new buffer appears right
+vim.opt.splitbelow = true -- new buffer appears under
+require('vim._core.ui2').enable({})
 
 local default_statusline =
 "%<%f %h%w%m%r %=%{% &showcmdloc == 'statusline' ? '%-10.S ' : '' %}%{% exists('b:keymap_name') ? '<'..b:keymap_name..'> ' : '' %}%{% &busy > 0 ? '◐ ' : '' %}%{% luaeval('(package.loaded[''vim.diagnostic''] and vim.diagnostic.status() .. '' '') or '''' ') %}%{% &ruler ? ( &rulerformat == '' ? '%-14.(%l,%c%V%) %P' : &rulerformat ) : '' %}"
@@ -238,12 +240,17 @@ end
 -- Highlighting --
 ------------------
 
-require("nvim-treesitter").setup()
-vim.api.nvim_create_autocmd('FileType', {
-    -- trigger treesitter for all languages
+local nvim_treesitter = require('nvim-treesitter')
+vim.api.nvim_create_autocmd("FileType", {
     callback = function()
+        local file_type = vim.bo.filetype
+        local installed = nvim_treesitter.get_installed()
+        if not vim.tbl_contains(installed, file_type) then
+            vim.notify("parser for " .. file_type .. ' isn\'t installed')
+            return
+        end
         pcall(vim.treesitter.start)
-    end,
+    end
 })
 
 -- colorschemes
@@ -261,4 +268,3 @@ vim.filetype.add({
     extension = { ejs = "ejs", env = "env" }
 });
 
-vim.treesitter.language.register("html", "ejs");

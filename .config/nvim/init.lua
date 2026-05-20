@@ -176,19 +176,20 @@ vim.opt.completeopt:append("noselect")
 -- Plugins --
 -------------
 
+local function gh(addr) return "https://github.com/" .. addr end
 vim.pack.add({
-    { src = "https://github.com/nvim-treesitter/nvim-treesitter", version = "main" },
-    { src = "https://github.com/nvim-mini/mini.pick" },
-    { src = "https://github.com/folke/which-key.nvim" },
-    { src = "https://github.com/wakatime/vim-wakatime" },
-    { src = "https://github.com/chomosuke/typst-preview.nvim" },
-    { src = "https://github.com/smjonas/live-command.nvim" },
-    { src = "https://github.com/brianhuster/live-preview.nvim" },
-    { src = "https://github.com/towolf/vim-helm" },
-    { src = "https://github.com/stevearc/oil.nvim" },
-    { src = "https://github.com/m4xshen/hardtime.nvim" },
-    { src = "https://github.com/nvim-tree/nvim-web-devicons" },
-    { src = "https://github.com/hiphish/rainbow-delimiters.nvim" },
+    { src = gh "/nvim-treesitter/nvim-treesitter", version = "main" },
+    { src = gh "/nvim-mini/mini.pick" },
+    { src = gh "/folke/which-key.nvim" },
+    { src = gh "/wakatime/vim-wakatime" },
+    { src = gh "/chomosuke/typst-preview.nvim" },
+    { src = gh "/smjonas/live-command.nvim" },
+    { src = gh "/brianhuster/live-preview.nvim" },
+    { src = gh "/towolf/vim-helm" },
+    { src = gh "/stevearc/oil.nvim" },
+    { src = gh "/m4xshen/hardtime.nvim" },
+    { src = gh "/nvim-tree/nvim-web-devicons" },
+    { src = gh "/hiphish/rainbow-delimiters.nvim" },
 })
 
 require("hardtime").setup({
@@ -255,16 +256,15 @@ vim.api.nvim_create_autocmd("FileType", {
 
 -- colorschemes
 vim.pack.add({
-    { src = "https://github.com/vague2k/vague.nvim" },
-    { src = "https://github.com/ku1ik/vim-monokai" },
-    { src = "https://github.com/LuRsT/austere.vim" },
-    { src = "https://github.com/blazkowolf/gruber-darker.nvim" },
-    { src = "https://github.com/projekt0n/github-nvim-theme" },
-    { src = "https://github.com/nikvdp/ejs-syntax" }
+    { src = gh "/vague2k/vague.nvim" },
+    { src = gh "/ku1ik/vim-monokai" },
+    { src = gh "/LuRsT/austere.vim" },
+    { src = gh "/blazkowolf/gruber-darker.nvim" },
+    { src = gh "/projekt0n/github-nvim-theme" },
+    { src = gh "/nikvdp/ejs-syntax" }
 })
 vim.cmd("colorscheme vague")
 
 vim.filetype.add({
     extension = { ejs = "ejs", env = "env" }
 });
-

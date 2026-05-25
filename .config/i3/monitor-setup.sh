@@ -4,12 +4,12 @@
 # no monitor connected: laptop screen is primary and workspace 1.
 # monitor connected: monitor is primary and workspace 1.
 
-hostname=$(hostname)
+hostname=$(cat /etc/hostname)
 
 case "$hostname" in
     archaic|monarch)
-        right_monitor="eDP1"
-        left_monitor="HDMI1";;
+        right_monitor="eDP"
+        left_monitor="HDMI-A-0";;
     remy)
         right_monitor="VGA1"
         left_monitor="DP1";;

@@ -110,6 +110,13 @@ local function code_action()
     })
 end
 
+local function hover()
+    return vim.lsp.buf.hover({
+        max_width = math.floor(vim.o.columns * .5),
+        max_height = math.floor(vim.o.lines * .5)
+    })
+end
+
 vim.keymap.set('n', "<leader>q", vim.cmd.quit, { desc = "Quit" })
 vim.keymap.set('n', "<leader>w", vim.cmd.write, { desc = "Save" })
 vim.keymap.set('n', "<leader>f", format, { desc = "Format buffer" })
@@ -125,7 +132,7 @@ vim.keymap.set({ 'n', 'v' }, 'K', '10k', { noremap = true })
 
 -- LSP
 vim.keymap.set('n', "<leader>r", vim.lsp.buf.rename, { desc = "Rename" })
-vim.keymap.set('n', "<leader>k", vim.lsp.buf.hover, { desc = "Hover" })
+vim.keymap.set('n', "<leader>k", hover, { desc = "Hover" })
 vim.keymap.set('n', "<leader>d", vim.lsp.buf.definition, { desc = "Go to definition" })
 vim.keymap.set('n', "<leader>D", vim.lsp.buf.type_definition, { desc = "Go to type definition" })
 vim.keymap.set('n', "<leader>R", vim.lsp.buf.references, { desc = "References" })

@@ -23,6 +23,16 @@ local workspace_dir = os.getenv('XDG_CACHE_HOME') .. '/jdtls/workspace/' .. proj
 local lombok_paths = vim.fn.glob("~/.m2/repository/org/projectlombok/lombok/*/lombok-*[0-9].jar", true, true)
 local lombok_arg = (#lombok_paths > 0) and ("--jvm-arg=-javaagent:" .. lombok_paths[#lombok_paths]) or nil
 
+vim.api.nvim_create_user_command("JDTLSClearCache",
+    function()
+        local res = vim.fn.delete(workspace_dir, "rf")
+        if res == 0 then
+            vim.notify("Successfully removed " .. workspace_dir)
+        else
+            vim.notify("Failed to remove " .. workspace_dir)
+        end
+    end, {});
+
 vim.lsp.config("jdtls", {
     cmd = {
         "jdtls",

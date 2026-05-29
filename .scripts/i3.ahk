@@ -27,6 +27,12 @@
 ; open WSL: Win + Enter
 #Enter::Run "wt.exe -p Arch"
 
+; open Start Menu: Win + Space
+#Space::Send "^{Esc}"
+
+; switch window: Win + Tab
+LWin & Tab::AltTab
+
 TraySetIcon "C:\Users\vianney.hervy\AppData\Local\wsl\{aa309ff0-3ea5-448c-a1ba-69919b162e73}\shortcut.ico"
 TrayTip "i3 Shortcuts Loaded", "i3.ahk script is now active", 4
 TraySetIcon "*"

@@ -16,6 +16,15 @@ vim.opt.winborder = "rounded"
 vim.opt.timeoutlen = 300  -- ms (default 1000ms)
 vim.opt.splitright = true -- new buffer appears right
 vim.opt.splitbelow = true -- new buffer appears under
+vim.opt.list = true
+vim.opt.listchars = {
+    tab = '» ',
+    trail = '·',
+    nbsp = '␣',
+    space = '·',
+    eol = '↲',
+}
+
 require('vim._core.ui2').enable({})
 
 local default_statusline =

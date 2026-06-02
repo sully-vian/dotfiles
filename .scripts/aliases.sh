@@ -42,10 +42,9 @@ if [ -x /usr/bin/dircolors ]; then
   alias grep='grep --color=auto'   # doesn't support regex
   alias fgrep='fgrep --color=auto' # supports extended regex
   alias egrep='egrep --color=auto' # doesn't support regex
-  alias less='less -R'
 fi
 
-export LESS="--ignore-case --incsearch" # enable incremental search by default
+export LESS="--ignore-case --incsearch --RAW-CONTROL-CHARS --quit-if-one-screen" # enable incremental search by default
 export MANPAGER="bat -plman"
 
 # --- Navigation & Listing ---

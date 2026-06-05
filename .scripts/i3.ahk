@@ -1,6 +1,18 @@
 #Requires AutoHotkey v2.0
 #SingleInstance Force
 
+; no dead key
+<^>!é::SendText "~"
+<^>!è::SendText "``"
+
+; CapsLock + accentuated character = capitalized accentuated character
+#HotIf GetKeyState("CapsLock", "T")
+    é::SendText "É"
+    è::SendText "È"
+    à::SendText "À"
+    ç::SendText "Ç"
+#HotIf
+
 ; toggle maximized: Win + f
 #f::{
     static winData := Map() ; store original positions

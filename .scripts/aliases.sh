@@ -50,6 +50,7 @@ export MANPAGER="bat -plman"
 # --- Navigation & Listing ---
 alias ..="cd .."
 alias ...="cd ../.."
+alias -="cd -"
 alias ll='ls -AlF'
 alias la='ls -A'
 

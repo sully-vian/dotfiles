@@ -14,6 +14,7 @@ vim.opt.expandtab = true
 vim.opt.swapfile = false  -- disable .swap file creation
 vim.opt.winborder = "rounded"
 vim.opt.timeoutlen = 300  -- ms (default 1000ms)
+vim.opt.updatetime = 200
 vim.opt.splitright = true -- new buffer appears right
 vim.opt.splitbelow = true -- new buffer appears under
 vim.opt.list = true
@@ -130,7 +131,9 @@ vim.keymap.set('n', "<leader>q", vim.cmd.quit, { desc = "Quit" })
 vim.keymap.set('n', "<leader>w", vim.cmd.write, { desc = "Save" })
 vim.keymap.set('n', "<leader>f", format, { desc = "Format buffer" })
 vim.keymap.set('n', "<leader>s", vim.cmd.source, { desc = "Source file" })
-vim.keymap.set('n', "<Esc>", vim.cmd.noh, { desc = "Stop highlighting search results" })
+vim.keymap.set('n', "<Esc>", function()
+    vim.cmd.noh(); vim.lsp.buf.clear_references()
+end, { desc = "Stop highlighting search results" })
 vim.keymap.set('n', "<leader>t", terminal, { desc = "Open terminal" })
 vim.keymap.set('t', "<Esc><Esc>", [[<C-\><C-n>]], { desc = "Exit terminal mode" })
 vim.keymap.set({ 'n', 'v' }, "<leader>n", ":Norm ", { desc = "Norm" })
@@ -146,6 +149,9 @@ vim.keymap.set('n', "<leader>d", vim.lsp.buf.definition, { desc = "Go to definit
 vim.keymap.set('n', "<leader>D", vim.lsp.buf.type_definition, { desc = "Go to type definition" })
 vim.keymap.set('n', "<leader>R", vim.lsp.buf.references, { desc = "References" })
 vim.keymap.set('n', "<leader>c", code_action, { desc = "Code actions" })
+vim.keymap.set('n', "H", function()
+    vim.lsp.buf.clear_references(); vim.lsp.buf.document_highlight()
+end, { desc = "Highlight references" })
 
 -- Misc
 vim.keymap.set('n', "<leader>e", exec_file, { desc = "Execute file" })
@@ -263,7 +269,7 @@ vim.api.nvim_create_autocmd("FileType", {
         local file_type = vim.bo.filetype
         local installed = nvim_treesitter.get_installed()
         if not vim.tbl_contains(installed, file_type) then
-            vim.notify("parser for " .. file_type .. ' isn\'t installed')
+            --vim.notify("parser for " .. file_type .. ' isn\'t installed')
             return
         end
         pcall(vim.treesitter.start)

@@ -209,7 +209,7 @@ vim.keymap.set('n', "N", function()
         return vim.cmd.normal({ "N", bang = true })
     end
     refs.idx = refs.idx - 1
-    if refs.idx < 1 then refs.idx = #refs.idx end
+    if refs.idx < 1 then refs.idx = #refs.items end
     local ref = refs.items[refs.idx]
     vim.api.nvim_win_set_cursor(0, { ref.lnum, ref.col - 1 })
     highlight_refs()

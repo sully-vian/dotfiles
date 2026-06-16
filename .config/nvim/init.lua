@@ -127,13 +127,98 @@ local function hover()
     })
 end
 
+-- search
+---@type { items: vim.quickfix.entry[], active: boolean, idx: number, word_len:number}
+local refs = { items = {}, active = false, idx = 0, word_len = 0 }
+local ns = vim.api.nvim_create_namespace("LspRefSearch")
+local function highlight_refs()
+    vim.api.nvim_buf_clear_namespace(0, ns, 0, -1)
+    if not refs.active then return end
+    for _, ref in ipairs(refs.items) do
+        local line = ref.lnum - 1
+        local col = ref.col - 1
+        local end_col = ref.end_col and (ref.end_col - 1) or (col + refs.word_len)
+        pcall(vim.api.nvim_buf_add_highlight, 0, ns, "Search", line, col, end_col)
+    end
+end
+
+vim.api.nvim_create_autocmd("CmdlineEnter", {
+    pattern = { "/" },
+    callback = function()
+        refs.active = false -- stop ref highlighting
+        vim.api.nvim_buf_clear_namespace(0, ns, 0, -1)
+    end
+})
+
+vim.keymap.set('n', "<Esc>", function()
+    vim.cmd.noh()
+    vim.api.nvim_buf_clear_namespace(0, ns, 0, -1)
+end, { desc = "Stop highlighting search results" })
+
+vim.keymap.set('n', "?", function()
+    vim.cmd.noh() -- stop search highlighting
+    local current_file = vim.uri_from_fname(vim.fn.expand('%:p'))
+    local cursor = vim.api.nvim_win_get_cursor(0)
+    local cword = vim.fn.expand('<cword>')
+
+    vim.api.nvim_buf_clear_namespace(0, ns, 0, -1)
+    refs.active = false -- prevent race conditions
+
+    vim.lsp.buf.references({ includeDeclaration = true }, {
+        on_list = function(what)
+            -- get only the current file references
+            local items = vim.tbl_filter(function(ref)
+                return vim.uri_from_fname(ref.uri or ref.filename) == current_file
+            end, what.items)
+            if #items == 0 then return end
+
+            -- sort refs by line then column
+            table.sort(items, function(a, b)
+                if a.lnum == b.lnum then return a.col < b.col end
+                return a.lnum < b.lnum
+            end)
+
+            refs.items = items
+            refs.active = true
+            refs.word_len = #cword
+
+            refs.idx = 1
+            for i, ref in ipairs(items) do
+                if ref.lnum > cursor[1] or (ref.lnum == cursor[1] and ref.col >= cursor[2] + 1) then
+                    refs.idx = i; break
+                end
+            end
+            highlight_refs() -- apply highlights
+        end
+    })
+end, { desc = "Navigate references" })
+
+vim.keymap.set('n', "n", function()
+    if not refs.active then
+        return vim.cmd.normal({ "n", bang = true })
+    end
+    refs.idx = refs.idx + 1
+    if refs.idx > #refs.items then refs.idx = 1 end
+    local ref = refs.items[refs.idx]
+    vim.api.nvim_win_set_cursor(0, { ref.lnum, ref.col - 1 })
+    highlight_refs()
+end)
+
+vim.keymap.set('n', "N", function()
+    if not refs.active then
+        return vim.cmd.normal({ "N", bang = true })
+    end
+    refs.idx = refs.idx - 1
+    if refs.idx < 1 then refs.idx = #refs.idx end
+    local ref = refs.items[refs.idx]
+    vim.api.nvim_win_set_cursor(0, { ref.lnum, ref.col - 1 })
+    highlight_refs()
+end)
+
 vim.keymap.set('n', "<leader>q", vim.cmd.quit, { desc = "Quit" })
 vim.keymap.set('n', "<leader>w", vim.cmd.write, { desc = "Save" })
 vim.keymap.set('n', "<leader>f", format, { desc = "Format buffer" })
 vim.keymap.set('n', "<leader>s", vim.cmd.source, { desc = "Source file" })
-vim.keymap.set('n', "<Esc>", function()
-    vim.cmd.noh(); vim.lsp.buf.clear_references()
-end, { desc = "Stop highlighting search results" })
 vim.keymap.set('n', "<leader>t", terminal, { desc = "Open terminal" })
 vim.keymap.set('t', "<Esc><Esc>", [[<C-\><C-n>]], { desc = "Exit terminal mode" })
 vim.keymap.set({ 'n', 'v' }, "<leader>n", ":Norm ", { desc = "Norm" })
@@ -149,10 +234,6 @@ vim.keymap.set('n', "<leader>d", vim.lsp.buf.definition, { desc = "Go to definit
 vim.keymap.set('n', "<leader>D", vim.lsp.buf.type_definition, { desc = "Go to type definition" })
 vim.keymap.set('n', "<leader>R", vim.lsp.buf.references, { desc = "References" })
 vim.keymap.set('n', "<leader>c", code_action, { desc = "Code actions" })
-vim.keymap.set('n', "H", function()
-    vim.lsp.buf.clear_references(); vim.lsp.buf.document_highlight()
-end, { desc = "Highlight references" })
-
 -- Misc
 vim.keymap.set('n', "<leader>e", exec_file, { desc = "Execute file" })
 vim.keymap.set('n', "<leader>l", lazygit, { desc = "Open LazyGit" })

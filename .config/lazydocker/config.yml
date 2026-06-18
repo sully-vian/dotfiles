@@ -3,3 +3,8 @@ gui:
   returnImmediately: true
   border: rounded
   containerStatusHealthStyle: short
+customCommands:
+  containers:
+    - name: exec psql
+      attach: true
+      command: docker exec -it {{ .Container.ID }} sh -c 'psql -U $POSTGRES_USER -d $POSTGRES_DB'

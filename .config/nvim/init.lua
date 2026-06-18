@@ -138,7 +138,7 @@ local function highlight_refs()
         local line = ref.lnum - 1
         local col = ref.col - 1
         local end_col = ref.end_col and (ref.end_col - 1) or (col + refs.word_len)
-        pcall(vim.api.nvim_buf_add_highlight, 0, ns, "Search", line, col, end_col)
+        vim.hl.range(0, ns, "Search", { line, col }, { line, end_col })
     end
 end
 

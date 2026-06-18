@@ -1,14 +1,14 @@
 vim.lsp.config("tailwindcss", {
-	cmd = { "tailwindcss-language-server", "--stdio" },
-	filetypes = { "css", "typescriptreact" },
-	root_markers = { ".git" },
-	settings = {
-		tailwindCSS = {
-			validate = true,
-			lint = {},
-			classAttributes = { "className" }
-		}
-	}
+    cmd = { "tailwindcss-language-server", "--stdio" },
+    filetypes = { "css", "typescriptreact", "twig" },
+    root_markers = { ".git" },
+    settings = {
+        tailwindCSS = {
+            validate = true,
+            lint = {},
+            classAttributes = { "className" ,"class"}
+        }
+    }
 })
 
 vim.lsp.enable("tailwindcss")

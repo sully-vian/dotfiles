@@ -293,6 +293,7 @@ vim.pack.add({
     { src = gh "m4xshen/hardtime.nvim" },
     { src = gh "nvim-tree/nvim-web-devicons" },
     { src = gh "hiphish/rainbow-delimiters.nvim" },
+    { src = gh "andymass/vim-matchup" },
 })
 
 require("hardtime").setup({
@@ -344,10 +345,19 @@ end
 -- Highlighting --
 ------------------
 
+vim.api.nvim_create_autocmd('FileType', {
+    pattern = "twig",
+    callback = function()                    -- turn on matchup motions for html in twig
+        vim.b.did_ftplugin = nil             -- allow other frplugin to run
+        vim.cmd.runtime('ftplugin/html.vim') -- run html ftplugin
+    end
+})
+
 local nvim_treesitter = require('nvim-treesitter')
 vim.api.nvim_create_autocmd("FileType", {
     callback = function()
         local file_type = vim.bo.filetype
+        local lang = vim.treesitter.language.get_lang(file_type) or file_type
         local installed = nvim_treesitter.get_installed()
         if not vim.tbl_contains(installed, lang) then
             --vim.notify("parser for " .. file_type .. ' isn\'t installed')

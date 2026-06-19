@@ -55,7 +55,7 @@ local custom_parts = {
     "%l:%c",
     " %p%%"
 }
-vim.opt.statusline = table.concat(custom_parts);
+vim.opt.statusline = table.concat(custom_parts)
 vim.opt.statusline = default_statusline
 vim.opt.statusline = table.concat(default_parts)
 -- print(table.concat(default_parts))
@@ -281,18 +281,18 @@ vim.opt.completeopt:append("noselect")
 
 local function gh(addr) return "https://github.com/" .. addr end
 vim.pack.add({
-    { src = gh "/nvim-treesitter/nvim-treesitter", version = "main" },
-    { src = gh "/nvim-mini/mini.pick" },
-    { src = gh "/folke/which-key.nvim" },
-    { src = gh "/wakatime/vim-wakatime" },
-    { src = gh "/chomosuke/typst-preview.nvim" },
-    { src = gh "/smjonas/live-command.nvim" },
-    { src = gh "/brianhuster/live-preview.nvim" },
-    { src = gh "/towolf/vim-helm" },
-    { src = gh "/stevearc/oil.nvim" },
-    { src = gh "/m4xshen/hardtime.nvim" },
-    { src = gh "/nvim-tree/nvim-web-devicons" },
-    { src = gh "/hiphish/rainbow-delimiters.nvim" },
+    { src = gh "nvim-treesitter/nvim-treesitter", version = "main" },
+    { src = gh "nvim-mini/mini.pick" },
+    { src = gh "folke/which-key.nvim" },
+    { src = gh "wakatime/vim-wakatime" },
+    { src = gh "chomosuke/typst-preview.nvim" },
+    { src = gh "smjonas/live-command.nvim" },
+    { src = gh "brianhuster/live-preview.nvim" },
+    { src = gh "towolf/vim-helm" },
+    { src = gh "stevearc/oil.nvim" },
+    { src = gh "m4xshen/hardtime.nvim" },
+    { src = gh "nvim-tree/nvim-web-devicons" },
+    { src = gh "hiphish/rainbow-delimiters.nvim" },
 })
 
 require("hardtime").setup({
@@ -349,7 +349,7 @@ vim.api.nvim_create_autocmd("FileType", {
     callback = function()
         local file_type = vim.bo.filetype
         local installed = nvim_treesitter.get_installed()
-        if not vim.tbl_contains(installed, file_type) then
+        if not vim.tbl_contains(installed, lang) then
             --vim.notify("parser for " .. file_type .. ' isn\'t installed')
             return
         end
@@ -357,17 +357,20 @@ vim.api.nvim_create_autocmd("FileType", {
     end
 })
 
+vim.filetype.add({
+    extension = {
+        ejs = "ejs",
+        env = "env",
+    },
+})
+
 -- colorschemes
 vim.pack.add({
-    { src = gh "/vague2k/vague.nvim" },
-    { src = gh "/ku1ik/vim-monokai" },
-    { src = gh "/LuRsT/austere.vim" },
-    { src = gh "/blazkowolf/gruber-darker.nvim" },
-    { src = gh "/projekt0n/github-nvim-theme" },
-    { src = gh "/nikvdp/ejs-syntax" }
+    { src = gh "ague2k/vague.nvim" },
+    { src = gh "ku1ik/vim-monokai" },
+    { src = gh "LuRsT/austere.vim" },
+    { src = gh "blazkowolf/gruber-darker.nvim" },
+    { src = gh "projekt0n/github-nvim-theme" },
+    { src = gh "nikvdp/ejs-syntax" }
 })
 vim.cmd("colorscheme vague")
-
-vim.filetype.add({
-    extension = { ejs = "ejs", env = "env" }
-});

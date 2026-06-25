@@ -376,7 +376,7 @@ vim.filetype.add({
 
 -- colorschemes
 vim.pack.add({
-    { src = gh "ague2k/vague.nvim" },
+    { src = gh "vague-theme/vague.nvim" },
     { src = gh "ku1ik/vim-monokai" },
     { src = gh "LuRsT/austere.vim" },
     { src = gh "blazkowolf/gruber-darker.nvim" },

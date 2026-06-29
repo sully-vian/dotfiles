@@ -122,8 +122,8 @@ end
 
 local function hover()
     return vim.lsp.buf.hover({
-        max_width = math.floor(vim.o.columns * .5),
-        max_height = math.floor(vim.o.lines * .5)
+        --max_width = math.floor(vim.o.columns * .5),
+        --max_height = math.floor(vim.o.lines * .5)
     })
 end
 

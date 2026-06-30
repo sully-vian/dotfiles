@@ -105,10 +105,6 @@ export PATH="$JAVA_HOME/bin:$PATH"
 # PHP Symfony
 [ -d "$HOME/.config/symfony-cli/bin" ] && export PATH="$HOME/.config/symfony-cli/bin:$PATH"
 
-
-# start python virtual venv
-[ -f "$HOME/py3/bin/activate" ] && source "$HOME/py3/bin/activate"
-
 [ -d "$HOME/.alire/bin/" ] && export PATH="$HOME/.alire/bin/:$PATH"
 
 # load env variables from .env

@@ -2,7 +2,15 @@
     "$help": "https://aka.ms/terminal-documentation",
     "$schema": "https://aka.ms/terminal-profiles-schema",
     "$comment": "New-Item -ItemType SymbolicLink -Path '$env:LOCALAPPDATA/Packages/Microsoft.WindowsTerminal_8wekyb3d8bbwe/LocalState/settings.json' -Target '\\wsl`$/archlinux/home/vianney-hervy/dotfiles/.config/windows-terminal/settings.json' -Force",
-    "actions": [],
+    "actions": [
+        {
+            "command": {
+                "action": "sendInput",
+                "input": "\u001b[13;2u"
+            },
+            "id": "User.sendInput.8882FD6D"
+        }
+    ],
     "copyFormatting": "none",
     "copyOnSelect": false,
     "defaultProfile": "{2ebd1220-29f4-5684-96e3-3ab31104618d}",
@@ -10,6 +18,10 @@
         {
             "id": "Terminal.DuplicatePaneAuto",
             "keys": "alt+shift+d"
+        },
+        {
+            "id": "User.sendInput.8882FD6D",
+            "keys": "shift+enter"
         },
         {
             "id": null,
@@ -32,13 +44,13 @@
     ],
     "profiles": {
         "defaults": {
-            "opacity": 90,
             "cursorShape": "filledBox",
             "font": {
                 "face": "FiraCode Nerd Font Mono",
                 "size": 10
             },
-            "padding": "5"
+            "opacity": 90,
+            "padding": "0"
         },
         "list": [
             {

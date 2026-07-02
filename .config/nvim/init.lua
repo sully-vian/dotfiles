@@ -315,6 +315,9 @@ require("mini.pick").setup({
     window = {
         prompt_caret = "|",
         prompt_prefix = "> "
+    },
+    mappings = {
+        choose_in_vsplit = '<S-CR>'
     }
 })
 

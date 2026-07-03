@@ -222,6 +222,7 @@ vim.keymap.set('n', "<leader>s", vim.cmd.source, { desc = "Source file" })
 vim.keymap.set('n', "<leader>t", terminal, { desc = "Open terminal" })
 vim.keymap.set('t', "<Esc><Esc>", [[<C-\><C-n>]], { desc = "Exit terminal mode" })
 vim.keymap.set({ 'n', 'v' }, "<leader>n", ":Norm ", { desc = "Norm" })
+vim.keymap.set('n', "<leader>m", vim.cmd.messages, { desc = "Show messages" })
 
 -- motions
 vim.keymap.set({ 'n', 'v' }, 'J', '10j', { noremap = true })
@@ -239,8 +240,8 @@ vim.keymap.set('n', "<leader>e", exec_file, { desc = "Execute file" })
 vim.keymap.set('n', "<leader>l", lazygit, { desc = "Open LazyGit" })
 
 -- Plugins
-vim.keymap.set('n', "<leader>i", "<Cmd>:Inspect<CR>", { desc = "Inspect with treesitter" })
-vim.keymap.set('n', "<leader>I", "<Cmd>:InspectTree<CR>", { desc = "Inspect with treesitter" })
+vim.keymap.set('n', "<leader>i", vim.show_pos, { desc = "Inspect with treesitter" })
+vim.keymap.set('n', "<leader>I", vim.treesitter.inspect_tree, { desc = "Inspect with treesitter" })
 vim.keymap.set('n', "<leader>p", "<Cmd>:Pick files<CR>", { desc = "Pick file" })
 vim.keymap.set('n', "<leader>P", "<Cmd>:Pick grep_live<CR>", { desc = "Pick string" })
 vim.keymap.set('n', "<leader>h", "<Cmd>:Pick help<CR>", { desc = "Help" })

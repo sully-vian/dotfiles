@@ -275,6 +275,8 @@ vim.api.nvim_create_autocmd("LspAttach", {
     end
 })
 vim.opt.completeopt:append("noselect")
+vim.opt.completeopt:append("fuzzy")
+vim.opt.completeopt:append("popup")
 
 -------------
 -- Plugins --

@@ -282,7 +282,7 @@ vim.opt.completeopt:append("noselect")
 
 local function gh(addr) return "https://github.com/" .. addr end
 vim.pack.add({
-    { src = gh "nvim-treesitter/nvim-treesitter", version = "main" },
+    { src = gh "romus204/tree-sitter-manager.nvim" },
     { src = gh "nvim-mini/mini.pick" },
     { src = gh "folke/which-key.nvim" },
     { src = gh "wakatime/vim-wakatime" },
@@ -357,19 +357,7 @@ vim.api.nvim_create_autocmd('FileType', {
     end
 })
 
-local nvim_treesitter = require('nvim-treesitter')
-vim.api.nvim_create_autocmd("FileType", {
-    callback = function()
-        local file_type = vim.bo.filetype
-        local lang = vim.treesitter.language.get_lang(file_type) or file_type
-        local installed = nvim_treesitter.get_installed()
-        if not vim.tbl_contains(installed, lang) then
-            --vim.notify("parser for " .. file_type .. ' isn\'t installed')
-            return
-        end
-        pcall(vim.treesitter.start)
-    end
-})
+require('tree-sitter-manager').setup()
 
 vim.filetype.add({
     extension = {

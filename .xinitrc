@@ -10,9 +10,6 @@
 # set autorepeat rate
 # xset r rate 200 40
 
-# set terminal variable
-export TERMINAL=alacritty
-
 # QT
 export QT_QPA_PLATFORMTHEME=qt5ct
 

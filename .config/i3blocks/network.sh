@@ -26,5 +26,5 @@ echo "<span foreground='$light_blue'>$icon <b>$name</b></span>"
 
 # Check if button was clicked
 if [[ "${BLOCK_BUTTON}" == "1" ]]; then
-  alacritty --class floating -e nmtui
+  i3-sensible-terminal -c floating -e nmtui
 fi

@@ -35,5 +35,5 @@ echo "<span foreground='$light_blue'>$icon <b>$device</b>$battery</span>"
 
 # Check if left mouse button was clicked
 if [[ "${BLOCK_BUTTON}" == "1" ]]; then
-    alacritty --class floating -e bluetui
+    i3-sensible-terminal -c floating -e bluetui
 fi

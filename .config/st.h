@@ -189,6 +189,14 @@ static MouseShortcut mshortcuts[] = {
 
 static Shortcut shortcuts[] = {
 	/* mask                 keysym          function        argument */
+    /* --------------------------- Custom --------------------------- */
+	{ ControlMask,          XK_equal,        zoom,          {.f = +1} },
+	{ ControlMask,          XK_minus,        zoom,          {.f = -1} },
+	{ ControlMask,          XK_agrave,       zoomreset,     {.f =  0} },
+	{ ControlMask,          XK_KP_Add,       zoom,          {.f = +1} },
+	{ ControlMask,          XK_KP_Subtract,  zoom,          {.f = -1} },
+	{ ControlMask,          XK_KP_0,         zoomreset,     {.f =  0} },
+    /* -------------------------- Defaults -------------------------- */
 	{ XK_ANY_MOD,           XK_Break,       sendbreak,      {.i =  0} },
 	{ ControlMask,          XK_Print,       toggleprinter,  {.i =  0} },
 	{ ShiftMask,            XK_Print,       printscreen,    {.i =  0} },

@@ -1,0 +1,3 @@
+[submodule ".local/src/st"]
+	path = .local/src/st
+	url = https://git.suckless.org/st

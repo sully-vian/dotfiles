@@ -8,11 +8,6 @@ case $- in
 *) return ;;
 esac
 
-# XDG variables
-export XDG_CONFIG_HOME="$HOME/.config"
-export XDG_CACHE_HOME="$HOME/.cache"
-export XDG_DATA_HOME="$HOME/.local/share"
-
 # don't put duplicate lines or lines starting with space in the history.
 # See bash(1) for more options
 HISTCONTROL=ignoreboth
@@ -95,18 +90,6 @@ export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quo
 # QT
 # export QT_QPA_PLATFORMTHEME=qt5ct
 
-# JAVA
-JAVA_HOME="/usr/lib/jvm/default"
-export PATH="$JAVA_HOME/bin:$PATH"
-
-# PHP with Composer
-[ -d "$HOME/.config/composer/vendor/bin" ] && export PATH="$HOME/.config/composer/vendor/bin:$PATH"
-
-# PHP Symfony
-[ -d "$HOME/.config/symfony-cli/bin" ] && export PATH="$HOME/.config/symfony-cli/bin:$PATH"
-
-[ -d "$HOME/.alire/bin/" ] && export PATH="$HOME/.alire/bin/:$PATH"
-
 # load env variables from .env
 if [ -f "$HOME/.env" ]; then
 	# skip comments
@@ -119,23 +102,8 @@ fi
 source "$HOME/.scripts/prompt.sh"
 PROMPT_COMMAND='set_prompt $?' # single quotes for $? to be evaluated after last command
 
-export PATH="$HOME/.local/bin/:$PATH"
-
 # PKG-config
 export PKG_CONFIG_PATH=/usr/local/lib/pkgconfig:/usr/local/share/pkgconfig:$PKG_CONFIG_PATH
-
-# NPM
-export NVM_DIR="$HOME/.config/nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"                   # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion" # This loads nvm bash_completion
-
-# Bun
-export BUN_INSTALL="$HOME/.bun"
-export PATH="$BUN_INSTALL/bin:$PATH"
-
-# texlive path
-export PATH="/usr/local/texlive/2024/bin/x86_64-linux:$PATH"
-export INFOPATH="/usr/local/texlive/2024/texmf-dist/doc/info:$INFOPATH"
 
 # opam init
 source "$HOME/.scripts/opam-init.sh"
@@ -146,11 +114,9 @@ source "$HOME/.scripts/gcloud-setup.sh"
 # enable programmable completion features
 source "$HOME/.bash-completion.sh"
 
-# load local .bashrc
-[ -f "$HOME/.bashrc.local" ] && source "$HOME/.bashrc.local"
-
 # remove duplicates in PATH variable
 export PATH="$(perl -e 'print join(":", grep { not $seen{$_}++ } split(/:/, $ENV{PATH}))')"
+
 # remove duplicates in MANPATH variable
 export MANPATH="$(perl -e 'print join(":", grep { not $seen{$_}++ } split(/:/, $ENV{MANPATH}))')"
 

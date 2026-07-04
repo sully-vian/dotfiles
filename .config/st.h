@@ -242,6 +242,9 @@ static uint ignoremod = Mod2Mask|XK_SWITCH_MOD;
  */
 static Key key[] = {
 	/* keysym           mask            string      appkey appcursor */
+    /* ------------------------ Custom ------------------------ */
+	{ XK_Return,       ShiftMask,       "\033[13;2u",    0,    0},
+    /* ----------------------- Defaults ----------------------- */
 	{ XK_KP_Home,       ShiftMask,      "\033[2J",       0,   -1},
 	{ XK_KP_Home,       ShiftMask,      "\033[1;2H",     0,   +1},
 	{ XK_KP_Home,       XK_ANY_MOD,     "\033[H",        0,   -1},

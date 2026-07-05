@@ -1,13 +1,7 @@
 vim.lsp.config("lua-language-server", {
     cmd = { "lua-language-server" },
     filetypes = { "lua" },
-    root_markers = { ".git" },
-    settings = {
-        Lua = {
-            workspace = { -- tell the lsp that "vim" exists
-                library = vim.api.nvim_get_runtime_file("", true) }
-        }
-    }
+    root_markers = { ".luarc.json", ".git" },
 })
 
 vim.lsp.enable("lua-language-server")

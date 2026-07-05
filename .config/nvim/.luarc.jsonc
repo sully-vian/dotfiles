@@ -1,10 +1,30 @@
 {
     // check config with lua-language-server --check ~/.config/nvim
-    "$schema": "https://raw.githubusercontent.com/sumneko/vscode-lua/master/setting/schema.json",
+    "$schema": "https://raw.githubusercontent.com/LuaLS/vscode-lua/master/setting/schema.json",
     "runtime": {
         "version": "LuaJIT"
     },
+    "type": {
+        "weakNilCheck": false,
+        "weakUnionCheck": false,
+        "castNumberToInteger": false
+    },
+    "diagnostics": {
+        "severity": {
+            "assign-type-mismatch": "Error",
+            "param-type-mismatch": "Error",
+            "return-type-mismatch": "Error",
+            "missing-return": "Error",
+            "missing-return-value": "Error",
+            "missing-parameter": "Error",
+            "undefined-field": "Error",
+            "undefined-global": "Error",
+            "missing-global-doc": "Error"
+        }
+    },
     "workspace": {
-        "library": ["/usr/share/nvim/runtime"]
+        "library": [
+            "/usr/share/nvim/runtime"
+        ]
     }
 }

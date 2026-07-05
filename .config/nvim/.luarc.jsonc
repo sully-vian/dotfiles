@@ -1,0 +1,10 @@
+{
+    // check config with lua-language-server --check ~/.config/nvim
+    "$schema": "https://raw.githubusercontent.com/sumneko/vscode-lua/master/setting/schema.json",
+    "runtime": {
+        "version": "LuaJIT"
+    },
+    "workspace": {
+        "library": ["/usr/share/nvim/runtime"]
+    }
+}

@@ -128,7 +128,7 @@ local function hover()
 end
 
 -- search
----@type { items: vim.quickfix.entry[], active: boolean, idx: number, word_len:number}
+---@type { items: vim.quickfix.entry[], active: boolean, idx: number, word_len:integer }
 local refs = { items = {}, active = false, idx = 0, word_len = 0 }
 local ns = vim.api.nvim_create_namespace("LspRefSearch")
 local function highlight_refs()

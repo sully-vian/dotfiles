@@ -6,6 +6,8 @@ PROGRAMS = st dmenu
 
 .PHONY: all $(PROGRAMS)
 
+all: $(PROGRAMS)
+
 $(PROGRAMS):
 	cp $(CONFIG)/$@.h $(SRC)/$@/config.h
 	$(MAKE) -C $(SRC)/$@ clean install PREFIX=$(PREFIX)

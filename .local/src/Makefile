@@ -1,9 +1,13 @@
 PREFIX = $(HOME)/.local
-ST_REPO = $(PREFIX)/src/st
-ST_CONFIG = $(HOME)/.config/st.h
+SRC = $(PREFIX)/src
+CONFIG = $(HOME)/.config
 
-.PHONY: st
+PROGRAMS = st dmenu
 
-st:
-	cp $(ST_CONFIG) $(ST_REPO)/config.h
-	$(MAKE) -C $(ST_REPO) clean install PREFIX=$(PREFIX)
+.PHONY: all $(PROGRAMS)
+
+$(PROGRAMS):
+	cp $(CONFIG)/$@.h $(SRC)/$@/config.h
+	$(MAKE) -C $(SRC)/$@ clean install PREFIX=$(PREFIX)
+	$(MAKE) -C $(SRC)/$@ clean
+	rm $(SRC)/$@/config.h

@@ -6,7 +6,7 @@ vim.lsp.config("twiggy", {
         twiggy = {
             phpExecutable = "php",
             symfonyConsolePath = "bin/console",
-            framwork = "symfony",
+            framework = "symfony",
             diagnostics = { twigCsFixer = true }
         }
     }

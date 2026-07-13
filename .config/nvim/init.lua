@@ -300,6 +300,8 @@ vim.pack.add({
     { src = gh "andymass/vim-matchup" },
 })
 
+vim.g.matchup_matchparen_offscreen = { method = nil }
+
 require("hardtime").setup({
     hints = {
         ["Vy"] = { message = function() return "Use yy or Y instead of Vy" end, length = 2 }

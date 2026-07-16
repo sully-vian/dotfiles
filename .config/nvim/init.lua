@@ -338,6 +338,9 @@ require("oil").setup({
     view_options = {
         show_hidden = true,
         is_always_hidden = function(name, _) return name == ".git" or name == ".." end
+    },
+    keymaps = {
+        ["<S-CR>"] = "actions.select_vsplit",
     }
 })
 

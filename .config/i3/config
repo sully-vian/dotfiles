@@ -68,7 +68,7 @@ exec_always --no-startup-id "$HOME/.scripts/dunst-restart.sh"
 bindsym $mod+space exec "rofi -modi drun,run -show drun"
 
 # powermenu
-bindsym $mod+p exec --no-startup-id "$HOME/.scripts/rofi/powermenu.sh"
+bindsym $mod+p exec --no-startup-id "$HOME/.scripts/powermenu.sh"
 
 # wallpaper
 exec_always --no-startup-id "$HOME/.config/i3/load-wp.sh"

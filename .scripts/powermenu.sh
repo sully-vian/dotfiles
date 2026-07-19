@@ -1,21 +1,16 @@
 #!/usr/bin/env bash
 
-# power menu script using rofi
-
-# options
 shutdown=" Shutdown"
 reboot=" Reboot"
 lock=" Lock"
 suspend=" Suspend"
 logout="󰗽 Logout"
 
-# options combined
-options="$shutdown\n$reboot\n$lock\n$suspend\n$logout"
 
-# selected option
-selected=$(echo -e "$options" | rofi -dmenu -p "Power Menu")
+options=("shutdown" "$reboot" "$lock" "$suspend" "$logout")
 
-# action
+selected=$(printf '%s\n' "${options[@]}" | dmenu -fn "monospace:size=20" -c -i -l "${#options[@]}")
+
 case $selected in
 "$shutdown")
     systemctl poweroff
@@ -28,9 +23,11 @@ case $selected in
     "$HOME/.config/i3/i3lock-color.sh"
     ;;
 "$suspend")
+    "$HOME/.config/i3/i3lock-color.sh" &
     systemctl suspend
     ;;
 "$logout")
     i3-msg exit
     ;;
 esac
+

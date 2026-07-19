@@ -9,7 +9,7 @@ PROGRAMS = st dmenu
 all: $(PROGRAMS)
 
 $(PROGRAMS):
-	cp $(CONFIG)/$@.h $(SRC)/$@/config.h
+	cp $(CONFIG)/$@/config.h $(SRC)/$@/config.h
 	$(MAKE) -C $(SRC)/$@ clean install PREFIX=$(PREFIX)
 	$(MAKE) -C $(SRC)/$@ clean
 	rm $(SRC)/$@/config.h

@@ -1,0 +1,8 @@
+# defaults
+\.git
+\.gitignore
+\.gitmodules
+^/README.md
+
+# Custom
+^/Makefile

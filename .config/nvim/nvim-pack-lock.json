@@ -1,0 +1,89 @@
+{
+  "plugins": {
+    "austere.vim": {
+      "rev": "d985d31982bef869055e7a8c8d01cfe8c2992279",
+      "src": "https://github.com/LuRsT/austere.vim"
+    },
+    "ejs-syntax": {
+      "rev": "0e704c523dacfda547215b5936067869e79103c4",
+      "src": "https://github.com/nikvdp/ejs-syntax"
+    },
+    "github-nvim-theme": {
+      "rev": "c106c9472154d6b2c74b74565616b877ae8ed31d",
+      "src": "https://github.com/projekt0n/github-nvim-theme"
+    },
+    "gruber-darker.nvim": {
+      "rev": "9b68f84bfd6c1278fef2143802ca40c60f2471c0",
+      "src": "https://github.com/blazkowolf/gruber-darker.nvim"
+    },
+    "hardtime.nvim": {
+      "rev": "244753782b945def87472d8f4e9e6a9d4ec18689",
+      "src": "https://github.com/m4xshen/hardtime.nvim"
+    },
+    "live-command.nvim": {
+      "rev": "fc8c36d7e5b96945fbc52af7029facc317a47377",
+      "src": "https://github.com/smjonas/live-command.nvim"
+    },
+    "live-preview.nvim": {
+      "rev": "a30e54e51e7480d7060c8c8185f2a963ad3518b4",
+      "src": "https://github.com/brianhuster/live-preview.nvim"
+    },
+    "mini.pick": {
+      "rev": "04e73ab07222508361095bb6e27621b315e6b9f1",
+      "src": "https://github.com/nvim-mini/mini.pick"
+    },
+    "nvim-treesitter": {
+      "rev": "a45a920ec04cda5624f6dea0ff6454c81c3ad2d5",
+      "src": "https://github.com/nvim-treesitter/nvim-treesitter",
+      "version": "'main'"
+    },
+    "nvim-web-devicons": {
+      "rev": "2ae6958df7ced50baac5035cec0c15799eedfbf7",
+      "src": "https://github.com/nvim-tree/nvim-web-devicons"
+    },
+    "oil.nvim": {
+      "rev": "b73018b75affd13fa38e2fc94ef753b465f770d7",
+      "src": "https://github.com/stevearc/oil.nvim"
+    },
+    "phpactor": {
+      "rev": "721f3fb87d1a1a101140d9c0d52fb4ab024bb5fd",
+      "src": "git@github.com:phpactor/phpactor"
+    },
+    "rainbow-delimiters.nvim": {
+      "rev": "a798325b7f36acc62741d1029930a7b96d4dd4bf",
+      "src": "https://github.com/hiphish/rainbow-delimiters.nvim"
+    },
+    "tree-sitter-manager.nvim": {
+      "rev": "09e3a321eea8100cacd2e759c3a6c9d350295fab",
+      "src": "https://github.com/romus204/tree-sitter-manager.nvim"
+    },
+    "typst-preview.nvim": {
+      "rev": "1c2e19486397be1c580b560fc50ee36abe329c46",
+      "src": "https://github.com/chomosuke/typst-preview.nvim"
+    },
+    "vague.nvim": {
+      "rev": "f9060fdaf7b20f68575d6f8214da6f1cf0c72825",
+      "src": "https://github.com/vague-theme/vague.nvim"
+    },
+    "vim-helm": {
+      "rev": "2c8525fd98e57472769d137317bca83e477858ce",
+      "src": "https://github.com/towolf/vim-helm"
+    },
+    "vim-matchup": {
+      "rev": "055881643e1b37038a572c883de7b1969716db77",
+      "src": "https://github.com/andymass/vim-matchup"
+    },
+    "vim-monokai": {
+      "rev": "6fb52e32863646e38cdebce57ae0d1688f334a79",
+      "src": "https://github.com/ku1ik/vim-monokai"
+    },
+    "vim-wakatime": {
+      "rev": "2a856d0b7863dc34ffc80647cb52fbd1319fe144",
+      "src": "https://github.com/wakatime/vim-wakatime"
+    },
+    "which-key.nvim": {
+      "rev": "3aab2147e74890957785941f0c1ad87d0a44c15a",
+      "src": "https://github.com/folke/which-key.nvim"
+    }
+  }
+}

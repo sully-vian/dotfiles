@@ -8,17 +8,21 @@ RESET := \033[0m
 LOG := printf "$(CYAN)[DOTFILES] %s$(RESET)\n"
 
 
-.PHONY: help stow st dmenu
+.PHONY: help stow update check st dmenu
 
 .DEFAULT_GOAL := help
 
 help: ## Show this help message
-	@rg '^([ a-zA-Z_-]+): ## (.*)$$' -r $$'$(CYAN)$$1$(RESET)--$$2' $(MAKEFILE_LIST) | column -t -s $$'--'
+	@rg '^([ a-zA-Z_-]+): ## (.*)$$' -r $$'$(CYAN)$$1$(RESET)\t$$2' $(MAKEFILE_LIST) | column -t -s $$'\t'
 
 stow: ## Generate symlinks
 	stow .
 
-check:
+update: ## Update nvim packages and suckless submodules
+	nvim --headless -c 'lua vim.pack.update(nil, { force = true })' -c 'qa'; echo
+	git submodule update --remote --recursive
+
+check: ## Statically check code
 	lua-language-server --check $(CONFIG)/nvim
 
 st dmenu: ## Build st and dmenu
@@ -39,5 +43,3 @@ st dmenu: ## Build st and dmenu
 	@git -C $(SRC)/$@ reset --hard HEAD --quiet
 	@git -C $(SRC)/$@ clean -fd --quiet
 
-foo:
-	echo $(SHELL)

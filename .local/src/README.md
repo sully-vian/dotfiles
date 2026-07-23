@@ -1,5 +1,9 @@
 ## st
 
+> [!warning]
+> The `Makefile` has been moved, run these commands from the repo's root
+
+
 To install the binary at `~/.local/bin/st`, run:
 ```bash
 make st

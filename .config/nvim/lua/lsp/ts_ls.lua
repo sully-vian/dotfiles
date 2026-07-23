@@ -38,14 +38,8 @@ local function gotoRelevantDef()
     })
 end
 
-vim.api.nvim_create_autocmd("LspAttach", {
-    callback = function()
-        vim.keymap.set('n', "<leader>d", gotoRelevantDef, { desc = "Go to relevant definition" })
-    end
-})
-
 vim.lsp.config("ts_ls", {
-    cmd = { "typescript-language-server", "--stdio" },
+    cmd = { "tsc", "--lsp", "--stdio" },
     init_options = { hostInfo = "neovim" },
     filetypes = {
         "javascript",
@@ -56,6 +50,9 @@ vim.lsp.config("ts_ls", {
         "typescript.tsx",
     },
     root_dir = find_root(),
+    on_attach = function(_, bufnr)
+        vim.keymap.set('n', "<leader>d", gotoRelevantDef, { buffer = bufnr, desc = "Go to relevant definition" })
+    end
 })
 
 vim.lsp.enable("ts_ls")

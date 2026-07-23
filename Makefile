@@ -3,18 +3,25 @@ SRC = $(PREFIX)/src
 CONFIG = $(HOME)/.config
 SITES = $(SRC)/sites
 
-YELLOW  := \033[33m
+CYAN  := \033[36m
 RESET := \033[0m
-LOG := printf "$(YELLOW)[DOTFILES] %s$(RESET)\n"
+LOG := printf "$(CYAN)[DOTFILES] %s$(RESET)\n"
 
-SUCKLESS_TOOLS = st dmenu
 
-.PHONY: stow $(SUCKLESS_TOOLS)
+.PHONY: help stow st dmenu
 
-stow:
+.DEFAULT_GOAL := help
+
+help: ## Show this help message
+	@rg '^([ a-zA-Z_-]+): ## (.*)$$' -r $$'$(CYAN)$$1$(RESET)--$$2' $(MAKEFILE_LIST) | column -t -s $$'--'
+
+stow: ## Generate symlinks
 	stow .
 
-$(SUCKLESS_TOOLS):
+check:
+	lua-language-server --check $(CONFIG)/nvim
+
+st dmenu: ## Build st and dmenu
 	@$(LOG) "cleaning $(SRC)/$@ before build"
 	@git -C $(SRC)/$@ reset --hard HEAD --quiet
 	@git -C $(SRC)/$@ clean -fd --quiet
@@ -28,7 +35,9 @@ $(SUCKLESS_TOOLS):
 	$(MAKE) -C $(SRC)/$@ clean install PREFIX=$(PREFIX)
 	$(MAKE) -C $(SRC)/$@ clean
 
-	@$(LOG) "cleaning $(SRC)/$@ before build"
+	@$(LOG) "cleaning $(SRC)/$@ after build"
 	@git -C $(SRC)/$@ reset --hard HEAD --quiet
 	@git -C $(SRC)/$@ clean -fd --quiet
 
+foo:
+	echo $(SHELL)

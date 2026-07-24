@@ -288,7 +288,6 @@ vim.pack.add({
     { src = gh "chomosuke/typst-preview.nvim" },
     { src = gh "smjonas/live-command.nvim" },
     { src = gh "brianhuster/live-preview.nvim" },
-    { src = gh "towolf/vim-helm" },
     { src = gh "stevearc/oil.nvim" },
     { src = gh "m4xshen/hardtime.nvim" },
     { src = gh "nvim-tree/nvim-web-devicons" },
@@ -374,9 +373,7 @@ vim.filetype.add({
 vim.pack.add({
     { src = gh "vague-theme/vague.nvim" },
     { src = gh "ku1ik/vim-monokai" },
-    { src = gh "LuRsT/austere.vim" },
     { src = gh "blazkowolf/gruber-darker.nvim" },
     { src = gh "projekt0n/github-nvim-theme" },
-    { src = gh "nikvdp/ejs-syntax" }
 })
 vim.cmd("colorscheme vague")

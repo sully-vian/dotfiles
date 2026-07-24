@@ -1,13 +1,5 @@
 {
   "plugins": {
-    "austere.vim": {
-      "rev": "d985d31982bef869055e7a8c8d01cfe8c2992279",
-      "src": "https://github.com/LuRsT/austere.vim"
-    },
-    "ejs-syntax": {
-      "rev": "0e704c523dacfda547215b5936067869e79103c4",
-      "src": "https://github.com/nikvdp/ejs-syntax"
-    },
     "github-nvim-theme": {
       "rev": "c106c9472154d6b2c74b74565616b877ae8ed31d",
       "src": "https://github.com/projekt0n/github-nvim-theme"
@@ -32,11 +24,6 @@
       "rev": "04e73ab07222508361095bb6e27621b315e6b9f1",
       "src": "https://github.com/nvim-mini/mini.pick"
     },
-    "nvim-treesitter": {
-      "rev": "a45a920ec04cda5624f6dea0ff6454c81c3ad2d5",
-      "src": "https://github.com/nvim-treesitter/nvim-treesitter",
-      "version": "'main'"
-    },
     "nvim-web-devicons": {
       "rev": "2ae6958df7ced50baac5035cec0c15799eedfbf7",
       "src": "https://github.com/nvim-tree/nvim-web-devicons"
@@ -44,10 +31,6 @@
     "oil.nvim": {
       "rev": "b73018b75affd13fa38e2fc94ef753b465f770d7",
       "src": "https://github.com/stevearc/oil.nvim"
-    },
-    "phpactor": {
-      "rev": "721f3fb87d1a1a101140d9c0d52fb4ab024bb5fd",
-      "src": "git@github.com:phpactor/phpactor"
     },
     "rainbow-delimiters.nvim": {
       "rev": "a798325b7f36acc62741d1029930a7b96d4dd4bf",
@@ -64,10 +47,6 @@
     "vague.nvim": {
       "rev": "f9060fdaf7b20f68575d6f8214da6f1cf0c72825",
       "src": "https://github.com/vague-theme/vague.nvim"
-    },
-    "vim-helm": {
-      "rev": "2c8525fd98e57472769d137317bca83e477858ce",
-      "src": "https://github.com/towolf/vim-helm"
     },
     "vim-matchup": {
       "rev": "055881643e1b37038a572c883de7b1969716db77",

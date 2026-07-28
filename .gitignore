@@ -1,3 +1,4 @@
 *.swp
 *.zip
 .cache/wal/
+node_modules/

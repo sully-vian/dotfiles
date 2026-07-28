@@ -1,5 +1,5 @@
 vim.lsp.config("html", {
-    cmd = { npm_bin .. "vscode-html-language-server", "--stdio" },
+    cmd = { js_bin .. "vscode-html-language-server", "--stdio" },
     filetypes = { "html", "svg", "twig" },
     root_markers = { "package.json", ".git" },
     init_options = {

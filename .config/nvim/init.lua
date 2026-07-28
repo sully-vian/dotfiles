@@ -323,7 +323,8 @@ require("mini.pick").setup({
 })
 
 if not vim.g.vscode then
-    npm_bin = vim.fn.expand("$DOTFILES/node_modules/.bin/")
+    js_bin = vim.fn.expand("$DOTFILES/node_modules/.bin/")
+    php_bin = vim.fn.expand("$DOTFILES/vendor/bin/")
     require("lsp")
 end
 

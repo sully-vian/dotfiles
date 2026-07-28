@@ -6,6 +6,13 @@
 
 # Custom
 ^/Makefile
+
+# JS
 ^/package.json
 ^/bun.lock
 ^/node_modules
+
+# PHP
+^/composer.json
+^/composer.lock
+^/vendor

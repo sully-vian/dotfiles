@@ -1,5 +1,5 @@
 vim.lsp.config("twiggy", {
-    cmd = { npm_bin .. "twiggy-language-server", "--stdio" },
+    cmd = { js_bin .. "twiggy-language-server", "--stdio" },
     filetypes = { "twig" },
     root_markers = { "composer.json", ".git" },
     settings = {

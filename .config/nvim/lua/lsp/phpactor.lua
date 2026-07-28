@@ -15,7 +15,7 @@ local function gotoRelevantDef()
 end
 
 vim.lsp.config("phpactor", {
-    cmd = { "phpactor", "language-server" },
+    cmd = { php_bin .. "phpactor", "language-server" },
     filetypes = { "php" },
     root_markers = { ".phpactor.json", "composer.json", ".phpactor.yml", "phpactor.json", ".git" },
     workspace_required = true,

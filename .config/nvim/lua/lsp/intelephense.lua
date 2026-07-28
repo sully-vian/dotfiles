@@ -1,5 +1,5 @@
 vim.lsp.config("intelephense", {
-    cmd = { npm_bin .. "intelephense", "--stdio" },
+    cmd = { js_bin .. "intelephense", "--stdio" },
     filetypes = { "php" },
     root_markers = { "composer.json", ".git" },
     init_options = { storagePath = vim.fn.stdpath("cache") },

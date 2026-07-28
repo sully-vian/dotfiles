@@ -17,7 +17,7 @@ local function find_root()
 end
 
 vim.lsp.config("eslint", {
-    cmd = { npm_bin .. "vscode-eslint-language-server", "--stdio" },
+    cmd = { js_bin .. "vscode-eslint-language-server", "--stdio" },
     filetypes = { "javascript", "typescript", "javascriptreact", "javascript.jsx", "typescriptreact", "typescript.tsx", "vue" },
     -- root_markers = { "package.json", ".git" },
     root_dir = find_root(),

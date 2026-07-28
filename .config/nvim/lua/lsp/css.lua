@@ -1,5 +1,5 @@
 vim.lsp.config("css", {
-    cmd = { npm_bin .. "vscode-css-language-server", "--stdio" },
+    cmd = { js_bin .. "vscode-css-language-server", "--stdio" },
     filetypes = { "css" },
     root_markers = { "package.json", ".git" },
     init_options = { provideFormatter = true },

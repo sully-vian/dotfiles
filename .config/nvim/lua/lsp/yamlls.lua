@@ -1,5 +1,5 @@
 vim.lsp.config("yamlls", {
-    cmd = { "yaml-language-server", "--stdio" },
+    cmd = { npm_bin .. "yaml-language-server", "--stdio" },
     filetypes = { "yaml", "yaml.docker-compose" },
     root_markers = { "package.json", ".git" },
     settings = {

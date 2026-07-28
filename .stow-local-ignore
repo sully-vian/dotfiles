@@ -6,3 +6,6 @@
 
 # Custom
 ^/Makefile
+^/package.json
+^/bun.lock
+^/node_modules

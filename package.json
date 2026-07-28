@@ -1,0 +1,11 @@
+{
+    "name": "dotfiles",
+    "dependencies": {
+        "@biomejs/biome": "latest",
+        "@tailwindcss/language-server": "latest",
+        "bash-language-server": "latest",
+        "vscode-langservers-extracted": "latest",
+        "intelephense": "latest",
+        "yaml-language-server": "latest"
+    }
+}

@@ -19,6 +19,7 @@ stow: ## Generate symlinks
 	stow .
 
 update: ## Update nvim packages and suckless submodules
+	bun update
 	nvim --headless -c 'lua vim.pack.update(nil, { force = true })' -c 'qa'; echo
 	git submodule update --remote --recursive
 

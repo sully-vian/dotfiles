@@ -6,6 +6,7 @@
         "bash-language-server": "latest",
         "vscode-langservers-extracted": "latest",
         "intelephense": "latest",
+        "twiggy-language-server": "latest",
         "yaml-language-server": "latest"
     }
 }

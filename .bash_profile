@@ -29,6 +29,9 @@ export NVM_DIR="$HOME/.config/nvm"
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
 
+# Cargo
+export PATH="$HOME/.cargo/bin:$PATH"
+
 # texlive path
 export PATH="/usr/local/texlive/2024/bin/x86_64-linux:$PATH"
 export INFOPATH="/usr/local/texlive/2024/texmf-dist/doc/info:$INFOPATH"

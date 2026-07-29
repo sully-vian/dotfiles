@@ -7,6 +7,7 @@ vim.lsp.config("intelephense", {
         intelephense = {
             environment = {},
             format = {
+                enable = false,
                 braces = "k&r"
             }
         }

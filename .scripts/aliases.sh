@@ -45,7 +45,7 @@ if [ -x /usr/bin/dircolors ]; then
 fi
 
 export LESS="--ignore-case --incsearch --RAW-CONTROL-CHARS --quit-if-one-screen" # enable incremental search by default
-export MANPAGER="bat -plman"
+export MANPAGER="nvim +Man!"
 
 # --- Navigation & Listing ---
 alias ..="cd .."

@@ -3,6 +3,6 @@
     "minimum-stability": "dev",
     "prefer-stable": true,
     "require": {
-        "phpactor/phpactor": "*"
+        "phpactor/phpactor": "dev-master"
     }
 }

@@ -281,6 +281,7 @@ vim.opt.completeopt:append("popup")
 
 local function gh(addr) return "https://github.com/" .. addr end
 vim.pack.add({
+    { src = gh "phpactor/phpactor" },
     { src = gh "romus204/tree-sitter-manager.nvim" },
     { src = gh "nvim-mini/mini.pick" },
     { src = gh "folke/which-key.nvim" },

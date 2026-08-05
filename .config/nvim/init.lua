@@ -369,6 +369,7 @@ vim.filetype.add({
     extension = {
         ejs = "ejs",
         env = "env",
+        stub = "php",
     },
 })
 

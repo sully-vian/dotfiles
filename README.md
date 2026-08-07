@@ -43,8 +43,6 @@ This repository contains configuration files (dotfiles) for various tools and ap
   - [Aliases and Functions](#aliases-and-functions)
   - [VPN Configuration](#vpn-configuration)
   - [Prompt Customization](#prompt-customization)
-  - [Tmux Configuration](#tmux-configuration)
-  - [Vim Configuration](#vim-configuration)
 
 ## Installation
 
@@ -65,8 +63,6 @@ The following tools are required for the configurations to work properly:
 
 - **Bash**: The GNU Bourne Again shell.
 - **VPNC**: A VPN client for Cisco VPNs.
-- **Tmux**: A terminal multiplexer.
-- **Vim**: A highly configurable text editor.
 - **lsd**: A modern replacement for ls.
 - **bat**: A cat clone with syntax highlighting and Git integration.
 - **onefetch**: A command-line Git information tool.
@@ -91,9 +87,6 @@ Customizes the Bash prompt with colors and Git information.
 
 `.inputrc`
 Configures key bindings for the Readline library, used by Bash.
-
-`.tmux.conf`
-Configuration file for Tmux, setting up key bindings, status bar, and plugins.
 
 `.config/bat/config`
 Configuration file for `bat`, setting up themes and other options.
@@ -153,7 +146,3 @@ Script to connect and disconnect from the VPN using `vpnc`.
 `.bashprompt`
 Customizes the Bash prompt with colors, Git information, and special symbols for different directories.
 
-## Tmux Configuration
-
-`.tmux`.conf
-Configures Tmux with custom key bindings, status bar, and plugins.

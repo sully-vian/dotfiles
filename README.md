@@ -95,9 +95,6 @@ Configures key bindings for the Readline library, used by Bash.
 `.tmux.conf`
 Configuration file for Tmux, setting up key bindings, status bar, and plugins.
 
-`.vimrc`
-Configuration file for Vim, setting up indentation, tab stops, and other editor settings.
-
 `.config/bat/config`
 Configuration file for `bat`, setting up themes and other options.
 
@@ -160,8 +157,3 @@ Customizes the Bash prompt with colors, Git information, and special symbols for
 
 `.tmux`.conf
 Configures Tmux with custom key bindings, status bar, and plugins.
-
-## Vim Configuration
-
-`.vimrc`
-Configures Vim with custom settings for indentation, tab stops, and other editor options.

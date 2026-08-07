@@ -4,4 +4,6 @@ set tabstop=4
 set shiftwidth=4
 set expandtab
 set incsearch
+colorscheme desert
+syntax on
 

@@ -24,6 +24,10 @@
       "rev": "04e73ab07222508361095bb6e27621b315e6b9f1",
       "src": "https://github.com/nvim-mini/mini.pick"
     },
+    "neocodeium": {
+      "rev": "ab8a3da3a66d299ad5422b76ce5ee21b68719296",
+      "src": "https://github.com/monkoose/neocodeium"
+    },
     "nvim-web-devicons": {
       "rev": "2ae6958df7ced50baac5035cec0c15799eedfbf7",
       "src": "https://github.com/nvim-tree/nvim-web-devicons"
@@ -33,7 +37,7 @@
       "src": "https://github.com/stevearc/oil.nvim"
     },
     "phpactor": {
-      "rev": "721f3fb87d1a1a101140d9c0d52fb4ab024bb5fd",
+      "rev": "7eb622fdd48d3b1fae87503d271038bc82aac45a",
       "src": "https://github.com/phpactor/phpactor"
     },
     "rainbow-delimiters.nvim": {
@@ -61,7 +65,7 @@
       "src": "https://github.com/ku1ik/vim-monokai"
     },
     "vim-wakatime": {
-      "rev": "2a856d0b7863dc34ffc80647cb52fbd1319fe144",
+      "rev": "9f8a1d3b9c6f3a948988a0896b3227c1e1f74a58",
       "src": "https://github.com/wakatime/vim-wakatime"
     },
     "which-key.nvim": {

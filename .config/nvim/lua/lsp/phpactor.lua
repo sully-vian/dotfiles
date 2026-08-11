@@ -14,9 +14,10 @@ local function gotoRelevantDef()
     })
 end
 
+local phpactor_bin = vim.api.nvim_get_runtime_file("bin/phpactor", false)[1]
 vim.lsp.config("phpactor", {
     --cmd = { php_bin .. "phpactor", "language-server" },
-    cmd = { vim.fn.stdpath('data') .. "/site/pack/core/opt/phpactor/bin/phpactor", "language-server" },
+    cmd = { phpactor_bin, "language-server" },
     filetypes = { "php" },
     root_markers = { ".phpactor.json", "composer.json", ".phpactor.yml", "phpactor.json", ".git" },
     workspace_required = true,

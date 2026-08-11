@@ -7,7 +7,7 @@ suspend=" Suspend"
 logout="󰗽 Logout"
 
 
-options=("shutdown" "$reboot" "$lock" "$suspend" "$logout")
+options=("$shutdown" "$reboot" "$lock" "$suspend" "$logout")
 
 selected=$(printf '%s\n' "${options[@]}" | dmenu -fn "monospace:size=20" -c -i -l "${#options[@]}")
 

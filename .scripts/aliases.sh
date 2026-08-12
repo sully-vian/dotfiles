@@ -96,7 +96,6 @@ alias trans="trans -brief"
 alias mpv="mpv --no-border"
 alias mpv-webcam="$HOME/.scripts/mpv-webcam.sh"
 function cht() { curl -s cheat.sh/$1 | less; }
-function ctx() { fd -t f -E .git | fzf -m | tee /dev/stderr | tr '\n' '\0' | xargs -0 tail -n +1 -v > "${1:-ctx.tail}" && bat "${1:-ctx.tail}"; }
 
 # show sorted disk usage
 function usage() {

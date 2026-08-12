@@ -1,0 +1,16 @@
+#!/usr/bin/env sh
+
+set -euo pipefail
+
+out_file="${1:-ctx.tail}" # if no $1, default to "ctx.tail"
+
+selected_files=$(fd --type file --exclude .git | fzf --multi)
+
+echo "${selected_files}" >&2 # list file names
+
+# replace newline with null byte and use null byte as item separator (allows whitespace in filenames)
+echo "${selected_files}" |
+    tr '\n' '\0' |
+    xargs --null tail --lines=+1 --verbose >"${out_file}"
+
+bat --language Tail "${out_file}" # display contents

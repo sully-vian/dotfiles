@@ -18,6 +18,7 @@ vim.opt.updatetime = 200
 vim.opt.splitright = true -- new buffer appears right
 vim.opt.splitbelow = true -- new buffer appears under
 vim.opt.list = true
+vim.opt.wildignorecase = true
 vim.opt.listchars = {
     tab = '» ',
     trail = '·',

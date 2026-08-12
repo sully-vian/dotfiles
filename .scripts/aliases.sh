@@ -63,8 +63,6 @@ alias fd="fd --hidden" # include hidden files and directories
 eval "$(zoxide init --cmd cd bash)"
 export RIPGREP_CONFIG_PATH="$HOME/.config/ripgreprc"
 
-
-
 # --- Programming ---
 require gnatmake javac java clang clang++
 alias adc="gnatmake -f -gnatwa -gnata -g"
@@ -98,6 +96,7 @@ alias trans="trans -brief"
 alias mpv="mpv --no-border"
 alias mpv-webcam="$HOME/.scripts/mpv-webcam.sh"
 function cht() { curl -s cheat.sh/$1 | less; }
+function ctx() { fd -t f -E .git | fzf -m | tee /dev/stderr | tr '\n' '\0' | xargs -0 tail -n +1 -v > "${1:-ctx.tail}" && bat "${1:-ctx.tail}"; }
 
 # show sorted disk usage
 function usage() {
@@ -113,6 +112,4 @@ fi
 # --- Alert Alias (long commands) ---
 # sleep 10; alert
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
-
-
 

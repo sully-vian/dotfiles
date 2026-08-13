@@ -3,11 +3,12 @@
     "name": "dotfiles",
     "dependencies": {
         "@biomejs/biome": "latest",
+        "@github/copilot-language-server": "latest",
         "@tailwindcss/language-server": "latest",
         "bash-language-server": "latest",
-        "vscode-langservers-extracted": "latest",
         "intelephense": "latest",
         "twiggy-language-server": "latest",
+        "vscode-langservers-extracted": "latest",
         "yaml-language-server": "latest"
     }
 }

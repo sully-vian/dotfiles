@@ -6,6 +6,7 @@
       "name": "dotfiles",
       "dependencies": {
         "@biomejs/biome": "latest",
+        "@github/copilot-language-server": "latest",
         "@tailwindcss/language-server": "latest",
         "bash-language-server": "latest",
         "intelephense": "latest",
@@ -51,6 +52,32 @@
     "@bmewburn/js-beautify": ["@bmewburn/js-beautify@1.15.4", "", {}, "sha512-/fSotOVaY2IQWXofuxXn1T+Fq8m0tNpp96LBYUXgjiF9gh8v/fhvXU+Fvaozlgk3FNFYxMP/wBIjU7FHRCVsuA=="],
 
     "@bmewburn/vscode-html-languageserver": ["@bmewburn/vscode-html-languageserver@1.11.1", "", { "dependencies": { "@vscode/l10n": "^0.0.18", "typescript": "^5.9.3", "vscode-css-languageservice": "^6.3.8", "vscode-html-languageservice": "^5.6.0", "vscode-languageserver": "^9.0.1", "vscode-languageserver-protocol": "~3.17.5", "vscode-languageserver-textdocument": "^1.0.11", "vscode-languageserver-types": "~3.17.5", "vscode-uri": "^3.0.8" } }, "sha512-EUfOfj6xIQ3u+mZqMwfzUDv5SVCaUo0A6Lz2651M91Q+2trqJDdk6sqhXUc9tcuWYOGLr5HVctkt1kfZFZsHjQ=="],
+
+    "@github/copilot-darwin-arm64": ["@github/copilot-darwin-arm64@1.0.78", "", { "os": "darwin", "cpu": "arm64", "bin": { "copilot-darwin-arm64": "copilot" } }, "sha512-P11+VyWg8ad0WlywGtO2d7AxqTLJv4hkUicFg6Ycth5lfk00aCu/74YOOZSPO6C2bBBJhAza7oAdmauM6KEojw=="],
+
+    "@github/copilot-darwin-x64": ["@github/copilot-darwin-x64@1.0.78", "", { "os": "darwin", "cpu": "x64", "bin": { "copilot-darwin-x64": "copilot" } }, "sha512-stimP3WDFs2GU8nJzTJbtRpZViV4bsf80yg7QrFq+G4RISQ3Nihg/3/H0U6UQF1+txMJ/Ohmb5RFYxSw1Hj2sw=="],
+
+    "@github/copilot-language-server": ["@github/copilot-language-server@1.531.0", "", { "dependencies": { "vscode-languageserver-protocol": "^3.17.5" }, "optionalDependencies": { "@github/copilot-darwin-arm64": "1.0.78", "@github/copilot-darwin-x64": "1.0.78", "@github/copilot-language-server-darwin-arm64": "1.531.0", "@github/copilot-language-server-darwin-x64": "1.531.0", "@github/copilot-language-server-linux-arm64": "1.531.0", "@github/copilot-language-server-linux-x64": "1.531.0", "@github/copilot-language-server-win32-arm64": "1.531.0", "@github/copilot-language-server-win32-x64": "1.531.0", "@github/copilot-linux-arm64": "1.0.78", "@github/copilot-linux-x64": "1.0.78", "@github/copilot-win32-arm64": "1.0.78", "@github/copilot-win32-x64": "1.0.78" }, "bin": { "copilot-language-server": "dist/language-server.js" } }, "sha512-9JCrvN3eO1ZMv8hjN2AEQzTLGN19ZK6msKjUWJp2ZU9NZojuIisJpZrQxwUhIktCB3mzgU9fmx8wUbPCFZyk6g=="],
+
+    "@github/copilot-language-server-darwin-arm64": ["@github/copilot-language-server-darwin-arm64@1.531.0", "", { "os": "darwin", "cpu": "arm64" }, "sha512-jwUUTNfauJT7KjYBCyh2pqwGd6JU1ECTwUby/LO51U5Bna19OHTNncCRe0oWmjBmz0EipfR5OmMlO6ObQBh6Ig=="],
+
+    "@github/copilot-language-server-darwin-x64": ["@github/copilot-language-server-darwin-x64@1.531.0", "", { "os": "darwin", "cpu": "x64" }, "sha512-a7uB0R+Bt6REAWQqRKycvk0qZGqqLJAwCK+Br1WxktADSuI2Z0Js8m0IZj9AOztcRoKKTsMKdi2x1mhNfjWHtA=="],
+
+    "@github/copilot-language-server-linux-arm64": ["@github/copilot-language-server-linux-arm64@1.531.0", "", { "os": "linux", "cpu": "arm64" }, "sha512-PoD6SYEHcSCWjSncDOp5FnQHuJB4hW/PKCp5SFj6KIgugGZUvda0XO8xLZDnf7x1WCcIEAjQa1z7JXiLGr0t9g=="],
+
+    "@github/copilot-language-server-linux-x64": ["@github/copilot-language-server-linux-x64@1.531.0", "", { "os": "linux", "cpu": "x64" }, "sha512-gd8XA1DQDDOA9tUXcLCXK8T45y15+5VqyNAdUflgMUhNrrvjik+UHoJvLbUc5Bg0t7T497r9KePT5AlSRP5Sbg=="],
+
+    "@github/copilot-language-server-win32-arm64": ["@github/copilot-language-server-win32-arm64@1.531.0", "", { "os": "win32", "cpu": "arm64" }, "sha512-OjPTbvND+RFbpAQV/Y4hdGC1RcqU3ZpxsyTk/iWOaKgEl6o0flDkjiHktxS3B6w5YkUJM5wlZc2CfRTdfHoFxQ=="],
+
+    "@github/copilot-language-server-win32-x64": ["@github/copilot-language-server-win32-x64@1.531.0", "", { "os": "win32", "cpu": "x64" }, "sha512-jDF14DhQdLCu+LIZKYS2Sw2NEWuZm2ryUNfy9IOtdBjQP5wLJScwgnTGPSUdmwN73JqQwaOAI82wzjWrfuk2rw=="],
+
+    "@github/copilot-linux-arm64": ["@github/copilot-linux-arm64@1.0.78", "", { "os": "linux", "cpu": "arm64", "bin": { "copilot-linux-arm64": "copilot" } }, "sha512-K31PRKGTm252V1Lof7ypjg283R2QSm3BgoCvZfX2taos4wqC3SaTozSQKwW3dgrAx7A3G3SGEoilVCNqfigdZA=="],
+
+    "@github/copilot-linux-x64": ["@github/copilot-linux-x64@1.0.78", "", { "os": "linux", "cpu": "x64", "bin": { "copilot-linux-x64": "copilot" } }, "sha512-QK3oMtAn9dIv+1u1kx0xNpZNtZxdI+uZVIyLl7myp+Oh2Uj8BLagVv6a7uP0cDphO3TgfIdlvpepCe5MIcx0fw=="],
+
+    "@github/copilot-win32-arm64": ["@github/copilot-win32-arm64@1.0.78", "", { "os": "win32", "cpu": "arm64", "bin": { "copilot-win32-arm64": "copilot.exe" } }, "sha512-ktDkFXaaecEKD3hpM6ydM9lKOdoCfsQsXCmzLzE7DCmSpbbMCdfPfWfZ7MOclmKmpZ5/MNfr4U2l8CUqGerzYA=="],
+
+    "@github/copilot-win32-x64": ["@github/copilot-win32-x64@1.0.78", "", { "os": "win32", "cpu": "x64", "bin": { "copilot-win32-x64": "copilot.exe" } }, "sha512-Gd8l2T4eqYEWlOEPd0SZznQ+YYgYrwOkE0QXodMkhCBbPdgu/uTzb7mnISWwnVAgqs7pONdF1GOpHkTo+ay8CQ=="],
 
     "@microsoft/applicationinsights-web-snippet": ["@microsoft/applicationinsights-web-snippet@1.0.1", "", {}, "sha512-2IHAOaLauc8qaAitvWS+U931T+ze+7MNWrDHY47IENP5y2UA0vqJDu67kWZDdpCN1fFC77sfgfB+HV7SrKshnQ=="],
 
@@ -314,13 +341,13 @@
 
     "vscode-json-languageservice": ["vscode-json-languageservice@5.7.2", "", { "dependencies": { "@vscode/l10n": "^0.0.18", "jsonc-parser": "^3.3.1", "vscode-languageserver-textdocument": "^1.0.12", "vscode-languageserver-types": "^3.17.5", "vscode-uri": "^3.1.0" } }, "sha512-WtKRDtJfFEmLrgtu+ODexOHm/6/krRF0k6t+uvkKIKW1Jh9ZIyxZQwJJwB3qhrEgvAxa37zbUg+vn+UyUK/U2w=="],
 
-    "vscode-jsonrpc": ["vscode-jsonrpc@8.0.2", "", {}, "sha512-RY7HwI/ydoC1Wwg4gJ3y6LpU9FJRZAUnTYMXthqhFXXu77ErDd/xkREpGuk4MyYkk4a+XDWAMqe0S3KkelYQEQ=="],
+    "vscode-jsonrpc": ["vscode-jsonrpc@9.0.1", "", {}, "sha512-rfuA6T75H6m5EkbhtEPzre9pT0HPcDI2MMy4+nPFIBks5J8JBAUHD4tRYSgaBOijIEC7SRkC1kKyXTLqbmh9jw=="],
 
     "vscode-langservers-extracted": ["vscode-langservers-extracted@4.10.0", "", { "dependencies": { "@vscode/l10n": "^0.0.18", "core-js": "^3.20.1", "jsonc-parser": "^3.2.1", "regenerator-runtime": "^0.13.9", "request-light": "^0.7.0", "semver": "^7.6.1", "typescript": "^4.0.5", "vscode-css-languageservice": "^6.2.14", "vscode-html-languageservice": "^5.2.0", "vscode-json-languageservice": "^5.3.11", "vscode-languageserver": "^10.0.0-next.3", "vscode-languageserver-textdocument": "^1.0.11", "vscode-languageserver-types": "^3.17.5", "vscode-markdown-languageservice": "^0.5.0-alpha.6", "vscode-nls": "^5.2.0", "vscode-uri": "^3.0.8" }, "bin": { "vscode-css-language-server": "bin/vscode-css-language-server", "vscode-eslint-language-server": "bin/vscode-eslint-language-server", "vscode-html-language-server": "bin/vscode-html-language-server", "vscode-json-language-server": "bin/vscode-json-language-server", "vscode-markdown-language-server": "bin/vscode-markdown-language-server" } }, "sha512-EFf9uQI4dAKbzMQFjDvVm1xJq1DXAQvBEuEfPGrK/xzfsL5xWTfIuRr90NgfmqwO+IEt6vLZm9EOj6R66xIifg=="],
 
     "vscode-languageserver": ["vscode-languageserver@8.0.2", "", { "dependencies": { "vscode-languageserver-protocol": "3.17.2" }, "bin": { "installServerIntoExtension": "bin/installServerIntoExtension" } }, "sha512-bpEt2ggPxKzsAOZlXmCJ50bV7VrxwCS5BI4+egUmure/oI/t4OlFzi/YNtVvY24A2UDOZAgwFGgnZPwqSJubkA=="],
 
-    "vscode-languageserver-protocol": ["vscode-languageserver-protocol@3.17.2", "", { "dependencies": { "vscode-jsonrpc": "8.0.2", "vscode-languageserver-types": "3.17.2" } }, "sha512-8kYisQ3z/SQ2kyjlNeQxbkkTNmVFoQCqkmGrzLH6A9ecPlgTbp3wDTnUNqaUxYr4vlAcloxx8zwy7G5WdguYNg=="],
+    "vscode-languageserver-protocol": ["vscode-languageserver-protocol@3.18.2", "", { "dependencies": { "vscode-jsonrpc": "9.0.1", "vscode-languageserver-types": "3.18.0" } }, "sha512-XRyDbT0Pp3sSNti3JmxVEUMySWCSi1hhM+/KUlCy1hV1zmrqpM1OwO12EAki8blhmLuIMpaJrYbo0OzGVfK2Qg=="],
 
     "vscode-languageserver-textdocument": ["vscode-languageserver-textdocument@1.0.12", "", {}, "sha512-cxWNPesCnQCcMPeenjKKsOCKQZ/L6Tv19DTRIGuLWe32lyzWhihGVJ/rcckZXJxfdKCFvRLS3fpBIsV/ZGX4zA=="],
 
@@ -390,11 +417,11 @@
 
     "vscode-langservers-extracted/vscode-languageserver": ["vscode-languageserver@10.1.0", "", { "dependencies": { "vscode-languageserver-protocol": "3.18.2" }, "bin": { "installServerIntoExtension": "bin/installServerIntoExtension" } }, "sha512-9gEWpXkYGXoqG7pBnE8O8hx/yP7+Aabn4+peQ3KDicQv6qunHSWyLTud3OF0w4S2+HfDD+5HqYKiXQW9HAU6mA=="],
 
-    "vscode-languageserver-protocol/vscode-languageserver-types": ["vscode-languageserver-types@3.17.2", "", {}, "sha512-zHhCWatviizPIq9B7Vh9uvrH6x3sK8itC84HkamnBWoDFJtzBf7SWlpLCZUit72b3os45h6RWQNC9xHRDF8dRA=="],
+    "vscode-languageserver/vscode-languageserver-protocol": ["vscode-languageserver-protocol@3.17.2", "", { "dependencies": { "vscode-jsonrpc": "8.0.2", "vscode-languageserver-types": "3.17.2" } }, "sha512-8kYisQ3z/SQ2kyjlNeQxbkkTNmVFoQCqkmGrzLH6A9ecPlgTbp3wDTnUNqaUxYr4vlAcloxx8zwy7G5WdguYNg=="],
+
+    "vscode-languageserver-protocol/vscode-languageserver-types": ["vscode-languageserver-types@3.18.0", "", {}, "sha512-8TsGPNMIMiiBdkORgRSvLjuiEIiAFtO+KssmYWxQ+uSVvlf7RjK8YKCOjPzZ+YA04jXEV7+7LvkSmHkhpNS99g=="],
 
     "vscode-markdown-languageservice/picomatch": ["picomatch@2.3.2", "", {}, "sha512-V7+vQEJ06Z+c5tSye8S+nHUfI51xoXIXjHQ99cQtKUkQqqO1kO/KCJUfZXuB47h/YBlDhah2H3hdUGXn8ie0oA=="],
-
-    "vscode-markdown-languageservice/vscode-languageserver-protocol": ["vscode-languageserver-protocol@3.18.2", "", { "dependencies": { "vscode-jsonrpc": "9.0.1", "vscode-languageserver-types": "3.18.0" } }, "sha512-XRyDbT0Pp3sSNti3JmxVEUMySWCSi1hhM+/KUlCy1hV1zmrqpM1OwO12EAki8blhmLuIMpaJrYbo0OzGVfK2Qg=="],
 
     "yaml-language-server/request-light": ["request-light@0.5.8", "", {}, "sha512-3Zjgh+8b5fhRJBQZoy+zbVKpAQGLyka0MPgW3zruTF4dFFJ8Fqcfu9YsAvi/rvdcaTeWG3MkbZv4WKxAn/84Lg=="],
 
@@ -408,21 +435,15 @@
 
     "twiggy-language-server/vscode-languageserver/vscode-languageserver-protocol": ["vscode-languageserver-protocol@3.17.5", "", { "dependencies": { "vscode-jsonrpc": "8.2.0", "vscode-languageserver-types": "3.17.5" } }, "sha512-mb1bvRJN8SVznADSGWM9u/b07H7Ecg0I3OgXDuLdn307rl/J3A9YD6/eYOssqhecL27hK1IPZAsaqh00i/Jljg=="],
 
-    "vscode-langservers-extracted/vscode-languageserver/vscode-languageserver-protocol": ["vscode-languageserver-protocol@3.18.2", "", { "dependencies": { "vscode-jsonrpc": "9.0.1", "vscode-languageserver-types": "3.18.0" } }, "sha512-XRyDbT0Pp3sSNti3JmxVEUMySWCSi1hhM+/KUlCy1hV1zmrqpM1OwO12EAki8blhmLuIMpaJrYbo0OzGVfK2Qg=="],
+    "vscode-languageserver/vscode-languageserver-protocol/vscode-jsonrpc": ["vscode-jsonrpc@8.0.2", "", {}, "sha512-RY7HwI/ydoC1Wwg4gJ3y6LpU9FJRZAUnTYMXthqhFXXu77ErDd/xkREpGuk4MyYkk4a+XDWAMqe0S3KkelYQEQ=="],
 
-    "vscode-markdown-languageservice/vscode-languageserver-protocol/vscode-jsonrpc": ["vscode-jsonrpc@9.0.1", "", {}, "sha512-rfuA6T75H6m5EkbhtEPzre9pT0HPcDI2MMy4+nPFIBks5J8JBAUHD4tRYSgaBOijIEC7SRkC1kKyXTLqbmh9jw=="],
-
-    "vscode-markdown-languageservice/vscode-languageserver-protocol/vscode-languageserver-types": ["vscode-languageserver-types@3.18.0", "", {}, "sha512-8TsGPNMIMiiBdkORgRSvLjuiEIiAFtO+KssmYWxQ+uSVvlf7RjK8YKCOjPzZ+YA04jXEV7+7LvkSmHkhpNS99g=="],
+    "vscode-languageserver/vscode-languageserver-protocol/vscode-languageserver-types": ["vscode-languageserver-types@3.17.2", "", {}, "sha512-zHhCWatviizPIq9B7Vh9uvrH6x3sK8itC84HkamnBWoDFJtzBf7SWlpLCZUit72b3os45h6RWQNC9xHRDF8dRA=="],
 
     "yaml-language-server/vscode-languageserver/vscode-languageserver-protocol": ["vscode-languageserver-protocol@3.17.5", "", { "dependencies": { "vscode-jsonrpc": "8.2.0", "vscode-languageserver-types": "3.17.5" } }, "sha512-mb1bvRJN8SVznADSGWM9u/b07H7Ecg0I3OgXDuLdn307rl/J3A9YD6/eYOssqhecL27hK1IPZAsaqh00i/Jljg=="],
 
     "intelephense/vscode-languageserver/vscode-languageserver-protocol/vscode-jsonrpc": ["vscode-jsonrpc@8.2.0", "", {}, "sha512-C+r0eKJUIfiDIfwJhria30+TYWPtuHJXHtI7J0YlOmKAo7ogxP20T0zxB7HZQIFhIyvoBPwWskjxrvAtfjyZfA=="],
 
     "twiggy-language-server/vscode-languageserver/vscode-languageserver-protocol/vscode-jsonrpc": ["vscode-jsonrpc@8.2.0", "", {}, "sha512-C+r0eKJUIfiDIfwJhria30+TYWPtuHJXHtI7J0YlOmKAo7ogxP20T0zxB7HZQIFhIyvoBPwWskjxrvAtfjyZfA=="],
-
-    "vscode-langservers-extracted/vscode-languageserver/vscode-languageserver-protocol/vscode-jsonrpc": ["vscode-jsonrpc@9.0.1", "", {}, "sha512-rfuA6T75H6m5EkbhtEPzre9pT0HPcDI2MMy4+nPFIBks5J8JBAUHD4tRYSgaBOijIEC7SRkC1kKyXTLqbmh9jw=="],
-
-    "vscode-langservers-extracted/vscode-languageserver/vscode-languageserver-protocol/vscode-languageserver-types": ["vscode-languageserver-types@3.18.0", "", {}, "sha512-8TsGPNMIMiiBdkORgRSvLjuiEIiAFtO+KssmYWxQ+uSVvlf7RjK8YKCOjPzZ+YA04jXEV7+7LvkSmHkhpNS99g=="],
 
     "yaml-language-server/vscode-languageserver/vscode-languageserver-protocol/vscode-jsonrpc": ["vscode-jsonrpc@8.2.0", "", {}, "sha512-C+r0eKJUIfiDIfwJhria30+TYWPtuHJXHtI7J0YlOmKAo7ogxP20T0zxB7HZQIFhIyvoBPwWskjxrvAtfjyZfA=="],
   }

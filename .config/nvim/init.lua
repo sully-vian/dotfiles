@@ -295,11 +295,10 @@ vim.pack.add({
     { src = gh "nvim-tree/nvim-web-devicons" },
     { src = gh "hiphish/rainbow-delimiters.nvim" },
     { src = gh "andymass/vim-matchup" },
-    { src = gh "monkoose/neocodeium" },
 })
 
-require("neocodeium").setup()
-vim.keymap.set("i", "<C-Right>", require("neocodeium").accept)
+vim.keymap.set("i", "<C-Right>", vim.lsp.inline_completion.get, { desc = "Accept inline completion" })
+vim.lsp.inline_completion.enable()
 
 vim.g.matchup_matchparen_offscreen = { method = nil }
 

@@ -5,7 +5,7 @@ vim.lsp.config("intelephense", {
     init_options = { storagePath = vim.fn.stdpath("cache") },
     settings = {
         intelephense = {
-            environment = {},
+            environment = vim.empty_dict(),
             format = {
                 enable = false,
                 braces = "k&r"

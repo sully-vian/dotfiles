@@ -86,7 +86,7 @@ local function format()
     vim.notify(table.concat(names, ","))
     vim.lsp.buf.format({
         async = false,
-        callback = function(_, result, ctx)
+        callback = function(_, _, ctx)
             local client = vim.lsp.get_client_by_id(ctx.client_id)
             vim.notify("aaa")
             if client then
@@ -96,7 +96,7 @@ local function format()
             end
         end,
         on_error = function(err)
-            vim.notify("failed to format")
+            vim.notify("failed to format:" .. err, vim.log.levels.ERROR)
         end
     })
     vim.fn.winrestview(view) -- restore saved view
@@ -297,9 +297,6 @@ vim.pack.add({
     { src = gh "andymass/vim-matchup" },
 })
 
-vim.keymap.set("i", "<C-Right>", vim.lsp.inline_completion.get, { desc = "Accept inline completion" })
-vim.lsp.inline_completion.enable()
-
 vim.g.matchup_matchparen_offscreen = { method = nil }
 
 require("hardtime").setup({
@@ -351,7 +348,7 @@ require("nvim-web-devicons").setup({ variant = "dark" })
 function get_icon()
     local filename = vim.fn.expand("%:t")
     local extension = vim.fn.expand("%:e")
-    local icon, foo = require("nvim-web-devicons").get_icon(filename, extension)
+    local icon, _ = require("nvim-web-devicons").get_icon(filename, extension)
     return icon or ""
 end
 

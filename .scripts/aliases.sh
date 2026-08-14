@@ -66,27 +66,13 @@ alias onefetch='onefetch --nerd-fonts'
 alias specs="inxi -Faz"
 alias fd="fd --hidden" # include hidden files and directories
 eval "$(zoxide init --cmd cd bash)"
-export RIPGREP_CONFIG_PATH="$HOME/.config/ripgreprc"
-
-# --- Programming ---
-require gnatmake javac java clang clang++
-alias adc="gnatmake -f -gnatwa -gnata -g"
-adc-e() { adc "$1" && ./"${1%.*}"; } # compile and execute ada program
-
-alias javaclean="find . -name \"*.class\" | xargs rm -f"                           # remove all .class files
-alias javacall="javac *.java"                                                      # compile all .java files
-javac-e() { javac "$1" && java "${1%.*}"; }                               # compile and execute java program
-javatest-c() { javac "$1" && java org.junit.runner.JUnitCore "${1%.*}"; } # compile and run JUnit test
-
-alias clang="clang -fcolor-diagnostics"
-alias clang++="clang++ -fcolor-diagnostics"
+export RIPGREP_CONFIG_PATH="$XDG_CONFIG_HOME/ripgrep/config"
 
 # --- Editors & Git ---
 require nvim lazygit
-alias nv="nvim"
 alias vim="nvim"
 alias lg="lazygit"
-alias edot="cd \$HOME/dotfiles && v . && cd -"
+alias edot="v \$DOTFILES"
 
 # --- Utilities ---
 require trans mpv

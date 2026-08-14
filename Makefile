@@ -7,6 +7,8 @@ CYAN  := \033[36m
 RESET := \033[0m
 LOG := printf "$(CYAN)[DOTFILES] %s$(RESET)\n"
 
+COMPLETIONS_DIR=$(PREFIX)/share/bash-completion/completions
+
 FONT_DIR=$(PREFIX)/share/fonts
 FONT_NAME=FiraCode
 
@@ -34,6 +36,12 @@ shellcheck: ## Statically check shell scripts
 luacheck: ## Statically check Lua files
 	@$(LOG) "Checking Neovim Lua files"
 	lua-language-server --check $(CONFIG)/nvim
+
+completions: ## Download and install bash-completion scripts
+	@$(LOG) "Installing bun completion"
+	bun completions > $(COMPLETIONS_DIR)/bun
+	@$(LOG) "Installing Symfony CLI completion"
+	symfony completion > $(COMPLETIONS_DIR)/symfony
 
 fonts: ## Download and install the latest Fira Code Nerd Font
 	@$(LOG) "Downloading $(FONT_NAME) archive..."

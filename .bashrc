@@ -111,9 +111,6 @@ source "$HOME/.scripts/opam-init.sh"
 # setup gcloud
 source "$HOME/.scripts/gcloud-setup.sh"
 
-# enable programmable completion features
-source "$HOME/.bash-completion.sh"
-
 # remove duplicates in PATH variable
 export PATH="$(perl -e 'print join(":", grep { not $seen{$_}++ } split(/:/, $ENV{PATH}))')"
 

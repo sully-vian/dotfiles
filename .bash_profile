@@ -4,6 +4,7 @@
 export XDG_CONFIG_HOME="$HOME/.config"
 export XDG_CACHE_HOME="$HOME/.cache"
 export XDG_DATA_HOME="$HOME/.local/share"
+export XDG_STATE_HOME="$HOME/.local/state"
 
 export PATH="$HOME/.local/bin/:$PATH"
 
@@ -32,10 +33,9 @@ export PATH="$BUN_INSTALL/bin:$PATH"
 # Cargo
 export PATH="$HOME/.cargo/bin:$PATH"
 
-alias startx="startx -- -configdir \$HOME/.config/xorg" 
+alias startx="startx -- -configdir \$XDG_CONFIG_HOME/xorg"
 
 # Do not run bashrc if display is not set
 if [ -f "$HOME/.bashrc" ] && [ -n "$DISPLAY" ]; then
     . "$HOME/.bashrc"
 fi
-

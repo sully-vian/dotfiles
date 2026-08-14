@@ -1,7 +1,9 @@
-#!/usr/bin/env bash
+#!/usr/bin/env sh
+
+set -euo pipefail
 
 # script to open github page from a repo in Tmux
-# strangly inspired by https://github.com/SylvanFranklin/.config/blob/main/scripts/open_github.sh
+# freely inspired by https://github.com/SylvanFranklin/.config/blob/main/scripts/open-github.sh
 
 cd "$(tmux display-message -p "#{pane_current_path}")" || exit 1
 
@@ -16,31 +18,38 @@ branch=$(git branch --show-current)
 
 url=$(git remote get-url origin)
 
-if [[ -z "$url" ]]; then
+if [ -z "$url" ]; then
     tmux display-message "No remote 'origin' found"
     exit 1
 fi
 
 # if ssh, normalize to http:
 # git@hostname:user/repo.git -> https://hostname/user/repo
-if [[ $url =~ ^(ssh://)?git@ ]]; then # git@github.com:<user>/<repo>
+case "$url" in
+git@* | ssh://git@*)    # git@github.com:<user>/<repo>
     url="${url#ssh://}" # remove ssh:// if it exists
-	url="${url#git@}" # remove git@
-    url="${url/:/\/}" # replace first ':' with '/' (no-op for ssh:// urls)
-	url="https://$url" # add schema
-fi
+    url="${url#git@}"   # remove git@
+    case "$url" in
+    *:*) # if url has ':'
+        # replace first ':' with '/' (no-op for ssh:// urls)
+        url="${url%%:*}/${url#*:}"
+        ;;
+    esac
+    url="https://$url" # add schema
+    ;;
+esac
 
 url="${url%.git}" # remove trailing .git
 
 path_sep="tree" # some providers use other
 
-if [[ -n "$branch" ]]; then # add branch
+if [ -n "$branch" ]; then # add branch
     url="$url/$path_sep/$branch"
 fi
 
-if [[ -n "$rel_path" && "$rel_path" != "." ]]; then # add relative path
+if [ -n "$rel_path" ] && [ "$rel_path" != "." ]; then # add relative path
     url="$url/$rel_path"
 fi
 
 tmux display-message -d 3000 "Opening $url..."
-xdg-open "$url" > /dev/null 2>&1 &
+xdg-open "$url" >/dev/null 2>&1 &

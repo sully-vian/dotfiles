@@ -22,11 +22,11 @@ case $selected in
     ;;
 "$lock")
     sleep 0.4;
-    "$HOME/.config/i3/i3lock-color.sh"
+    "$XDG_CONFIG_HOME/i3/i3lock-color.sh"
     ;;
 "$suspend")
     sleep 0.4
-    "$HOME/.config/i3/i3lock-color.sh" &
+    "$XDG_CONFIG_HOME/i3/i3lock-color.sh" &
     systemctl suspend
     ;;
 "$logout")

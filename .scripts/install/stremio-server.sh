@@ -2,7 +2,7 @@
 
 # Download server.js file for stremio
 
-DIR="$HOME/.config/stremio-enhanced/streamingserver"
+DIR="$XDG_CONFIG_HOME/stremio-enhanced/streamingserver"
 FILE="server.js"
 VERSION="v4.20.17"
 mkdir -p "$DIR"

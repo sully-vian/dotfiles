@@ -1,13 +1,13 @@
 PREFIX = $(HOME)/.local
 SRC = $(PREFIX)/src
-CONFIG = $(HOME)/.config
+CONFIG = $(XDG_CONFIG_HOME)
 SITES = $(SRC)/sites
 
 CYAN  := \033[36m
 RESET := \033[0m
 LOG := printf "$(CYAN)[DOTFILES] %s$(RESET)\n"
 
-COMPLETIONS_DIR=$(PREFIX)/share/bash-completion/completions
+COMPLETIONS_DIR=$(XDG_DATA_HOME)/bash-completion/completions
 
 FONT_DIR=$(PREFIX)/share/fonts
 FONT_NAME=FiraCode

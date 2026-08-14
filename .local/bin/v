@@ -1,0 +1,16 @@
+#!/usr/bin/env sh
+
+set -euo pipefail
+
+if [ $# -eq 0 ]; then # 0 args -> open current directory
+    exec nvim .
+elif [ $# -eq 1 ]; then  # 1 arg ->
+    if [ -d "$1" ]; then # directory -> cd into it, open it
+        cd "$1"
+        exec nvim .
+    else # file -> open file, cd into parent dir
+        exec nvim "$@" +'cd %:p:h'
+    fi
+else
+    exec nvim "$@"
+fi

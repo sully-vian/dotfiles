@@ -89,9 +89,7 @@ usage() {
 }
 
 # --- Pywal Integration ---
-if [ -f "$HOME/.cache/wal/colors.sh" ]; then
-    source "\$HOME/.cache/wal/colors.sh"
-fi
+[ -f "$HOME/.cache/wal/colors.sh" ] && source "$HOME/.cache/wal/colors.sh"
 
 # --- Alert Alias (long commands) ---
 # sleep 10; alert

@@ -38,10 +38,15 @@ luacheck: ## Statically check Lua files
 	lua-language-server --check $(CONFIG)/nvim
 
 completions: ## Download and install bash-completion scripts
+	mkdir -p $(COMPLETIONS_DIR)
+ifneq (,$(shell command -v bun 2> /dev/null))
 	@$(LOG) "Installing bun completion"
 	bun completions > $(COMPLETIONS_DIR)/bun
+endif
+ifneq (,$(shell command -v symfony 2> /dev/null))
 	@$(LOG) "Installing Symfony CLI completion"
 	symfony completion > $(COMPLETIONS_DIR)/symfony
+endif
 
 fonts: ## Download and install the latest Fira Code Nerd Font
 	@$(LOG) "Downloading $(FONT_NAME) archive..."

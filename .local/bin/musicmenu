@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+set -euo pipefail
+
 # music menu script using rofi
 
 cover=$(playerctl metadata mpris:artUrl 2>/dev/null)

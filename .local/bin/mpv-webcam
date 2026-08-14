@@ -1,17 +1,19 @@
 #!/usr/bin/env bash
 
+set -euo pipefail
+
 TITLE="mpv webcam" # for floating and sticky window with i3
 
 args=(
     av://v4l2:/dev/video0
     --profile=low-latency
-    --untimed # disable clock
+    --untimed  # disable clock
     --vf=hflip # mirror video
-    --osc=no # hide controller
+    --osc=no   # hide controller
     --no-border
     --geometry=320x240-0-0
     --quiet
     --title="$TITLE"
 )
 
-mpv  "${args[@]}" 2>&1 &
+mpv "${args[@]}" 2>&1 &

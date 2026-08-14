@@ -10,7 +10,7 @@ LOG := printf "$(CYAN)[DOTFILES] %s$(RESET)\n"
 FONT_DIR=$(PREFIX)/share/fonts
 FONT_NAME=FiraCode
 
-.PHONY: help stow update check fonts st dmenu
+.PHONY: help stow update check shellcheck luacheck fonts st dmenu
 
 .DEFAULT_GOAL := help
 
@@ -25,11 +25,15 @@ update: ## Update nvim packages and suckless submodules
 	nvim --headless -c 'lua vim.pack.update(nil, { force = true })' -c 'qa'; echo
 	git submodule update --remote --recursive
 
-check: ## Statically check code
+check: luacheck shellcheck ## Statically check code
+
+shellcheck: ## Statically check shell scripts
+	@$(LOG) "Checking shell scripts"
+	fd -H -t f -E .git -E .local/src -x file | grep -i "shell script" | cut -d: -f1 | xargs shellcheck -x
+
+luacheck: ## Statically check Lua files
 	@$(LOG) "Checking Neovim Lua files"
 	lua-language-server --check $(CONFIG)/nvim
-	@$(LOG) "Checking shell scripts"
-	fd -H -t f -E .git -E .local/src -x file | grep -i "shell script" | cut -d: -f1 | xargs shellcheck
 
 fonts: ## Download and install the latest Fira Code Nerd Font
 	@$(LOG) "Downloading $(FONT_NAME) archive..."
@@ -38,7 +42,6 @@ fonts: ## Download and install the latest Fira Code Nerd Font
 	tar -xf /tmp/$(FONT_NAME).tar.xz -C $(FONT_DIR) --wildcards "*.ttf"
 	@$(LOG) "Updating font cache..."
 	fc-cache -fv
-
 
 st dmenu: ## Build st and dmenu
 	@$(LOG) "cleaning $(SRC)/$@ before build"

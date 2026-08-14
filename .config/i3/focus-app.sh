@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+set -euo pipefail
+
 # This script focuses an existing window with the specified WM_CLASS,
 # or launches a new instance of the application if no such window is found.
 #

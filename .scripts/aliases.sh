@@ -84,7 +84,7 @@ function v() {
     if [ $# -eq 0 ]; then nvim .; else nvim "$@"; fi
 }
 alias lg="lazygit"
-alias edot="cd $HOME/dotfiles && v . && cd -"
+alias edot="cd \$HOME/dotfiles && v . && cd -"
 
 # --- Utilities ---
 require trans mpv
@@ -102,8 +102,7 @@ function usage() {
 
 # --- Pywal Integration ---
 if [ -f "$HOME/.cache/wal/colors.sh" ]; then
-    source "$HOME/.cache/wal/colors.sh"
-    alias dmenu="dmenu -nf \"$color15\" -nb \"$color0\" -sf \"$color15\" -sb \"$color1\""
+    source "\$HOME/.cache/wal/colors.sh"
 fi
 
 # --- Alert Alias (long commands) ---

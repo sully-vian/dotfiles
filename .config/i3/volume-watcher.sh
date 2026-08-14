@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+set -euo pipefail
+
 # This script uses pw-mon to watch for changes in the volume and mute status
 # and signals i3blocks to update the volume block
 

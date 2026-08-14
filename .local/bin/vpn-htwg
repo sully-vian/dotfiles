@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+set -euo pipefail
+
 if pgrep openvpn >/dev/null; then
     echo "disconnecting..."
     sudo pkill openvpn

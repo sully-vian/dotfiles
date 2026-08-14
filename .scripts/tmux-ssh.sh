@@ -9,7 +9,7 @@ ssh() {
   if [ -n "$TMUX" ]; then
     # prompt the user
     echo -e "${ORANGE}[WARNING]${RESET}\nYou are currently in a tmux session. The machine you're connecting to might automatically run a tmux session too, causing tmux session nesting."
-    read -p "Do you want to Proceed (y/n)?: " choice
+    read -p -r "Do you want to Proceed (y/n)?: " choice
     case "$choice" in
     y | Y) echo "Proceeding with SSH..." ;;
     n | N)

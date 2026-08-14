@@ -5,5 +5,4 @@ _cheat_complete() {
 }
 
 # register completion func
-complete -F _cheat_complete cheat
 complete -F _cheat_complete cht

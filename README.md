@@ -18,7 +18,6 @@ This repository contains configuration files (dotfiles) for various tools and ap
         - [ ] commands/shortcuts to record screen
         - [x] webcam: not hide cursor when on window
 - [ ] Use [dipc](https://github.com/doprz/dipc) for wallpaper conversion
-- [x] Completion for cht
 - [ ] Neovim
     - [ ] Language injection with tree-sitter
     - [x] include hidden files in mini.pick
@@ -41,7 +40,6 @@ This repository contains configuration files (dotfiles) for various tools and ap
     - [i3wm Configuration](#i3wm-configuration)
     - [rofi Configuration](#rofi-configuration)
   - [Aliases and Functions](#aliases-and-functions)
-  - [VPN Configuration](#vpn-configuration)
   - [Prompt Customization](#prompt-customization)
 
 ## Installation
@@ -62,7 +60,6 @@ The lightdm config files shall by copied to the `/etc/lightdm` directory. A copy
 The following tools are required for the configurations to work properly:
 
 - **Bash**: The GNU Bourne Again shell.
-- **VPNC**: A VPN client for Cisco VPNs.
 - **lsd**: A modern replacement for ls.
 - **bat**: A cat clone with syntax highlighting and Git integration.
 - **onefetch**: A command-line Git information tool.
@@ -70,7 +67,6 @@ The following tools are required for the configurations to work properly:
 - **opam**: OCaml package manager.
 - **perl**: A highly capable, feature-rich programming language.
 - **notify-send**: A program to send desktop notifications.
-- **cheat.sh**: A command-line cheat sheet tool.
 - **stow**: A symlink farm manager. (Optional, you can create the symlinks manually)
 - **BlackBox**: A terminal emulator.(Optional, you can remove the configuration file)
 
@@ -129,17 +125,7 @@ Configuration files for Rofi, a window switcher, application launcher, and dmenu
 - **c**: Clears the terminal.
 - **shut**: Shuts down the system.
 - **chut**: Alias for `shut`.
-- **cheat**: Fetches cheat sheets from cheat.sh.
-- **cht**: Alias for `cheat`.
 - **print_bash_list**: Prints a colon-separated list as a newline-separated list.
-
-## VPN Configuration
-
-`.n7-vpn.conf`
-Configuration file for `vpnc` to connect to a specific VPN
-
-`.bashvpn`
-Script to connect and disconnect from the VPN using `vpnc`.
 
 ## Prompt Customization
 

@@ -67,15 +67,14 @@ exec_always --no-startup-id "$HOME/.scripts/dunst-restart.sh"
 # App launcher
 bindsym $mod+space exec "rofi -modi drun,run -show drun"
 
-# powermenu
-bindsym $mod+p exec --no-startup-id "$HOME/.scripts/powermenu.sh"
+bindsym $mod+p exec --no-startup-id powermenu
 
 # wallpaper
-exec_always --no-startup-id "$HOME/.config/i3/load-wp.sh"
-bindsym $mod+w exec --no-startup-id "$HOME/.scripts/rofi/select-wp.sh"
+exec_always --no-startup-id load-wp
+bindsym $mod+w exec --no-startup-id select-wp
 
 # media menu
-bindsym $mod+m exec --no-startup-id "$HOME/.scripts/rofi/musicmenu.sh"
+bindsym $mod+m exec --no-startup-id musicmenu
 
 # signal bar for changes
 set $signal_bar pkill -SIGRTMIN+10 i3blocks
@@ -136,9 +135,9 @@ bindsym $mod+Shift+Return exec i3-sensible-terminal -c floating
 bindsym $mod+b exec $browser
 
 # screenshot selection
-bindsym Print exec --no-startup-id "$HOME/.scripts/screenshot.sh -s"
+bindsym Print exec --no-startup-id "screenshot -s"
 # screenshot full window
-bindsym Shift+Print exec --no-startup-id "$HOME/.scripts/screenshot.sh -f"
+bindsym Shift+Print exec --no-startup-id "screenshot -f"
 
 bindsym XF86HomePage exec "$HOME/.config/i3/focus-app.sh google-chrome $browser"
 bindsym XF86Mail exec "$HOME/.config/i3/focus-app.sh Mail $mail"

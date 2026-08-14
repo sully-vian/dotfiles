@@ -94,8 +94,6 @@ alias chut="shut"
 alias open="xdg-open"
 alias trans="trans -brief"
 alias mpv="mpv --no-border"
-alias mpv-webcam="$HOME/.scripts/mpv-webcam.sh"
-function cht() { curl -s cheat.sh/$1 | less; }
 
 # show sorted disk usage
 function usage() {

@@ -26,7 +26,10 @@ update: ## Update nvim packages and suckless submodules
 	git submodule update --remote --recursive
 
 check: ## Statically check code
+	@$(LOG) "Checking Neovim Lua files"
 	lua-language-server --check $(CONFIG)/nvim
+	@$(LOG) "Checking shell scripts"
+	fd -H -t f -E .git -E .local/src -x file | grep -i "shell script" | cut -d: -f1 | xargs shellcheck
 
 fonts: ## Download and install the latest Fira Code Nerd Font
 	@$(LOG) "Downloading $(FONT_NAME) archive..."

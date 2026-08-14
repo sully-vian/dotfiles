@@ -16,14 +16,17 @@ BLUE='\033[0;34m'
 NC='\033[0m' # No Color
 
 if command -v notify-send >/dev/null 2>&1; then
-    _warn() { notify-send -u critical -t 10000 "Shell Error" "$1"; echo -e "${RED}Error: $1${NC}" >&2; }
+    _warn() {
+        notify-send -u critical -t 10000 "Shell Error" "$1"
+        echo -e "${RED}Error: $1${NC}" >&2
+    }
 else
     _warn() { echo -e "${RED}Error: $1${NC}" >&2; }
 fi
 
 require() {
     for cmd in "$@"; do
-        if ! command -v "$cmd" > /dev/null 2>&1; then
+        if ! command -v "$cmd" >/dev/null 2>&1; then
             _warn "Required command '$cmd' is missing."
         fi
     done
@@ -34,14 +37,16 @@ require ls grep du find xdg-open curl
 
 # --- Color Support ---
 if [ -x /usr/bin/dircolors ]; then
-  test -r "$HOME/.dircolors" && eval "$(dircolors -b "$HOME/.dircolors")" || eval "$(dircolors -b)"
-  alias ls='ls --color=auto'
-  alias diff='diff --color=always'
-  alias dir='dir --color=auto'
-  alias vdir='vdir --color=auto'
-  alias grep='grep --color=auto'   # doesn't support regex
-  alias fgrep='fgrep --color=auto' # supports extended regex
-  alias egrep='egrep --color=auto' # doesn't support regex
+    if test -r "$HOME/.dircolors"; then
+        eval "$(dircolors -b "$HOME/.dircolors")"
+    else
+        eval "$(dircolors -b)"
+    fi
+    alias ls='ls --color=auto'
+    alias diff='diff --color=always'
+    alias dir='dir --color=auto'
+    alias vdir='vdir --color=auto'
+    alias grep='grep --color=auto'
 fi
 
 export LESS="--ignore-case --incsearch --RAW-CONTROL-CHARS --quit-if-one-screen" # enable incremental search by default
@@ -66,12 +71,12 @@ export RIPGREP_CONFIG_PATH="$HOME/.config/ripgreprc"
 # --- Programming ---
 require gnatmake javac java clang clang++
 alias adc="gnatmake -f -gnatwa -gnata -g"
-function adc-e() { adc "$1" && ./"${1%.*}"; } # compile and execute ada program
+adc-e() { adc "$1" && ./"${1%.*}"; } # compile and execute ada program
 
-alias javaclean="find . -name \"*.class\" | xargs rm -f" # remove all .class files
-alias javacall="javac *.java"                        # compile all .java files
-function javac-e() { javac "$1" && java "${1%.*}"; } # compile and execute java program
-function javatest-c() { javac "$1" && java org.junit.runner.JUnitCore "${1%.*}"; } # compile and run JUnit test
+alias javaclean="find . -name \"*.class\" | xargs rm -f"                           # remove all .class files
+alias javacall="javac *.java"                                                      # compile all .java files
+javac-e() { javac "$1" && java "${1%.*}"; }                               # compile and execute java program
+javatest-c() { javac "$1" && java org.junit.runner.JUnitCore "${1%.*}"; } # compile and run JUnit test
 
 alias clang="clang -fcolor-diagnostics"
 alias clang++="clang++ -fcolor-diagnostics"
@@ -80,9 +85,6 @@ alias clang++="clang++ -fcolor-diagnostics"
 require nvim lazygit
 alias nv="nvim"
 alias vim="nvim"
-function v() {
-    if [ $# -eq 0 ]; then nvim .; else nvim "$@"; fi
-}
 alias lg="lazygit"
 alias edot="cd \$HOME/dotfiles && v . && cd -"
 
@@ -96,8 +98,8 @@ alias trans="trans -brief"
 alias mpv="mpv --no-border"
 
 # show sorted disk usage
-function usage() {
-	du -sh "$@" | sort -hr
+usage() {
+    du -sh "$@" | sort -hr
 }
 
 # --- Pywal Integration ---
@@ -108,4 +110,3 @@ fi
 # --- Alert Alias (long commands) ---
 # sleep 10; alert
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
-

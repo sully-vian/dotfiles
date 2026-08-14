@@ -1,8 +1,10 @@
 #!/usr/bin/env bash
 
+set -euo pipefail
+
 # 1. Get the width, height, left, and top offsets of the active pane
 read -r p_width p_height p_left p_top <<< \
-  $(tmux display-message -p '#{pane_width} #{pane_height} #{pane_left} #{pane_top}')
+  "$(tmux display-message -p '#{pane_width} #{pane_height} #{pane_left} #{pane_top}')"
 
 # 2. Calculate the center of that pane
 target_col=$(( p_left + (p_width / 2) - 2 )) # -2 adjusts for half the length of "baba"

@@ -93,7 +93,7 @@ export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quo
 # load env variables from .env
 if [ -f "$HOME/.env" ]; then
 	# skip comments
-	export $(grep -v '^#' "$HOME/.env" | xargs)
+	export "$(grep -v '^#' "$HOME/.env" | xargs)"
 fi
 
 # get pywal shell vars
@@ -112,13 +112,16 @@ source "$HOME/.scripts/opam-init.sh"
 source "$HOME/.scripts/gcloud-setup.sh"
 
 # remove duplicates in PATH variable
-export PATH="$(perl -e 'print join(":", grep { not $seen{$_}++ } split(/:/, $ENV{PATH}))')"
+PATH="$(perl -e 'print join(":", grep { not $seen{$_}++ } split(/:/, $ENV{PATH}))')"
+export PATH
 
 # remove duplicates in MANPATH variable
-export MANPATH="$(perl -e 'print join(":", grep { not $seen{$_}++ } split(/:/, $ENV{MANPATH}))')"
+MANPATH="$(perl -e 'print join(":", grep { not $seen{$_}++ } split(/:/, $ENV{MANPATH}))')"
+export MANPATH
 
 # remove duplicates in INFOPATH variable
-export INFOPATH="$(perl -e 'print join(":", grep { not $seen{$_}++ } split(/:/, $ENV{INFOPATH}))')"
+INFOPATH="$(perl -e 'print join(":", grep { not $seen{$_}++ } split(/:/, $ENV{INFOPATH}))')"
+export INFOPATH
 
 # create tmux session on attach if existing
 # if not in tmux, a session exists, the terminal is interactive and not a ssh session

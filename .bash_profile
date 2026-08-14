@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/usr/bin/env sh
 
 # XDG variables
 export XDG_CONFIG_HOME="$HOME/.config"
@@ -32,11 +32,7 @@ export PATH="$BUN_INSTALL/bin:$PATH"
 # Cargo
 export PATH="$HOME/.cargo/bin:$PATH"
 
-# texlive path
-export PATH="/usr/local/texlive/2024/bin/x86_64-linux:$PATH"
-export INFOPATH="/usr/local/texlive/2024/texmf-dist/doc/info:$INFOPATH"
-
-alias startx="startx -- -configdir $HOME/.config/xorg" 
+alias startx="startx -- -configdir \$HOME/.config/xorg" 
 
 # Do not run bashrc if display is not set
 if [ -f "$HOME/.bashrc" ] && [ -n "$DISPLAY" ]; then

@@ -5,7 +5,7 @@
       "src": "https://github.com/projekt0n/github-nvim-theme"
     },
     "gruber-darker.nvim": {
-      "rev": "9b68f84bfd6c1278fef2143802ca40c60f2471c0",
+      "rev": "83d99c0eb0fa2513fa5268d097194801fad26660",
       "src": "https://github.com/blazkowolf/gruber-darker.nvim"
     },
     "hardtime.nvim": {
@@ -37,7 +37,7 @@
       "src": "https://github.com/stevearc/oil.nvim"
     },
     "phpactor": {
-      "rev": "7eb622fdd48d3b1fae87503d271038bc82aac45a",
+      "rev": "f67b7753b966c874735a064978dd89837a369f59",
       "src": "https://github.com/phpactor/phpactor"
     },
     "rainbow-delimiters.nvim": {

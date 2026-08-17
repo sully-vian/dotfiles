@@ -1,26 +1,48 @@
-#!/usr/bin/env bash
+#!/usr/bin/env sh
 
 set -euo pipefail
 
-# capture selection: -s
-# capture full screen: -f
+usage() {
+    cmd=$(basename "$0")
+    printf "%s: capture a screenshot and copy it to the clipboard\n\n" "$cmd"
+    printf "Usage:\n"
+    printf "\t%s [sel|full]\n" "$cmd"
+    printf "sel:  Capture selection\n"
+    printf "full: Capture full screen\n"
+    exit 1
+}
+
+take_screenshot() {
+    if ! import "$@" "$FULL_PATH"; then
+        notify-send --urgency=low "Screenshot canceled" "No image was saved"
+        exit 1
+    fi
+}
+
+if [ "$#" -ne 1 ]; then
+    usage
+fi
 
 SCREENSHOT_DIR="$HOME/Pictures"
 
-mkdir -p "$SCREENSHOT_DIR"
+mkdir --parents "$SCREENSHOT_DIR"
 
 FILENAME="screenshot-$(date +%Y-%m-%d-%H-%M-%S).png"
 FULL_PATH="$SCREENSHOT_DIR/$FILENAME"
 
-if [ "$1" = "-s" ]; then # selection mode
-    if import "$FULL_PATH"; then
-        notify-send --urgency=low "Selection captured" "Saved to $FULL_PATH"
-    else
-        notify-send --urgency=low "Screenshot canceled" "No image was saved"
-    fi
+case "$1" in
+sel)
+    take_screenshot
+    ;;
+full)
+    take_screenshot -window root
+    ;;
+*)
+    usage
+    ;;
+esac
 
-elif [ "$1" = "-f" ]; then # full window mode
-    if import -window root "$FULL_PATH"; then
-        notify-send --urgency=low "Full screen captured" "Saved to $FULL_PATH"
-    fi
-fi
+notify-send --urgency=low "Screenshot captured" "Saved to $FULL_PATH"
+
+mime=$(file --brief --mime-type "$FULL_PATH")
+xclip -selection clipboard -target "$mime" -in <"$FULL_PATH"

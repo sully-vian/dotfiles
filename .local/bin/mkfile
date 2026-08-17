@@ -1,0 +1,12 @@
+#!/usr/bin/env sh
+
+set -euo pipefail
+
+if [ "$#" -ne 1 ]; then
+    printf "Usage:\n"
+    printf "\t%s <file>\n" "$0"
+    exit 1
+fi
+
+mkdir -p "$(dirname "$1")"
+touch "$1"

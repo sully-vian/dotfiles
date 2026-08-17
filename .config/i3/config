@@ -135,9 +135,9 @@ bindsym $mod+Shift+Return exec i3-sensible-terminal -c floating
 bindsym $mod+b exec $browser
 
 # screenshot selection
-bindsym Print exec --no-startup-id "screenshot -s"
+bindsym Print exec --no-startup-id "screenshot sel"
 # screenshot full window
-bindsym Shift+Print exec --no-startup-id "screenshot -f"
+bindsym Shift+Print exec --no-startup-id "screenshot full"
 
 bindsym XF86HomePage exec "$XDG_CONFIG_HOME/i3/focus-app.sh google-chrome $browser"
 bindsym XF86Mail exec "$XDG_CONFIG_HOME/i3/focus-app.sh Mail $mail"

@@ -48,8 +48,4 @@ vim.api.nvim_create_user_command("CopilotUsage", function()
     end)
 end, { desc = "Show GitHub Copilot usage" })
 
-vim.lsp.inline_completion.enable()
-vim.keymap.set("i", "<C-Right>", vim.lsp.inline_completion.get, { desc = "Accept inline completion" })
-
-
 vim.lsp.enable("copilot")

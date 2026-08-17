@@ -302,6 +302,7 @@ vim.lsp.inline_completion.enable()
 vim.keymap.set("i", "<C-Right>", vim.lsp.inline_completion.get, { desc = "Accept inline completion" })
 require("neocodeium").setup()
 vim.keymap.set("i", "<C-Right>", require("neocodeium").accept_word)
+vim.keymap.set("i", "<C-S-Right>", require("neocodeium").accept)
 
 vim.g.matchup_matchparen_offscreen = { method = nil }
 

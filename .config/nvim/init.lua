@@ -225,6 +225,11 @@ vim.keymap.set('t', "<Esc><Esc>", [[<C-\><C-n>]], { desc = "Exit terminal mode" 
 vim.keymap.set({ 'n', 'v' }, "<leader>n", ":Norm ", { desc = "Norm" })
 vim.keymap.set('n', "<leader>m", vim.cmd.messages, { desc = "Show messages" })
 vim.keymap.set('n', "<leader>M", vim.cmd.Man, { desc = "Show Manpage" })
+vim.keymap.set('n', "<leader><cr>", function()
+    vim.cmd.vnew()
+    vim.bo.buftype = "nofile"
+    vim.bo.bufhidden = "wipe"
+end, { desc = "New scratch buffer" })
 
 -- LSP
 vim.keymap.set('n', "<leader>r", vim.lsp.buf.rename, { desc = "Rename" })

@@ -1,5 +1,7 @@
 #!/usr/bin/env sh
 
+export VISUAL=nvim
+
 # XDG variables
 export XDG_CONFIG_HOME="$HOME/.config"
 export XDG_CACHE_HOME="$HOME/.cache"

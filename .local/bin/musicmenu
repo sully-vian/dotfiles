@@ -1,33 +1,25 @@
-#!/usr/bin/env bash
+#!/usr/bin/env sh
 
 set -euo pipefail
 
-# music menu script using rofi
+# music menu script
 
-cover=$(playerctl metadata mpris:artUrl 2>/dev/null)
-
-status=$(playerctl status 2>/dev/null)
+status=$(playerctl status)
 
 # options
 if [ "$status" = "Playing" ]; then
     playpause=" Pause"
+    playpause=""
 else
     playpause=" Play"
+    playpause=""
 fi
 next=" Next"
-prev=" Prev"
-
-# options combined
-options="$playpause\n$next\n$prev"
-
-TMP_DIR=$(mktemp -d)
-COVER_PATH="$TMP_DIR/cover.jpg"
-
-# download cover art
-curl -s "$cover" -o "$COVER_PATH"
+next=""
+prev=""
 
 # selected option
-selected=$(echo -e "$options" | rofi -dmenu -p "Music Menu" -show-icons -icon-theme "$COVER_PATH")
+selected=$(printf "%s\n%s\n%s" "$prev" "$playpause" "$next" | dmenu -fn "monospace:size=20" -i -c -l 3)
 
 # action
 case $selected in

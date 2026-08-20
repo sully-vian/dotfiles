@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/usr/bin/env sh
 
 set -euo pipefail
 
@@ -9,12 +9,14 @@ set -euo pipefail
 hostname=$(cat /etc/hostname)
 
 case "$hostname" in
-    archaic|monarch)
-        right_monitor="eDP"
-        left_monitor="HDMI-A-0";;
-    remy)
-        right_monitor="VGA1"
-        left_monitor="DP1";;
+archaic | monarch)
+    right_monitor="eDP"
+    left_monitor="HDMI-A-0"
+    ;;
+remy)
+    right_monitor="VGA1"
+    left_monitor="DP1"
+    ;;
 esac
 
 if xrandr | grep "$left_monitor connected"; then
@@ -26,7 +28,7 @@ else
     # only laptop monitor
     xrandr --output "$right_monitor" --primary --auto --rate 60
     xrandr --output "$left_monitor" --off
-    for i in {1..10}; do
+    for i in $(seq 10); do
         i3-msg "workspace $i; move workspace to output $right_monitor" 2>/dev/null
     done
 fi

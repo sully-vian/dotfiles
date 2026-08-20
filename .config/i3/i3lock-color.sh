@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/usr/bin/env sh
 
 set -euo pipefail
 
@@ -6,7 +6,7 @@ set -euo pipefail
 # and a clock. It uses the pywal colorscheme.
 
 # get the colorscheme
-source "$HOME/.cache/wal/colors.sh"
+. "$HOME/.cache/wal/colors.sh"
 
 # st color variables
 black=$color0

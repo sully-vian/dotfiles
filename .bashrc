@@ -123,6 +123,8 @@ export MANPATH
 INFOPATH="$(perl -e 'print join(":", grep { not $seen{$_}++ } split(/:/, $ENV{INFOPATH}))')"
 export INFOPATH
 
+[ -f "$HOME/.bashrc.local" ] && source "$HOME/.bashrc.local"
+
 # create tmux session on attach if existing
 # if not in tmux, a session exists, the terminal is interactive and not a ssh session
 if [ -z "$TMUX" ] && [ -n "$PS1" ] && [ -t 1 ] && [ -z "$SSH_CONNECTION" ]; then

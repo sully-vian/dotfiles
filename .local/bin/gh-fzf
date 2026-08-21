@@ -1,0 +1,15 @@
+#!/usr/bin/env sh
+
+set -euo pipefail
+
+repo=$(gh repo list | cut -f1 | fzf)
+
+branch=$(gh repo view "$repo" --json defaultBranchRef -q '.defaultBranchRef.name')
+
+files=$(gh api "repos/$repo/git/trees/$branch?recursive=1" -q '.tree[] | select(.type="blob") | .path')
+
+file=$(echo "$files" | fzf)
+
+url="https://github.com/$repo/blob/$branch/$file"
+
+xdg-open "$url"

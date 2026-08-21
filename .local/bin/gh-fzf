@@ -2,11 +2,15 @@
 
 set -euo pipefail
 
-repo=$(gh repo list | cut -f1 | fzf)
+# fetch repos and default branches: "owner/repo default-branch"
+# only show "owner/repo" with `--with-nth=1`
+selection=$(gh repo list --json nameWithOwner,defaultBranchRef --jq '.[] | "\(.nameWithOwner) \(.defaultBranchRef.name)"' | fzf --with-nth=1)
 
-branch=$(gh repo view "$repo" --json defaultBranchRef -q '.defaultBranchRef.name')
+repo=$(echo "$selection" | cut --delimiter=' ' --fields=1)
+branch=$(echo "$selection" | cut --delimiter=' ' --fields=2)
 
-files=$(gh api "repos/$repo/git/trees/$branch?recursive=1" -q '.tree[] | select(.type="blob") | .path')
+# fetch file tree
+files=$(gh api "repos/$repo/git/trees/$branch?recursive=1" --jq '.tree[] | select(.type="blob") | .path')
 
 file=$(echo "$files" | fzf)
 

@@ -14,11 +14,11 @@
     editor = nvim
     autocrlf = input
 	pager = delta
-[include]
-    path = ~/.gitconfig.local
 [url "git@github.com:"]
 	insteadOf = https://github.com/
 [delta]
 	dark = true
 	line-numbers = true
 	paging = never
+[include]
+    path = ~/.gitconfig.local

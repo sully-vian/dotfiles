@@ -1,3 +1,8 @@
+SHELL := /usr/bin/env sh
+.SHELLFLAGS := -euo pipefail -c
+MAKEFLAGS += --warn-undefined-variables
+MAKEFLAGS += --no-builtin-rules
+
 PREFIX = $(HOME)/.local
 SRC = $(PREFIX)/src
 CONFIG = $(XDG_CONFIG_HOME)
@@ -12,22 +17,25 @@ COMPLETIONS_DIR=$(XDG_DATA_HOME)/bash-completion/completions
 FONT_DIR=$(PREFIX)/share/fonts
 FONT_NAME=FiraCode
 
-.PHONY: help stow update check shellcheck luacheck fonts st dmenu
+.PHONY: help install stow update check shellcheck luacheck completions ansi fonts st dmenu
 
 .DEFAULT_GOAL := help
 
 help: ## Show this help message
-	@rg '^([ a-zA-Z_-]+): ## (.*)$$' -r $$'$(CYAN)$$1$(RESET)\t$$2' $(MAKEFILE_LIST) | column -t -s $$'\t'
+	@rg '^([ a-zA-Z_-]+): [ a-zA-Z_-]*## (.*)$$' -r $$'$(CYAN)$$1$(RESET)\t$$2' $(MAKEFILE_LIST) | column -t -s $$'\t'
 
-install: update fonts completions ansi st dmenu stow # Install everything
+install: update fonts completions ansi st dmenu stow ## Install everything
 
 stow: ## Generate symlinks
 	@$(LOG) "Generating symlinks"
 	stow .
 
-update: ## Update nvim packages and suckless submodules
+update: ## Update JS and nvim packages and suckless submodules
+	@$(LOG) "Updating JS packages"
 	bun update
+	@$(LOG) "Updating Neovim packages"
 	nvim --headless -c 'lua vim.pack.update(nil, { force = true })' -c 'qa'; echo
+	@$(LOG) "Updating suckless submodules"
 	git submodule update --remote --recursive
 
 check: luacheck shellcheck ## Statically check code
@@ -40,7 +48,7 @@ luacheck: ## Statically check Lua files
 	@$(LOG) "Checking Neovim Lua files"
 	lua-language-server --check $(CONFIG)/nvim
 
-completions: ## Download and install bash-completion scripts
+completions: ## Download or generate bash-completion scripts
 	mkdir -p $(COMPLETIONS_DIR)
 ifneq (,$(shell command -v bun 2> /dev/null))
 	@$(LOG) "Installing bun completion"
@@ -51,12 +59,12 @@ ifneq (,$(shell command -v symfony 2> /dev/null))
 	symfony completion > $(COMPLETIONS_DIR)/symfony
 endif
 
-ansi: ### Download ansi script
+ansi: ## Download ansi script
 	@$(LOG) "Downloading ansi script"
 	curl -L git.io/ansi > $(XDG_BIN_HOME)/ansi
 	chmod +x $(XDG_BIN_HOME)/ansi
 
-fonts: ## Download and install the latest Fira Code Nerd Font
+fonts: ## Download the latest Fira Code Nerd Font and rebuild font cache
 	@$(LOG) "Downloading $(FONT_NAME) archive"
 	curl -fLo /tmp/$(FONT_NAME).tar.xz https://github.com/ryanoasis/nerd-fonts/releases/latest/download/$(FONT_NAME).tar.xz
 	@$(LOG) "Extracting TTF files"

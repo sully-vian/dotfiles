@@ -47,6 +47,10 @@
             "cursorShape": "filledBox",
             "font": {
                 "face": "FiraCode Nerd Font Mono",
+                "features": {
+                    "liga": 0,
+                    "calt": 0
+                },
                 "size": 10
             },
             "opacity": 90,

@@ -4,7 +4,7 @@ set -euo pipefail
 
 out_file="${1:-ctx.tail}" # if no $1, default to "ctx.tail"
 
-selected_files=$(fd --hidden --type file --exclude .git | fzf --multi)
+selected_files=$(fd --hidden --type file --exclude .git | fzf --multi --preview 'printf "%s\n" {+}' --preview-window=right:30%)
 
 echo "${selected_files}" >&2 # list file names
 

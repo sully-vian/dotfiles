@@ -1,0 +1,14 @@
+#!/usr/bin/env sh
+
+set -euo pipefail
+
+# fman - Use fzf to search manpages
+
+if [ "$#" -gt 0 ]; then # act as man if called with arguments
+    exec man "$@"
+fi
+
+selection=$(man -k . | fzf --prompt="Man > ")
+
+man "$(printf '%s' "$selection" | cut -d' ' -f1)"
+printf '%s\n' "$selection"

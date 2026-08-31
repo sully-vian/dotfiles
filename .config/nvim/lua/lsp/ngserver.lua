@@ -1,10 +1,10 @@
-local global_node_modules = vim.fn.glob(vim.env.HOME .. "/.config/nvm/versions/node/*/lib/node_modules", true, false)
+local node_modules = vim.fn.glob(vim.env.DOTFILES .. "/node_modules", true, false)
 
 vim.lsp.config("ngserver", {
     cmd = {
-        "ngserver", "--stdio",
-        "--tsProbeLocations", global_node_modules,
-        "--ngProbeLocations", global_node_modules
+        js_bin .. "ngserver", "--stdio",
+        "--tsProbeLocations", node_modules,
+        "--ngProbeLocations", node_modules
     },
     filetypes = { "typescript", "html", "typescriptreact", "htmlangular" },
     root_markers = { "angular.json" },
@@ -12,4 +12,4 @@ vim.lsp.config("ngserver", {
 })
 
 
-vim.lsp.enable("ngserver")
+--vim.lsp.enable("ngserver")

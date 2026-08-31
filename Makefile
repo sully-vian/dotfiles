@@ -32,7 +32,7 @@ stow: ## Generate symlinks
 
 update: ## Update JS and nvim packages and suckless submodules
 	@$(LOG) "Updating JS packages"
-	bun update
+	bun update --latest
 	@$(LOG) "Updating Neovim packages"
 	nvim --headless -c 'lua vim.pack.update(nil, { force = true })' -c 'qa'; echo
 	@$(LOG) "Updating suckless submodules"

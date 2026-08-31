@@ -39,7 +39,7 @@ local function gotoRelevantDef()
 end
 
 vim.lsp.config("ts_ls", {
-    cmd = { "tsc", "--lsp", "--stdio" },
+    cmd = { js_bin .. "tsc", "--lsp", "--stdio" },
     init_options = { hostInfo = "neovim" },
     filetypes = {
         "javascript",

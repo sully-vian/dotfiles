@@ -17,7 +17,7 @@ COMPLETIONS_DIR=$(XDG_DATA_HOME)/bash-completion/completions
 FONT_DIR=$(PREFIX)/share/fonts
 FONT_NAME=FiraCode
 
-.PHONY: help install stow update check shellcheck luacheck completions ansi fonts st dmenu
+.PHONY: help install stow update check shellcheck luacheck completions ansi symfony-lsp fonts st dmenu
 
 .DEFAULT_GOAL := help
 
@@ -37,6 +37,8 @@ update: ## Update JS and nvim packages and suckless submodules
 	nvim --headless -c 'lua vim.pack.update(nil, { force = true })' -c 'qa'; echo
 	@$(LOG) "Updating suckless submodules"
 	git submodule update --remote --recursive
+	@$(LOG) "Updating Symfony LSP"
+	$(MAKE) symfony-lsp
 
 check: luacheck shellcheck ## Statically check code
 
@@ -63,6 +65,12 @@ ansi: ## Download ansi script
 	@$(LOG) "Downloading ansi script"
 	curl -L git.io/ansi > $(XDG_BIN_HOME)/ansi
 	chmod +x $(XDG_BIN_HOME)/ansi
+
+symfony-lsp: ## Download the latest Symfony Language Server
+	@$(LOG) "Downloading symfony-lsp"
+	gh release download --repo symfony/language-tools --pattern "*-linux-x64.tar.gz" --output /tmp/symfony-lsp.tar.gz --clobber
+	tar -xzf /tmp/symfony-lsp.tar.gz -C $(XDG_BIN_HOME) --strip-components=1 --wildcards "*/symfony-lsp"
+	@echo "Updated to $(shell symfony-lsp --version)"
 
 fonts: ## Download the latest Fira Code Nerd Font and rebuild font cache
 	@$(LOG) "Downloading $(FONT_NAME) archive"

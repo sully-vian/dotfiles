@@ -20,5 +20,7 @@
 	dark = true
 	line-numbers = true
 	paging = never
+[fetch]
+	prune = true
 [include]
     path = ~/.gitconfig.local

@@ -5,7 +5,7 @@
       "src": "https://github.com/projekt0n/github-nvim-theme"
     },
     "gruber-darker.nvim": {
-      "rev": "83d99c0eb0fa2513fa5268d097194801fad26660",
+      "rev": "50fa4e583099729fcaaadc73a5afb74f7a91a625",
       "src": "https://github.com/blazkowolf/gruber-darker.nvim"
     },
     "hardtime.nvim": {
@@ -17,19 +17,23 @@
       "src": "https://github.com/smjonas/live-command.nvim"
     },
     "live-preview.nvim": {
-      "rev": "a30e54e51e7480d7060c8c8185f2a963ad3518b4",
+      "rev": "a6307fa340ed7c0d96f5c567afc8c991aad94ce0",
       "src": "https://github.com/brianhuster/live-preview.nvim"
     },
     "mini.pick": {
-      "rev": "04e73ab07222508361095bb6e27621b315e6b9f1",
+      "rev": "360c1bb33610e030698d07ed15969ab4762dbcd6",
       "src": "https://github.com/nvim-mini/mini.pick"
     },
     "neocodeium": {
       "rev": "ab8a3da3a66d299ad5422b76ce5ee21b68719296",
       "src": "https://github.com/monkoose/neocodeium"
     },
+    "nvim-jdtls": {
+      "rev": "6e9d953f0b82bccdb834cfde0e893f3119c22592",
+      "src": "https://codeberg.org/mfussenegger/nvim-jdtls"
+    },
     "nvim-web-devicons": {
-      "rev": "2ae6958df7ced50baac5035cec0c15799eedfbf7",
+      "rev": "5f032a85be210cd1c6ac98861eb3b187ff3bd5eb",
       "src": "https://github.com/nvim-tree/nvim-web-devicons"
     },
     "oil.nvim": {
@@ -37,15 +41,15 @@
       "src": "https://github.com/stevearc/oil.nvim"
     },
     "phpactor": {
-      "rev": "f67b7753b966c874735a064978dd89837a369f59",
+      "rev": "ec564f09bd36de643ce38d7ab442288fe8d44084",
       "src": "https://github.com/phpactor/phpactor"
     },
     "rainbow-delimiters.nvim": {
-      "rev": "a798325b7f36acc62741d1029930a7b96d4dd4bf",
+      "rev": "3a0fc08dd39e8bf034a4cfef3f2845bd5f565a2e",
       "src": "https://github.com/hiphish/rainbow-delimiters.nvim"
     },
     "tree-sitter-manager.nvim": {
-      "rev": "09e3a321eea8100cacd2e759c3a6c9d350295fab",
+      "rev": "1425eacb78bfee34face0fe06a8384ac3c4d9c8e",
       "src": "https://github.com/romus204/tree-sitter-manager.nvim"
     },
     "typst-preview.nvim": {
@@ -57,7 +61,7 @@
       "src": "https://github.com/vague-theme/vague.nvim"
     },
     "vim-matchup": {
-      "rev": "055881643e1b37038a572c883de7b1969716db77",
+      "rev": "0106b1afd4a2f7e1098037b5ceb161bab7471088",
       "src": "https://github.com/andymass/vim-matchup"
     },
     "vim-monokai": {

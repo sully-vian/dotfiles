@@ -301,6 +301,7 @@ vim.pack.add({
     { src = gh "hiphish/rainbow-delimiters.nvim" },
     { src = gh "andymass/vim-matchup" },
     { src = gh "monkoose/neocodeium" },
+    { src = "https://codeberg.org/mfussenegger/nvim-jdtls" }
 })
 
 --vim.lsp.inline_completion.enable()

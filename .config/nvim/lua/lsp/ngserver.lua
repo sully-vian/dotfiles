@@ -12,4 +12,4 @@ vim.lsp.config("ngserver", {
 })
 
 
---vim.lsp.enable("ngserver")
+vim.lsp.enable("ngserver")

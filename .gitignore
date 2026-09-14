@@ -3,3 +3,4 @@
 .cache/wal/
 node_modules/
 vendor/
+.config/bat/themes/

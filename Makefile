@@ -1,7 +1,6 @@
 SHELL := /usr/bin/env sh
 .SHELLFLAGS := -euo pipefail -c
 MAKEFLAGS += --warn-undefined-variables
-MAKEFLAGS += --no-builtin-rules
 
 PREFIX = $(HOME)/.local
 SRC = $(PREFIX)/src
@@ -91,8 +90,15 @@ st dmenu: ## Build st and dmenu
 		patch -d $(SRC)/$@ -p1 < $(SITES)/$$patch_file; \
 	done;
 	cp $(CONFIG)/$@/config.h $(SRC)/$@/config.def.h
+
+	rm -f $(PREFIX)/bin/$@ # remove target binary to prevent symlink traversal
+
 	$(MAKE) -C $(SRC)/$@ clean install PREFIX=$(PREFIX)
-	$(MAKE) -C $(SRC)/$@ clean
+	if [ "$@" = "dmenu" ]; then \
+		$(LOG) "Renaming compiled dmenu and restoring wrapper script"; \
+		mv $(PREFIX)/bin/dmenu $(PREFIX)/bin/dmenu_bin; \
+		$(MAKE) stow; \
+	fi
 
 	@$(LOG) "cleaning $(SRC)/$@ after build"
 	@git -C $(SRC)/$@ reset --hard HEAD --quiet

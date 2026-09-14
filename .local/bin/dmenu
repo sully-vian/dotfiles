@@ -1,0 +1,10 @@
+
+set -euo pipefail
+
+. "$XDG_CONFIG_HOME/theme/theme.sh"
+
+exec "$XDG_BIN_HOME/dmenu_bin" \
+    -nb "$base00" -nf "$base05" \
+    -sb "$base0D" -sf "$base00" \
+    -ob "$base02" -of "$base05" \
+    "$@"

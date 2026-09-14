@@ -96,9 +96,6 @@ if [ -f "$HOME/.env" ]; then
 	export "$(grep -v '^#' "$HOME/.env" | xargs)"
 fi
 
-# get pywal shell vars
-[ -f "$HOME/.cache/wal/colors.sh" ] && source "$HOME/.cache/wal/colors.sh"
-
 source "$HOME/.scripts/prompt.sh"
 PROMPT_COMMAND='set_prompt $?' # single quotes for $? to be evaluated after last command
 

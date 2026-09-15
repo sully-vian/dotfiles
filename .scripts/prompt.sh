@@ -59,14 +59,13 @@ set_prompt() {
   # colored path
   PS1="${GREEN1}$rel_path${RESET}"
 
-  local prompt_icon
+  local prompt_icon_color
   if [ "$lastcommand" -eq 0 ]; then
-    # local coloredarrow="${GREEN1}$arrow ${RESET}"
-    prompt_icon="${GREEN1}✔ "
+    prompt_icon_color="$GREEN1"
   else
-    # local coloredarrow="${RED1}$arrow ${RESET}"
-    prompt_icon="${RED1}✘ "
+    prompt_icon_color="$RED1"
   fi
+  local prompt_icon="${prompt_icon_color}($lastcommand) "
 
   # PS1="$PS1\n$coloredarrow"
   PS1="$PS1\n$prompt_icon${RESET}"

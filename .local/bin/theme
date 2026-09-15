@@ -13,3 +13,4 @@ TEMPLATES="$XDG_CONFIG_HOME/theme/templates"
 
 envsubst "$COLOR_VARS" <"$TEMPLATES/osc4.sh" >"$XDG_CACHE_HOME/theme/osc4.sh"
 envsubst "$BASE_VARS" <"$TEMPLATES/bat.tmTheme" >"$(bat --config-dir)/themes/bat.tmTheme"
+envsubst "$BASE_VARS" <"$TEMPLATES/i3" >"$XDG_CACHE_HOME/theme/i3"

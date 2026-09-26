@@ -1,0 +1,20 @@
+#!/usr/bin/env sh
+
+set -euo pipefail
+
+# Slowed & reverb generator
+
+if [ "$#" -ne 1 ]; then
+    printf "Usage: %s \"<YT Music URL>\"" "${0##*/}" >&2
+    exit 1
+fi
+
+readonly URL="$1"
+readonly SOX_SPEED="0.8"
+readonly SOX_REVERB="85 70 90 100 0 0"
+readonly SOX_GAIN="-10"
+
+yt-dlp --format bestaudio --output - "$URL" |
+    ffmpeg -i pipe:0 -f wav pipe:1 |
+    sox --type wav - --type wav - gain $SOX_GAIN speed $SOX_SPEED reverb $SOX_REVERB |
+    mpv --no-video -

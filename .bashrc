@@ -92,8 +92,8 @@ export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quo
 
 # load env variables from .env
 if [ -f "$HOME/.env" ]; then
-	# skip comments
-	export "$(grep -v '^#' "$HOME/.env" | xargs)"
+    # skip comments
+    export "$(grep -v '^#' "$HOME/.env" | xargs)"
 fi
 
 source "$HOME/.scripts/prompt.sh"
@@ -134,4 +134,3 @@ if [ -z "$TMUX" ] && [ -n "$PS1" ] && [ -t 1 ] && [ -z "$SSH_CONNECTION" ]; then
         tmux new -s "$TMUX_SESSION"
     fi
 fi
-

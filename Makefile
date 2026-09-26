@@ -43,7 +43,7 @@ check: luacheck shellcheck ## Statically check code
 
 shellcheck: ## Statically check shell scripts
 	@$(LOG) "Checking shell scripts"
-	fd -H -t f -E .git -E .local/src -x file | grep -i "shell script" | cut -d: -f1 | xargs shellcheck -x
+	fd -H -t f -E .git -E .local/src -X file | rg -i "sh(ell)? script" | cut -d: -f1 | xargs shellcheck -x
 
 luacheck: ## Statically check Lua files
 	@$(LOG) "Checking Neovim Lua files"

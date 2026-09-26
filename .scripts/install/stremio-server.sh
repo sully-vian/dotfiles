@@ -4,7 +4,7 @@
 
 DIR="$XDG_CONFIG_HOME/stremio-enhanced/streamingserver"
 FILE="server.js"
-VERSION="v4.20.17"
+VERSION="v4.21.1"
 mkdir -p "$DIR"
 
 curl -fSL https://dl.strem.io/server/$VERSION/desktop/server.js -o "$DIR/$FILE"

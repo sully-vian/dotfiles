@@ -4,8 +4,8 @@ set -euo pipefail
 
 # Slowed & reverb generator
 
-if [ "$#" -ne 1 ]; then
-    printf "Usage: %s \"<YT Music URL>\"" "${0##*/}" >&2
+if [ "$#" -lt 1 ] || [ "$#" -gt 2 ]; then
+    printf "Usage: %s \"<YT Music URL>\" [output.mp4]\n" "${0##*/}" >&2
     exit 1
 fi
 
@@ -14,7 +14,28 @@ readonly SOX_SPEED="0.8"
 readonly SOX_REVERB="85 70 90 100 0 0"
 readonly SOX_GAIN="-10"
 
-yt-dlp --format bestaudio --output - "$URL" |
-    ffmpeg -i pipe:0 -f wav pipe:1 |
-    sox --type wav - --type wav - gain $SOX_GAIN speed $SOX_SPEED reverb $SOX_REVERB |
-    mpv --no-video -
+if [ "$#" -eq 1 ]; then
+
+    yt-dlp --format bestaudio --output - "$URL" |
+        ffmpeg -i pipe:0 -f wav pipe:1 |
+        sox --type wav - --type wav - gain $SOX_GAIN speed $SOX_SPEED reverb $SOX_REVERB |
+        mpv --no-video -
+else
+    readonly OUTPUT="$2"
+    TMP_DIR=$(mktemp -d)
+
+    printf "Downloading and processing thumbnail...\n"
+    curl "$(yt-dlp --print thumbnail "$URL")" |
+        magick - -gravity center -crop 1:1 +repage -colorspace Gray -attenuate 2.0 +noise Gaussian -evaluate multiply 0.5 "$TMP_DIR/thumb-slrvb"
+
+    printf "Downloading and processing audio...\n"
+    yt-dlp --format bestaudio --output - "$URL" |
+        ffmpeg -i pipe:0 -f wav pipe:1 |
+        sox --type wav - --type wav - gain $SOX_GAIN speed $SOX_SPEED reverb $SOX_REVERB >"$TMP_DIR/audio-slrvb.wav"
+
+    printf "Generating video...\n"
+    ffmpeg -loop 1 -i "$TMP_DIR/thumb-slrvb" -i "$TMP_DIR/audio-slrvb.wav" -c:v libx264 -tune stillimage -c:a aac -b:a 192k -pix_fmt yuv420p -shortest "$OUTPUT"
+
+    printf "Done! Saved to %s\n" "$OUTPUT"
+
+fi

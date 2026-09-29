@@ -60,12 +60,8 @@ exec_always --no-startup-id xautolock -time 5 -locker "$XDG_CONFIG_HOME/i3/i3loc
 # start dunst daemon
 exec_always --no-startup-id "$HOME/.scripts/dunst-restart.sh"
 
-################
-# Rofi scripts #
-################
-
 # App launcher
-bindsym $mod+space exec "rofi -modi drun,run -show drun"
+bindsym $mod+space exec dmenu_run -fn "monospace:size=20" -c -i -l 10
 
 bindsym $mod+p exec --no-startup-id powermenu
 

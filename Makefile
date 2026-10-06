@@ -16,7 +16,7 @@ COMPLETIONS_DIR=$(XDG_DATA_HOME)/bash-completion/completions
 FONT_DIR=$(PREFIX)/share/fonts
 FONT_NAME=FiraCode
 
-.PHONY: help install stow update check shellcheck luacheck completions ansi symfony-lsp fonts st dmenu
+.PHONY: help install stow update check shellcheck luacheck completions ansi symfony-lsp phpantom_lsp fonts st dmenu
 
 .DEFAULT_GOAL := help
 
@@ -30,7 +30,7 @@ stow: ## Generate symlinks
 	stow .
 
 update: ## Update JS and nvim packages and suckless submodules
-	@$(LOG) "Updating JS packages"
+	@$(LOG) "Updating JS/TS packages"
 	bun update --latest
 	@$(LOG) "Updating Neovim packages"
 	nvim --headless -c 'lua vim.pack.update(nil, { force = true })' -c 'qa'; echo
@@ -38,6 +38,7 @@ update: ## Update JS and nvim packages and suckless submodules
 	git submodule update --remote --recursive
 	@$(LOG) "Updating Symfony LSP"
 	$(MAKE) symfony-lsp
+	$(MAKE) phpantom_lsp
 
 check: luacheck shellcheck ## Statically check code
 
@@ -69,7 +70,13 @@ symfony-lsp: ## Download the latest Symfony Language Server
 	@$(LOG) "Downloading symfony-lsp"
 	gh release download --repo symfony/language-tools --pattern "*-linux-x64.tar.gz" --output /tmp/symfony-lsp.tar.gz --clobber
 	tar -xzf /tmp/symfony-lsp.tar.gz -C $(XDG_BIN_HOME) --strip-components=1 --wildcards "*/symfony-lsp"
-	@echo "Updated to $(shell symfony-lsp --version)"
+	@$(LOG) "Updated to $$( $(XDG_BIN_HOME)/symfony-lsp --version )"
+
+phpantom_lsp: ## Download the latest PHPantom Language Server
+	@$(LOG) "Downloading phpantom_lsp"
+	gh release download --repo PHPantom-dev/phpantom_lsp --pattern "*x86_64-*-linux-gnu.tar.gz" --output /tmp/phpantom_lsp.tar.tar --clobber
+	tar -xvf /tmp/phpantom_lsp.tar.gz -C $(XDG_BIN_HOME)
+	@$(LOG) "Updated to $$( $(XDG_BIN_HOME)/phpantom_lsp --version )"
 
 fonts: ## Download the latest Fira Code Nerd Font and rebuild font cache
 	@$(LOG) "Downloading $(FONT_NAME) archive"

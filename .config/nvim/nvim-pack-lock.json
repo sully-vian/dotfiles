@@ -5,11 +5,11 @@
       "src": "https://github.com/projekt0n/github-nvim-theme"
     },
     "gruber-darker.nvim": {
-      "rev": "50fa4e583099729fcaaadc73a5afb74f7a91a625",
+      "rev": "35cb97959ef01f7193c94c404c13ddb3d4346654",
       "src": "https://github.com/blazkowolf/gruber-darker.nvim"
     },
     "hardtime.nvim": {
-      "rev": "244753782b945def87472d8f4e9e6a9d4ec18689",
+      "rev": "721a75b9a0c2eb1fb811d34507708ee315cb04eb",
       "src": "https://github.com/m4xshen/hardtime.nvim"
     },
     "live-command.nvim": {
@@ -21,7 +21,7 @@
       "src": "https://github.com/brianhuster/live-preview.nvim"
     },
     "mini.pick": {
-      "rev": "360c1bb33610e030698d07ed15969ab4762dbcd6",
+      "rev": "bd372e3a2b146aca92fb89ed2be78d4ff141fee1",
       "src": "https://github.com/nvim-mini/mini.pick"
     },
     "neocodeium": {
@@ -33,7 +33,7 @@
       "src": "https://codeberg.org/mfussenegger/nvim-jdtls"
     },
     "nvim-web-devicons": {
-      "rev": "5f032a85be210cd1c6ac98861eb3b187ff3bd5eb",
+      "rev": "58447c1fca354bbf184425e4a8d01deecbd6f3c4",
       "src": "https://github.com/nvim-tree/nvim-web-devicons"
     },
     "oil.nvim": {
@@ -41,15 +41,15 @@
       "src": "https://github.com/stevearc/oil.nvim"
     },
     "phpactor": {
-      "rev": "ec564f09bd36de643ce38d7ab442288fe8d44084",
+      "rev": "86547567ed0a22cd05aef8b582646aaeb5ed457a",
       "src": "https://github.com/phpactor/phpactor"
     },
     "rainbow-delimiters.nvim": {
-      "rev": "3a0fc08dd39e8bf034a4cfef3f2845bd5f565a2e",
+      "rev": "b55decda611755171bc5bf8f4c99603a75de4b41",
       "src": "https://github.com/hiphish/rainbow-delimiters.nvim"
     },
     "tree-sitter-manager.nvim": {
-      "rev": "1425eacb78bfee34face0fe06a8384ac3c4d9c8e",
+      "rev": "d93782393d7d4b48ddbdbcb0fdff6f8cb8d7043a",
       "src": "https://github.com/romus204/tree-sitter-manager.nvim"
     },
     "typst-preview.nvim": {

@@ -120,6 +120,10 @@ export MANPATH
 INFOPATH="$(perl -e 'print join(":", grep { not $seen{$_}++ } split(/:/, $ENV{INFOPATH}))')"
 export INFOPATH
 
+theme
+
+[ -f "$XDG_CACHE_HOME/theme/osc4.sh" ] && sh "$XDG_CACHE_HOME/theme/osc4.sh"
+
 [ -f "$HOME/.bashrc.local" ] && source "$HOME/.bashrc.local"
 
 # create tmux session on attach if existing

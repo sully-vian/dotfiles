@@ -2,6 +2,11 @@
 
 set -euo pipefail
 
+# nvim's :terminal its palette from g:terminal_color_N and does not support OSC 4
+if [ -n "${NVIM+x}" ]; then
+    exit 0
+fi
+
 if [ -n "${TMUX+x}" ]; then
     printf "%b" "\033Ptmux;\033\033]4;0;${color00}\007\033\\"
     printf "%b" "\033Ptmux;\033\033]4;1;${color01}\007\033\\"

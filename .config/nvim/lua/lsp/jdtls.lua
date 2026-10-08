@@ -17,7 +17,7 @@ end
 
 local project_name = vim.fn.fnamemodify(vim.fn.getcwd(), ':p:h:t')
 -- path for .metadata , indexes (ref, gotodef, auto-completion) an project caches (build state)
-local workspace_dir = os.getenv('XDG_CACHE_HOME') .. '/jdtls/workspace/' .. project_name
+local workspace_dir = vim.env.XDG_CACHE_HOME .. '/jdtls/workspace/' .. project_name
 
 -- match all lombok-...<num>.jar (skip sources.jar and javadoc.jar)
 local lombok_paths = vim.fn.glob("~/.m2/repository/org/projectlombok/lombok/*/lombok-*[0-9].jar", true, true)
@@ -38,6 +38,7 @@ vim.lsp.config("jdtls", {
         "jdtls",
         "--java-executable", get_latest_java(),
         "-data", workspace_dir,
+        "--jvm-arg=-Djava.import.generatesMetadataFilesAtProjectRoot=false",
         lombok_arg
     },
     filetypes = { "java" },

@@ -6,7 +6,7 @@ set -euo pipefail
 
 . "$XDG_CONFIG_HOME/theme/theme.sh"
 
-COLOR_VARS='$color0:$color1:$color2:$color3:$color4:$color5:$color6:$color7:$color8:$color9:$color10:$color11:$color12:$color13:$color14:$color15'
+COLOR_VARS='$color00:$color01:$color02:$color03:$color04:$color05:$color06:$color07:$color08:$color09:$color10:$color11:$color12:$color13:$color14:$color15:$color16:$color17:$color18:$color19:$color20:$color21'
 BASE_VARS='$base00:$base01:$base02:$base03:$base04:$base05:$base06:$base07:$base08:$base09:$base0A:$base0B:$base0C:$base0D:$base0E:$base0F'
 
 TEMPLATES="$XDG_CONFIG_HOME/theme/templates"

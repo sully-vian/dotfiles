@@ -2,7 +2,7 @@
 
 set -euo pipefail
 
-if [ -n "$TMUX" ]; then
+if [ -n "${TMUX+x}" ]; then
     printf "%b" "\033Ptmux;\033\033]4;0;${color00}\007\033\\"
     printf "%b" "\033Ptmux;\033\033]4;1;${color01}\007\033\\"
     printf "%b" "\033Ptmux;\033\033]4;2;${color02}\007\033\\"

@@ -91,11 +91,15 @@ st dmenu: ## Build st and dmenu
 	@git -C $(SRC)/$@ reset --hard HEAD --quiet
 	@git -C $(SRC)/$@ clean -fd --quiet
 
-	@for patch in $$(cat $(CONFIG)/$@/patches); do \
-		patch_file=$$(cd $(SITES) && git log -1 --format="" --name-only tools.suckless.org/$@/patches/$$patch/*.diff); \
-		$(LOG) "Applying $$patch patch: $$patch_file"; \
-		patch -d $(SRC)/$@ -p1 < $(SITES)/$$patch_file; \
-	done;
+	@while read -r patch; do \
+		$(LOG) "Applying $$patch patch"; \
+		patch -d $(SRC)/$@ -p1 < $(SITES)/$$patch || exit 1; \
+	done < $(CONFIG)/$@/patches
+	# @for patch in $$(cat $(CONFIG)/$@/patches); do \
+		# patch_file=$$(cd $(SITES) && git log -1 --format="" --name-only tools.suckless.org/$@/patches/$$patch/*.diff); \
+		# $(LOG) "Applying $$patch patch: $$patch_file"; \
+		# patch -d $(SRC)/$@ -p1 < $(SITES)/$$patch_file; \
+	# done;
 	cp $(CONFIG)/$@/config.h $(SRC)/$@/config.def.h
 
 	rm -f $(PREFIX)/bin/$@ # remove target binary to prevent symlink traversal

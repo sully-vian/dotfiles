@@ -46,7 +46,7 @@
         "defaults": {
             "cursorShape": "filledBox",
             "font": {
-                "face": "FiraCode Nerd Font Mono",
+                "face": "FiraCode Nerd Font",
                 "features": {
                     "liga": 0,
                     "calt": 0

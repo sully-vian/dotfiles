@@ -37,6 +37,9 @@ export PATH="$BUN_INSTALL/bin:$PATH"
 # Cargo
 export PATH="$HOME/.cargo/bin:$PATH"
 
+# Claude Code
+export CLAUDE_CONFIG_DIR="$XDG_CONFIG_HOME/claude"
+
 alias startx="startx -- -configdir \$XDG_CONFIG_HOME/xorg"
 
 # Do not run bashrc if display is not set

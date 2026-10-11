@@ -1,0 +1,10 @@
+add-highlighter global/ number-lines -relative -hlcursor -separator " "
+
+colorscheme vague
+
+map global user w ':write<ret>' -docstring 'save current buffer'
+map global user q ':quit<ret>' -docstring 'quit current buffer'
+map global user h ':help ' -docstring 'open help'
+
+eval %sh{kak-lsp}
+lsp-enable

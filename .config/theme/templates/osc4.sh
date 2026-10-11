@@ -2,7 +2,7 @@
 
 set -euo pipefail
 
-# nvim's :terminal its palette from g:terminal_color_N and does not support OSC 4
+# nvim's :terminal gets its palette from g:terminal_color_N and does not support OSC 4
 if [ -n "${NVIM+x}" ]; then
     exit 0
 fi

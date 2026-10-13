@@ -7,3 +7,6 @@
 [submodule ".local/src/sites"]
 	path = .local/src/sites
 	url = https://git.suckless.org/sites/
+[submodule ".local/src/tmux"]
+	path = .local/src/tmux
+	url = https://github.com/tmux/tmux.git

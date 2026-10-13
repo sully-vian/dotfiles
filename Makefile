@@ -16,14 +16,14 @@ COMPLETIONS_DIR=$(XDG_DATA_HOME)/bash-completion/completions
 FONT_DIR=$(PREFIX)/share/fonts
 FONT_NAME=FiraCode
 
-.PHONY: help install stow update check shellcheck luacheck completions ansi symfony-lsp phpantom_lsp fonts st dmenu
+.PHONY: help install stow update check shellcheck luacheck completions ansi symfony-lsp phpantom_lsp fonts st dmenu tmux
 
 .DEFAULT_GOAL := help
 
 help: ## Show this help message
 	@rg '^([ a-zA-Z_-]+): [ a-zA-Z_-]*## (.*)$$' -r $$'$(CYAN)$$1$(RESET)\t$$2' $(MAKEFILE_LIST) | column -t -s $$'\t'
 
-install: update fonts completions ansi st dmenu stow ## Install everything
+install: update fonts completions ansi st dmenu tmux stow ## Install everything
 
 stow: ## Generate symlinks
 	@$(LOG) "Generating symlinks"
@@ -115,3 +115,11 @@ st dmenu: ## Build st and dmenu
 	@git -C $(SRC)/$@ reset --hard HEAD --quiet
 	@git -C $(SRC)/$@ clean -fd --quiet
 
+tmux:
+	@$(LOG) "cleaning $(SRC)/$@ before build"
+	git -C $(SRC)/$@ clean -fdx --quiet
+	cd $(SRC)/$@ && sh autogen.sh && ./configure --prefix=$(PREFIX)
+	$(MAKE) -C $(SRC)/$@ install
+	@$(LOG) "Installed $$( $(PREFIX)/bin/$@ -V )"
+	@$(LOG) "cleaning $(SRC)/$@ after build"
+	git -C $(SRC)/$@ clean -fdx --quiet

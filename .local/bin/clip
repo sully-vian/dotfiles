@@ -1,0 +1,23 @@
+#!/usr/bin/env sh
+
+set -euo pipefail
+
+if command -v clip.exe >/dev/null 2>&1; then
+    do_copy() { iconv -f UTF-8 -t UTF-16LE | clip.exe; }
+    do_paste() {
+        powershell.exe -NoProfile -Command '[Console]::OutputEncoding = [Text.Encoding]::UTF8; Get-Clipboard -Raw' |
+            tr -d '\r'
+    }
+elif command -v xclip >/dev/null 2>&1; then
+    do_copy() { xclip -selection clipboard -i; }
+    do_paste() { xclip -selection clipboard -o; }
+else
+    printf "clip: no clipboard tool found (clip.exe, xclip)\n" >&2
+    exit 1
+fi
+
+if [ -t 0 ]; then
+    do_paste
+else
+    do_copy
+fi

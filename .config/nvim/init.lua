@@ -1,5 +1,6 @@
 -- vim.opt.wrap = false       -- force """clean""" code
 vim.opt.scrolloff = 5
+vim.opt.colorcolumn = "80"
 vim.opt.signcolumn = "yes" -- even when no sign to show
 vim.opt.cursorcolumn = false
 vim.opt.cursorline = true

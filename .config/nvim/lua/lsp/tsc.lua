@@ -1,21 +1,3 @@
-local function find_root()
-    local path = vim.fn.expand("%:p:h")
-    local root_files = { "package.json", ".git", ".gitignore", "tsconfig.json" }
-
-    while path ~= "/" do
-        for _, f in ipairs(root_files) do
-            local full = path .. "/" .. f
-            if ((vim.fn.filereadable(path .. "/" .. f) == 1) or
-                    (vim.fn.isdirectory(full) == 1)) then
-                return path
-            end
-        end
-        path = vim.fn.fnamemodify(path, ":h")
-    end
-    -- fallback to the current working directory
-    return vim.loop.cwd()
-end
-
 -- TS types and values are in different namespaces.
 -- The LSP often identifies multiple definitions (part of them in .d.ts files.
 -- This local remap only shows the relevant definition
@@ -38,7 +20,8 @@ local function gotoRelevantDef()
     })
 end
 
-vim.lsp.config("ts_ls", {
+---@type vim.lsp.Config
+local tsc = {
     cmd = { js_bin .. "tsc", "--lsp", "--stdio" },
     init_options = { hostInfo = "neovim" },
     filetypes = {
@@ -49,10 +32,11 @@ vim.lsp.config("ts_ls", {
         "typescriptreact",
         "typescript.tsx",
     },
-    root_dir = find_root(),
+    root_markers = { "tsconfig.json", "package.json", ".git" },
     on_attach = function(_, bufnr)
         vim.keymap.set('n', "<leader>d", gotoRelevantDef, { buffer = bufnr, desc = "Go to relevant definition" })
     end
-})
+}
 
-vim.lsp.enable("ts_ls")
+vim.lsp.config("tsc", tsc)
+vim.lsp.enable("tsc")

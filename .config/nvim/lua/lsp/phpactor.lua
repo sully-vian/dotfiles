@@ -15,8 +15,9 @@ local function gotoRelevantDef()
 end
 
 local phpactor_bin = vim.api.nvim_get_runtime_file("bin/phpactor", false)[1]
-vim.lsp.config("phpactor", {
-    --cmd = { php_bin .. "phpactor", "language-server" },
+
+---@type vim.lsp.Config
+local phpactor = {
     cmd = { phpactor_bin, "language-server" },
     filetypes = { "php" },
     root_markers = { ".phpactor.json", "composer.json", ".phpactor.yml", "phpactor.json", ".git" },
@@ -24,6 +25,7 @@ vim.lsp.config("phpactor", {
     on_attach = function(_, bufnr)
         vim.keymap.set('n', "<leader>d", gotoRelevantDef, { buffer = bufnr, desc = "Go to relevant definition" })
     end
-})
+}
 
+vim.lsp.config("phpactor", phpactor)
 vim.lsp.enable("phpactor")

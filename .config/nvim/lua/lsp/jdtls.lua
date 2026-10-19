@@ -33,7 +33,8 @@ vim.api.nvim_create_user_command("JDTLSClearCache",
         end
     end, {});
 
-vim.lsp.config("jdtls", {
+---@type vim.lsp.Config
+local jdtls = {
     cmd = {
         "jdtls",
         "--java-executable", get_latest_java(),
@@ -48,6 +49,7 @@ vim.lsp.config("jdtls", {
             classFileContentsSupport = true
         }
     },
-})
+}
 
+vim.lsp.config("jdtls", jdtls)
 vim.lsp.enable("jdtls")

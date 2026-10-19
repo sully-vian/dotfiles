@@ -74,7 +74,7 @@ symfony-lsp: ## Download the latest Symfony Language Server
 
 phpantom_lsp: ## Download the latest PHPantom Language Server
 	@$(LOG) "Downloading phpantom_lsp"
-	gh release download --repo PHPantom-dev/phpantom_lsp --pattern "*x86_64-*-linux-gnu.tar.gz" --output /tmp/phpantom_lsp.tar.tar --clobber
+	gh release download --repo PHPantom-dev/phpantom_lsp --pattern "*x86_64-*-linux-gnu.tar.gz" --output /tmp/phpantom_lsp.tar.gz --clobber
 	tar -xvf /tmp/phpantom_lsp.tar.gz -C $(XDG_BIN_HOME)
 	@$(LOG) "Updated to $$( $(XDG_BIN_HOME)/phpantom_lsp --version )"
 

@@ -48,7 +48,7 @@ shellcheck: ## Statically check shell scripts
 
 luacheck: ## Statically check Lua files
 	@$(LOG) "Checking Neovim Lua files"
-	lua-language-server --check $(CONFIG)/nvim
+	lua-language-server --check $(CONFIG)/nvim --checklevel=Hint
 
 completions: ## Download or generate bash-completion scripts
 	mkdir -p $(COMPLETIONS_DIR)

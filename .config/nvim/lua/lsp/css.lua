@@ -1,6 +1,6 @@
 ---@type vim.lsp.Config
 local css = {
-    cmd = { js_bin .. "vscode-css-language-server", "--stdio" },
+    cmd = { JS_BIN .. "vscode-css-language-server", "--stdio" },
     filetypes = { "css" },
     root_markers = { "package.json", ".git" },
     init_options = { provideFormatter = true },

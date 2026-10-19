@@ -1,6 +1,6 @@
 ---@type vim.lsp.Config
 local bash = {
-    cmd = { js_bin .. "bash-language-server", "start" },
+    cmd = { JS_BIN .. "bash-language-server", "start" },
     filetypes = { "bash", "sh" },
     root_markers = { ".git" },
 }

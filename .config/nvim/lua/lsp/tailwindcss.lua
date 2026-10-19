@@ -1,6 +1,6 @@
 ---@type vim.lsp.Config
 local tailwindcss = {
-    cmd = { js_bin .. "tailwindcss-language-server", "--stdio" },
+    cmd = { JS_BIN .. "tailwindcss-language-server", "--stdio" },
     filetypes = { "css", "typescriptreact", "twig" },
     root_markers = { ".git" },
     settings = {

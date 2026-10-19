@@ -1,6 +1,6 @@
 ---@type vim.lsp.Config
 local html = {
-    cmd = { js_bin .. "vscode-html-language-server", "--stdio" },
+    cmd = { JS_BIN .. "vscode-html-language-server", "--stdio" },
     filetypes = { "html", "svg", "twig", "htmlangular" },
     root_markers = { "package.json", ".git" },
     init_options = {

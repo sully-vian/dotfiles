@@ -1,6 +1,6 @@
 ---@type vim.lsp.Config
 local emmet = {
-    cmd = { js_bin .. "emmet-language-server", "--stdio" },
+    cmd = { JS_BIN .. "emmet-language-server", "--stdio" },
     filetypes = {
         "html", "htmlangular", "twig",
         "css", "scss", "sass", "less",

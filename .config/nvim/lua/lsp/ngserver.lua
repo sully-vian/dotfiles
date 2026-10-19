@@ -3,7 +3,7 @@ local dotfiles_node_modules = vim.fn.glob(vim.env.DOTFILES .. "/node_modules", t
 ---@type vim.lsp.Config
 local ngserver = {
     cmd = {
-        js_bin .. "ngserver", "--stdio",
+        JS_BIN .. "ngserver", "--stdio",
         "--tsProbeLocations", dotfiles_node_modules .. "/@angular/language-server/node_modules",
         "--ngProbeLocations", dotfiles_node_modules
     },

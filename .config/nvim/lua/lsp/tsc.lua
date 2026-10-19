@@ -22,7 +22,7 @@ end
 
 ---@type vim.lsp.Config
 local tsc = {
-    cmd = { js_bin .. "tsc", "--lsp", "--stdio" },
+    cmd = { JS_BIN .. "tsc", "--lsp", "--stdio" },
     init_options = { hostInfo = "neovim" },
     filetypes = {
         "javascript",

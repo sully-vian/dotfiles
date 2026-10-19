@@ -1,6 +1,6 @@
 ---@type vim.lsp.Config
 local eslint = {
-    cmd = { js_bin .. "vscode-eslint-language-server", "--stdio" },
+    cmd = { JS_BIN .. "vscode-eslint-language-server", "--stdio" },
     filetypes = { "javascript", "typescript", "javascriptreact", "javascript.jsx", "typescriptreact", "typescript.tsx", "vue" },
     root_markers = { ".eslintrc.json", "tsconfig.json", "package.json", ".git" },
     settings = {

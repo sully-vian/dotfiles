@@ -1,6 +1,6 @@
 ---@type vim.lsp.Config
 local yamlls = {
-    cmd = { js_bin .. "yaml-language-server", "--stdio" },
+    cmd = { JS_BIN .. "yaml-language-server", "--stdio" },
     filetypes = { "yaml", "yaml.docker-compose" },
     root_markers = { "package.json", ".git" },
     settings = {

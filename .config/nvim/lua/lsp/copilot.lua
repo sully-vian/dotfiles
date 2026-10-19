@@ -1,6 +1,6 @@
 ---@type vim.lsp.Config
 local copilot = {
-    cmd = { js_bin .. "copilot-language-server", "--stdio" },
+    cmd = { JS_BIN .. "copilot-language-server", "--stdio" },
     root_markers = { ".git" },
     init_options = {
         editorInfo = { name = "Neovim", version = tostring(vim.version()) },

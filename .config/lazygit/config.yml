@@ -14,3 +14,4 @@ gui:
       - ""
       - ""
     rate: 100
+  showNumstatInFilesView: true

@@ -17,8 +17,19 @@
       }
     ]
   },
+  "extraKnownMarketplaces": {
+    "wakatime": {
+      "source": {
+        "source": "git",
+        "url": "https://github.com/wakatime/claude-code-wakatime.git"
+      }
+    }
+  },
   "tui": "default",
   "theme": "dark",
   "verbose": true,
-  "autoCompactEnabled": true
+  "autoCompactEnabled": true,
+  "enabledPlugins": {
+    "claude-code-wakatime@wakatime": true
+  }
 }

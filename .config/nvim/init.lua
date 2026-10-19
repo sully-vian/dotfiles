@@ -274,10 +274,13 @@ vim.api.nvim_create_autocmd("LspAttach", {
         if (client ~= nil) then
             if client:supports_method("textDocument/completion") then
                 vim.lsp.completion.enable(true, client.id, ev.buf, { autotrigger = true })
+                -- ftplugins (html, css...) set their own omnifunc, which nvim won't override
+                vim.bo[ev.buf].omnifunc = "v:lua.vim.lsp.omnifunc"
             end
         end
     end
 })
+vim.opt.completeopt:append("menuone") -- show the popup even with a single match (e.g. emmet)
 vim.opt.completeopt:append("noselect")
 vim.opt.completeopt:append("fuzzy")
 vim.opt.completeopt:append("popup")

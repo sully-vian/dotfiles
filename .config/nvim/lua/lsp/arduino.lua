@@ -1,4 +1,5 @@
-vim.lsp.config("arduino", {
+---@type vim.lsp.Config
+local arduino = {
     cmd = {
         "arduino-language-server",
         "-clangd", "/usr/bin/clangd",
@@ -9,10 +10,15 @@ vim.lsp.config("arduino", {
     },
     filetypes = { "arduino" },
     root_dir = vim.fn.getcwd(),
+    -- arduino-language-server crashes on semantic tokens: vim.NIL sends JSON null
+    -- (a Lua nil would be dropped by the merge and keep the default capabilities)
     capabilities = {
+        ---@diagnostic disable-next-line: assign-type-mismatch
         textDocument = { semanticTokens = vim.NIL },
+        ---@diagnostic disable-next-line: assign-type-mismatch
         workspace = { semanticTokens = vim.NIL }
     }
-})
+}
 
+vim.lsp.config("arduino", arduino)
 vim.lsp.enable("arduino")

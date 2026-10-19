@@ -1,4 +1,5 @@
-vim.lsp.config("yamlls", {
+---@type vim.lsp.Config
+local yamlls = {
     cmd = { js_bin .. "yaml-language-server", "--stdio" },
     filetypes = { "yaml", "yaml.docker-compose" },
     root_markers = { "package.json", ".git" },
@@ -11,6 +12,7 @@ vim.lsp.config("yamlls", {
             }
         }
     }
-})
+}
 
+vim.lsp.config("yamlls", yamlls)
 vim.lsp.enable("yamlls")

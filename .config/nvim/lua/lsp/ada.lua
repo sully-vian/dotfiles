@@ -1,4 +1,5 @@
-vim.lsp.config("ada_ls", {
+---@type vim.lsp.Config
+local ada = {
     cmd = { "ada_language_server" },
     filetypes = { "ada" },
     root_markers = { "Makefile", ".git", "alire.toml", "*.gpr" },
@@ -7,7 +8,7 @@ vim.lsp.config("ada_ls", {
             -- scenarioVariables = {}
         }
     }
-})
+}
 
-
-vim.lsp.enable("ada_ls")
+vim.lsp.config("ada", ada)
+vim.lsp.enable("ada")

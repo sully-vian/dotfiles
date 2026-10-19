@@ -1,11 +1,12 @@
-vim.lsp.config("copilot", {
+---@type vim.lsp.Config
+local copilot = {
     cmd = { js_bin .. "copilot-language-server", "--stdio" },
     root_markers = { ".git" },
     init_options = {
         editorInfo = { name = "Neovim", version = tostring(vim.version()) },
         editorPluginInfo = { name = "Neovim", version = tostring(vim.version()) }
     },
-})
+}
 
 ---Fetches Copilot usage data asynchronously
 ---@param callback fun(usage: CopilotUsage|string)
@@ -48,4 +49,5 @@ vim.api.nvim_create_user_command("CopilotUsage", function()
     end)
 end, { desc = "Show GitHub Copilot usage" })
 
+vim.lsp.config("copilot", copilot)
 vim.lsp.enable("copilot")

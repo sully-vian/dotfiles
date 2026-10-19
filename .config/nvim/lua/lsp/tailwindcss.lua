@@ -1,4 +1,5 @@
-vim.lsp.config("tailwindcss", {
+---@type vim.lsp.Config
+local tailwindcss = {
     cmd = { js_bin .. "tailwindcss-language-server", "--stdio" },
     filetypes = { "css", "typescriptreact", "twig" },
     root_markers = { ".git" },
@@ -9,6 +10,7 @@ vim.lsp.config("tailwindcss", {
             classAttributes = { "className", "class" }
         }
     }
-})
+}
 
+vim.lsp.config("tailwindcss", tailwindcss)
 vim.lsp.enable("tailwindcss")

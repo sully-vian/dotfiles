@@ -1,4 +1,5 @@
-vim.lsp.config("symfony", {
+---@type vim.lsp.Config
+local symfony = {
     cmd = { "symfony-lsp" },
     filetypes = { 'php', 'twig', 'yaml', 'json', 'xml', 'javascript', 'typescript', 'env' },
     root_markers = { "composer.json", ".git" },
@@ -15,6 +16,7 @@ vim.lsp.config("symfony", {
             containerProjectRoot = "/var/www/html",
         }
     }
-})
+}
 
+vim.lsp.config("symfony", symfony)
 vim.lsp.enable("symfony")

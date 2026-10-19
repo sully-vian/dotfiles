@@ -1,4 +1,5 @@
-vim.lsp.config("css", {
+---@type vim.lsp.Config
+local css = {
     cmd = { js_bin .. "vscode-css-language-server", "--stdio" },
     filetypes = { "css" },
     root_markers = { "package.json", ".git" },
@@ -11,6 +12,7 @@ vim.lsp.config("css", {
             }
         }
     }
-})
+}
 
+vim.lsp.config("css", css)
 vim.lsp.enable("css")

@@ -1,4 +1,5 @@
-vim.lsp.config("twiggy", {
+---@type vim.lsp.Config
+local twiggy = {
     cmd = { js_bin .. "twiggy-language-server", "--stdio" },
     filetypes = { "twig" },
     root_markers = { "composer.json", ".git" },
@@ -10,5 +11,7 @@ vim.lsp.config("twiggy", {
             diagnostics = { twigCsFixer = true }
         }
     }
-})
+}
+
+vim.lsp.config("twiggy", twiggy)
 vim.lsp.enable("twiggy")

@@ -1,4 +1,4 @@
-require("lsp.ada_ls")
+require("lsp.ada")
 require("lsp.arduino")
 require("lsp.bash")
 require("lsp.biome")

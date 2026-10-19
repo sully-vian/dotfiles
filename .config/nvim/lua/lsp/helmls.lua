@@ -1,4 +1,5 @@
-vim.lsp.config("helmls", {
+---@type vim.lsp.Config
+local helmls = {
     cmd = { "helm_ls", "serve" },
     filetypes = { "helm", "yaml.helm-values" },
     root_markers = { "Chart.yaml" },
@@ -9,6 +10,7 @@ vim.lsp.config("helmls", {
             },
         },
     },
-})
+}
 
+vim.lsp.config("helmls", helmls)
 vim.lsp.enable("helmls")

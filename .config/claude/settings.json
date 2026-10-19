@@ -4,6 +4,10 @@
     "commit": "",
     "pr": ""
   },
+  "statusLine": {
+      "type":"command",
+      "command" : "$XDG_CONFIG_HOME/claude/statusline.sh"
+  },
   "hooks": {
     "PreToolUse": [
       {

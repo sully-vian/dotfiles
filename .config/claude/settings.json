@@ -30,6 +30,10 @@
   "verbose": true,
   "autoCompactEnabled": true,
   "enabledPlugins": {
-    "claude-code-wakatime@wakatime": true
+    "claude-code-wakatime@wakatime": true,
+    "lua-lsp@claude-plugins-official": true
+  },
+  "permissions": {
+    "defaultMode": "auto"
   }
 }

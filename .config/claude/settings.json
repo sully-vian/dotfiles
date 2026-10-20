@@ -4,9 +4,8 @@
     "commit": "",
     "pr": ""
   },
-  "statusLine": {
-      "type":"command",
-      "command" : "$XDG_CONFIG_HOME/claude/statusline.sh"
+  "permissions": {
+    "defaultMode": "auto"
   },
   "hooks": {
     "PreToolUse": [
@@ -21,6 +20,15 @@
       }
     ]
   },
+  "statusLine": {
+    "type": "command",
+    "command": "$XDG_CONFIG_HOME/claude/statusline.sh"
+  },
+  "enabledPlugins": {
+    "claude-code-wakatime@wakatime": true,
+    "lua-lsp@claude-plugins-official": true,
+    "jdtls-lsp@claude-plugins-official": true
+  },
   "extraKnownMarketplaces": {
     "wakatime": {
       "source": {
@@ -31,13 +39,6 @@
   },
   "tui": "default",
   "theme": "dark",
-  "verbose": true,
-  "autoCompactEnabled": true,
-  "enabledPlugins": {
-    "claude-code-wakatime@wakatime": true,
-    "lua-lsp@claude-plugins-official": true
-  },
-  "permissions": {
-    "defaultMode": "auto"
-  }
+  "verbose": false,
+  "autoCompactEnabled": true
 }

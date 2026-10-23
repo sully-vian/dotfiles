@@ -26,6 +26,7 @@ This repository contains configuration files (dotfiles) for various tools and ap
     - [x] EJS highlighting (see tree-sitter)
 - [ ] tmux
     - [ ] hide/show panel (collapse)
+    - [ ] replace popups with floating panes
 - [ ] fzf
     - [ ] cht/man lookup
 

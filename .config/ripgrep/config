@@ -1,3 +1,5 @@
 --hidden
 
 --glob=!.git/*
+
+--engine=auto

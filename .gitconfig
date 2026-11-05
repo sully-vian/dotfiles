@@ -20,6 +20,7 @@
 	dark = true
 	line-numbers = true
 	paging = never
+    syntax-theme = bat
 [fetch]
 	prune = true
 [include]

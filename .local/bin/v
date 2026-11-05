@@ -2,15 +2,19 @@
 
 set -euo pipefail
 
-if [ $# -eq 0 ]; then # 0 args -> open current directory
-    exec nvim .
-elif [ $# -eq 1 ]; then  # 1 arg ->
-    if [ -d "$1" ]; then # directory -> cd into it, open it
-        cd "$1"
-        exec nvim .
-    else # file -> open file, cd into parent dir
-        exec nvim "$@" +'cd %:p:h'
-    fi
-else
+if [ $# -gt 1 ]; then # argc > 1 -> pass through
     exec nvim "$@"
 fi
+
+if [ $# -eq 0 ]; then # argc == 0 -> open current directory
+    exec nvim -- .
+fi
+
+if [ -d "$1" ]; then # argv[1] is directory -> cd and open
+    cd "$1"
+    exec nvim -- .
+fi
+
+# argv[1] is file -> cd into parent dir and open file
+cd "$(dirname -- "$1")"
+exec nvim -- "$(basename -- "$1")"

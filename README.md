@@ -4,6 +4,7 @@ This repository contains configuration files (dotfiles) for various tools and ap
 
 ## TODO
 
+- [ ] use a sensible window manager (https://blog.z3bra.org/2015/01/you-are-the-wm.html)
 - [x] change script's shebangs to custom exec wrapper that sends notif if error // done with `set -euo pipefail`
 - [ ] i3
     - [ ] `notify-send` / `dunst`
@@ -29,4 +30,5 @@ This repository contains configuration files (dotfiles) for various tools and ap
     - [ ] replace popups with floating panes
 - [ ] fzf
     - [ ] cht/man lookup
+
 

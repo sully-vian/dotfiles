@@ -1,0 +1,14 @@
+#!/usr/bin/env sh
+
+set -euo pipefail
+
+if [ $# -ne 2 ]; then
+    printf "usage: %s PATTERN STRING\n" "$0" >&2
+    exit 2 # misuse
+fi
+
+# shellcheck disable=SC2254
+case $2 in
+$1) exit 0 ;;
+*) exit 1 ;;
+esac

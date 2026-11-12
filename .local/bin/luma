@@ -1,0 +1,28 @@
+#!/usr/bin/env sh
+
+set -euo pipefail
+
+if [ "$#" -lt 1 ]; then
+    printf "Usage: %s <hex-code> [<hex-code>...]\n" "$0" >&2
+    exit 2
+fi
+
+for hex in "$@"; do
+    if ! match '[0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f]' "$hex"; then
+        printf "%s: invalid hex code: '%s' (expected rrggbb)\n" "$0" "$hex" >&2
+        exit 2
+    fi
+
+    hex_red=$(printf '%s' "$hex" | cut -c1-2)
+    hex_green=$(printf '%s' "$hex" | cut -c3-4)
+    hex_blue=$(printf '%s' "$hex" | cut -c5-6)
+
+    red=$((0x$hex_red))
+    green=$((0x$hex_green))
+    blue=$((0x$hex_blue))
+
+    # https://en.wikipedia.org/wiki/Luma_(video)#Rec._601_luma_versus_Rec._709_luma_coefficients
+    luma=$(printf "0.299 * %s + 0.587 * %s + 0.114 * %s\n" "$red" "$green" "$blue" | bc)
+
+    printf "%s\n" "$luma"
+done

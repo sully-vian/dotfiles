@@ -42,7 +42,16 @@ full)
     ;;
 esac
 
-notify-send --urgency=low "Screenshot captured" "Saved to $FULL_PATH"
-
 mime=$(file --brief --mime-type "$FULL_PATH")
 xclip -selection clipboard -target "$mime" -in <"$FULL_PATH"
+
+# notify-send blocks until the notification is closed when it has actions, so
+# run it in the background. Clicking the notification invokes the "default"
+# action, which opens the screenshot.
+(
+    action=$(notify-send --urgency=low --action=default=Open \
+        "Screenshot captured" "Saved to $FULL_PATH")
+    if [ "$action" = default ]; then
+        xdg-open "$FULL_PATH"
+    fi
+) &

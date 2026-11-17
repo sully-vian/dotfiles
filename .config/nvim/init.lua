@@ -290,6 +290,7 @@ vim.opt.completeopt:append("popup")
 -------------
 
 local function gh(addr) return "https://github.com/" .. addr end
+local function cb(addr) return "https://codeberg.org/" .. addr end
 vim.pack.add({
     { src = gh "phpactor/phpactor" },
     { src = gh "romus204/tree-sitter-manager.nvim" },
@@ -305,7 +306,7 @@ vim.pack.add({
     { src = gh "hiphish/rainbow-delimiters.nvim" },
     { src = gh "andymass/vim-matchup" },
     { src = gh "monkoose/neocodeium" },
-    { src = "https://codeberg.org/mfussenegger/nvim-jdtls" }
+    { src = cb "mfussenegger/nvim-jdtls" }
 })
 
 --vim.lsp.inline_completion.enable()

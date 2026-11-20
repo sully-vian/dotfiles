@@ -37,7 +37,8 @@
 #b::Run "chrome.exe"
 
 ; open WSL: Win + Enter
-#Enter::Run "wt.exe -p Arch"
+;#Enter::Run "wt.exe -p Arch"
+#Enter::Run 'wsl.exe -d archlinux --cd ~ -e bash -lc "exec st"', , "Hide"
 
 ; open Start Menu: Win + Space
 #Space::Send "^{Esc}"

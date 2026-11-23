@@ -1,46 +1,29 @@
 -- get path to latest java executable
-local function get_latest_java()
-    local jvms = vim.fn.glob("/usr/lib/jvm/java-*", true, true)
-    local latest_path = "java"
-    local latest_version = -1
-    for _, path in ipairs(jvms) do
-        local version = path:match("java%-(%d+)") -- extract major version number
-        if not version then goto fin end
-        version = tonumber(version)
-        if not version or version < latest_version then goto fin end
-        latest_version = version
-        latest_path = path .. "/bin/java"
-        ::fin::
-    end
-    return latest_path
-end
-
 local project_name = vim.fn.fnamemodify(vim.fn.getcwd(), ':p:h:t')
 -- path for .metadata , indexes (ref, gotodef, auto-completion) an project caches (build state)
 local workspace_dir = vim.env.XDG_CACHE_HOME .. '/jdtls/workspace/' .. project_name
 
--- match all lombok-...<num>.jar (skip sources.jar and javadoc.jar)
-local lombok_paths = vim.fn.glob("~/.m2/repository/org/projectlombok/lombok/*/lombok-*[0-9].jar", true, true)
-local lombok_arg = (#lombok_paths > 0) and ("--jvm-arg=-javaagent:" .. lombok_paths[#lombok_paths]) or nil
+-- https://projectlombok.org/downloads/lombok.jar > ~/.local/share/java/lombok.jar
+local lombok_jar = vim.fs.normalize(vim.env.XDG_DATA_HOME .. "/java/lombok.jar")
 
-vim.api.nvim_create_user_command("JDTLSClearCache",
-    function()
-        local res = vim.fn.delete(workspace_dir, "rf")
-        if res == 0 then
-            vim.notify("Successfully removed " .. workspace_dir)
-        else
-            vim.notify("Failed to remove " .. workspace_dir)
-        end
-    end, {});
+function clear_cache()
+    local res = vim.fn.delete(workspace_dir, "rf")
+    if res == 0 then
+        vim.notify("Successfully removed " .. workspace_dir)
+    else
+        vim.notify("Failed to remove " .. workspace_dir)
+    end
+end
+
+vim.api.nvim_create_user_command("JDTLSClearCache", clear_cache, {});
 
 ---@type vim.lsp.Config
 local jdtls = {
     cmd = {
-        "jdtls",
-        "--java-executable", get_latest_java(),
+        "jdk27", "jdtls", -- java version to run jdtls with
         "-data", workspace_dir,
         "--jvm-arg=-Djava.import.generatesMetadataFilesAtProjectRoot=false",
-        lombok_arg
+        "--jvm-arg=-javaagent:" .. lombok_jar,
     },
     filetypes = { "java" },
     root_markers = { "gradlew", "mvnw", "pom.xml", ".git" },

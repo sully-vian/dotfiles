@@ -47,7 +47,21 @@ local jdtls = {
     init_options = {
         extendedClientCapabilities = {
             classFileContentsSupport = true
-        }
+        },
+        -- must be here, not in the top-level `settings`: jdtls imports projects
+        -- during initialize, before workspace/didChangeConfiguration arrives
+        settings = {
+            java = {
+                -- must be a boolean: jdtls ignores vscode-java's "auto"/"on"/"off" strings
+                jdt = { ls = { androidSupport = { enabled = true } } },
+                import = {
+                    gradle = {
+                        -- androidSupport needs the `eclipse` Gradle plugin on Android modules
+                        arguments = { "--init-script", vim.fn.stdpath("config") .. "/jdtls/eclipse-init.gradle" },
+                    },
+                },
+            },
+        },
     },
 }
 

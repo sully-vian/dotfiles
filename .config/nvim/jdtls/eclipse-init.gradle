@@ -1,0 +1,39 @@
+// Init script for jdtls' Android support (see lua/lsp/jdtls.lua).
+
+import org.gradle.plugins.ide.eclipse.model.Container
+
+def JRE_CONTAINER = 'org.eclipse.jdt.launching.JRE_CONTAINER'
+def GRADLE_CONTAINER = 'org.eclipse.buildship.core.gradleclasspathcontainer'
+
+// jdtls only sets up Android modules that have the `eclipse` plugin
+allprojects {
+    apply plugin: 'eclipse'
+}
+
+// jdtls drops the JDK, but android.jar lacks some classes (e.g. LambdaMetafactory):
+// add the JDK back as a fallback, after android.jar so Android's classes win.
+// projectsEvaluated: run after jdtls' own hooks.
+gradle.projectsEvaluated {
+    allprojects { project ->
+        def isAndroid =
+            project.plugins.hasPlugin('com.android.application') ||
+            project.plugins.hasPlugin('com.android.library')
+        if (!isAndroid) {
+            return
+        }
+
+        project.eclipse.classpath.file.whenMerged { classpath ->
+            classpath.entries.removeAll { entry ->
+                entry.kind == 'con' && (
+                    entry.path.startsWith(JRE_CONTAINER) ||
+                    entry.path == GRADLE_CONTAINER
+                )
+            }
+
+            // android.jar + dependencies
+            classpath.entries.add(new Container(GRADLE_CONTAINER))
+            // fallback for what android.jar lacks
+            classpath.entries.add(new Container(JRE_CONTAINER))
+        }
+    }
+}

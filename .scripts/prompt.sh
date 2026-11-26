@@ -1,4 +1,4 @@
-# no shebang, it is sourced
+#!/usr/bin/env bash
 
 # print the prompt string (with \[ \] and \e escapes, unexpanded)
 # test with: p=$(build_prompt 0); echo "${p@P}"
@@ -29,8 +29,7 @@ build_prompt() {
   if [ -n "$git_root_path" ]; then
     # if inside git repo, display path from root of git repo
     # git_root = git repo name
-    local git_root
-    git_root=$(basename "$git_root_path")
+    local git_root=${git_root_path##*/}
 
     if [ "$git_root_path" = "$PWD" ]; then
       # if at root of git repo
@@ -71,10 +70,6 @@ build_prompt() {
 
   if [ -n "$SSH_CONNECTION" ]; then
     prompt="󰣀 $prompt"
-  fi
-
-  if pgrep vpnc >/dev/null || pgrep openvpn >/dev/null; then
-    prompt="󰖂 $prompt"
   fi
   printf '%s' "${RESET}${SHOW_CURSOR}$prompt"
 }

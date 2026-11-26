@@ -1,7 +1,8 @@
 # no shebang, it is sourced
 
-# custom prompt
-set_prompt() {
+# print the prompt string (with \[ \] and \e escapes, unexpanded)
+# test with: p=$(build_prompt 0); echo "${p@P}"
+build_prompt() {
 
   # variables
   local BLUE="\[\e[34m\]"
@@ -55,9 +56,8 @@ set_prompt() {
     esac
   fi
 
-  # PS1="$rel_path"
   # colored path
-  PS1="${GREEN1}$rel_path${RESET}"
+  local prompt="${GREEN1}$rel_path${RESET}"
 
   local prompt_icon_color
   if [ "$lastcommand" -eq 0 ]; then
@@ -67,15 +67,19 @@ set_prompt() {
   fi
   local prompt_icon="${prompt_icon_color}($lastcommand) "
 
-  # PS1="$PS1\n$coloredarrow"
-  PS1="$PS1\n$prompt_icon${RESET}"
+  prompt="$prompt\n$prompt_icon${RESET}"
 
   if [ -n "$SSH_CONNECTION" ]; then
-    PS1="󰣀 $PS1"
+    prompt="󰣀 $prompt"
   fi
 
   if pgrep vpnc >/dev/null || pgrep openvpn >/dev/null; then
-    PS1="󰖂 $PS1"
+    prompt="󰖂 $prompt"
   fi
-  PS1="${RESET}${SHOW_CURSOR}$PS1"
+  printf '%s' "${RESET}${SHOW_CURSOR}$prompt"
+}
+
+# custom prompt, called from PROMPT_COMMAND
+set_prompt() {
+  PS1="$(build_prompt "$1")"
 }
